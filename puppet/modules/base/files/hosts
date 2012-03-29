@@ -1,0 +1,42 @@
+#Automatically generated hosts file.
+#Follows the spec outlined in
+#http://wiki.brisskit.le.ac.uk/wiki/Network_design
+#Made on Thu Mar 29 11:53:39 BST 2012 
+
+127.0.0.1  localhost
+
+#Let this client know where the puppet master is. This lives on the 
+#external network
+192.168.0.102   puppet
+
+#Local machine aliases names in this vApp.These could be used in scripts
+#as these will always be the same in all vApps.
+192.168.2.100   lb
+192.168.2.101   camp
+192.168.2.102   redcap
+192.168.2.103   catissue
+192.168.2.104   i2b2
+192.168.2.105   civicrm
+192.168.2.106   mysql
+192.168.2.107   sqlserver
+192.168.2.108   onxy
+
+#All the local hostnames in this vApp. These will only work in this vApp. 
+192.168.2.100   bru1-lb
+192.168.2.101   bru1-camp
+192.168.2.102   bru1-redcap
+192.168.2.103   bru1-catissue
+192.168.2.104   bru1-i2b2
+192.168.2.105   bru1-civicrm
+192.168.2.106   bru1-mysql
+192.168.2.107   bru1-sqlserver
+192.168.2.108   bru1-onxy
+
+
+#For self lookups to get around the NAT problems and force the traffic to come via the load-balancer
+192.168.0.103    dev.brisskit.le.ac.uk
+192.168.0.103    bru1.brisskit.le.ac.uk
+192.168.0.103    bru2.brisskit.le.ac.uk
+192.168.0.103    demo.brisskit.le.ac.uk
+
+
