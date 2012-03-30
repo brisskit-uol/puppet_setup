@@ -1,6 +1,6 @@
 class base {
 
-	notify{"Hello me":}
+	notify{"Starting base config":}
 
 	#hosts file
 	file { "/etc/hosts":
