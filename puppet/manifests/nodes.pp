@@ -1,14 +1,7 @@
 class base {
 	include base
+	include ntp
 }
-
-#node 'puptest' {
-#   include apache2
-#}
-
-#node 'mysql' {
-#	include apache2
-#}
 
 #node 'bru3-(.*)$/' {
 #	include logwatch
@@ -22,7 +15,12 @@ class base {
 #	include brisskit
 #}
 
-node 'bru1-camp' {
+#node 'bru1-camp' {
+#	include base
+#}
+
+#All VMs in the bru1 vApp
+node /^bru1-.*$/ {
 	include base
 }
 
