@@ -1,6 +1,5 @@
-class base {
-	include base
-	include ntp
+node base {
+	include base, ntp
 }
 
 #node 'bru3-(.*)$/' {
@@ -21,6 +20,9 @@ class base {
 
 #All VMs in the bru1 vApp
 node /^bru1-.*$/ {
-	include base
+	include base, ntp
 }
 
+#node 'bru1-mysql' {
+#	include mysql_passwords
+#}
