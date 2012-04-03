@@ -1,30 +1,42 @@
 class base {
 
-	notify{"Starting base config":}
+	#Lets figure out the vApp name
+	$parts = split("${fqdn}", '-')
+	$vapp_name = $parts[0]
+
+	notify{"Starting base config $vapp_name":}
 
 	#hosts file
 	file { "/etc/hosts":
 		ensure => present,
-		owner => 'root',
-		group => 'root',
-		mode => 0644,
-		source => "puppet:///modules/base/hosts",
+		owner  => 'root',
+		group  => 'root',
+		mode   => 0644,
+		source => "puppet:///modules/base/${vapp_name}_hosts",
 	}
 
 	#brisskit config directory
 	file { "/etc/brisskit":
 		ensure => directory,
-		owner => 'root',
-		group => 'root',
-		mode => 0644,
+		owner  => 'root',
+		group  => 'root',
+		mode   => 0644,
+	}
+
+	#brisskit mysql config directory
+	file { "/etc/brisskit/mysql":
+		ensure => directory,
+		owner  => 'ob30',
+		group  => 'root',
+		mode   => 0644,
 	}
 
 	#brisskit install directory
 	file { "/var/local/brisskit":
 		ensure => directory,
-		owner => 'root',
-		group => 'root',
-		mode => 0644,
+		owner  => 'root',
+		group  => 'root',
+		mode   => 0644,
 	} 
 
 
@@ -58,7 +70,7 @@ class base {
 		source => "puppet:///modules/base/bru1_bob_id_rsa",
 	}
 
-	$bob_puplic_key='AAAAB3NzaC1yc2EAAAADAQABAAABAQDNTkWBjkd7eoSmo8yE1Mgg9e4s5wvqSMKKdZNfX/HXOFph8KiEBJYhgCs5XLK6hP9yZYaOYgP5Mt5OL3QKjSx/hidY2C5s8DR5xQ3dvxRaaz/8GD+KDsf/0ifQJKaocP3f/EgwXxHm77mA9WNtZ5bnOLeqnWdfMTzg8EpCBeHUwX4nfAZILTWHjad9NHVwN4h2bPbjkGdFf0eMsJM3PISMuyYYp9H1LYu0rXNasiZ+cQasThid95qlBDiqru5tLEA8bbcROArjRHXcLlo4Psh0JGUkcrcfrTuhyAUUH0Gzm5dJQT9BIldubmr3tQSMYACq2RjtHu0ovjWOHU7kNx6X'
+	$bob_public_key='AAAAB3NzaC1yc2EAAAADAQABAAABAQDNTkWBjkd7eoSmo8yE1Mgg9e4s5wvqSMKKdZNfX/HXOFph8KiEBJYhgCs5XLK6hP9yZYaOYgP5Mt5OL3QKjSx/hidY2C5s8DR5xQ3dvxRaaz/8GD+KDsf/0ifQJKaocP3f/EgwXxHm77mA9WNtZ5bnOLeqnWdfMTzg8EpCBeHUwX4nfAZILTWHjad9NHVwN4h2bPbjkGdFf0eMsJM3PISMuyYYp9H1LYu0rXNasiZ+cQasThid95qlBDiqru5tLEA8bbcROArjRHXcLlo4Psh0JGUkcrcfrTuhyAUUH0Gzm5dJQT9BIldubmr3tQSMYACq2RjtHu0ovjWOHU7kNx6X'
 	ssh_authorized_key { "bob-rsa-key":
    		ensure => 'present',
    		key => "$bob_public_key",
