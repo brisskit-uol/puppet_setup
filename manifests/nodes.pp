@@ -23,6 +23,6 @@ node /^bru1-.*$/ {
 	include base, ntp
 }
 
-#node 'bru1-mysql' {
-#	include mysql_passwords
+#node 'bru1-mysql.brisskit.le.ac.uk' {
+#	include mysqlpw
 #}
