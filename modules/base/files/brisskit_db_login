@@ -10,4 +10,4 @@ databasename="$(brisskit_db_param ${database} name)"
 databaseuser="$(brisskit_db_param ${database} user)"
 databasepass="$(brisskit_db_param ${database} pass)"
         
-mysql --host mysql --user="${databaseuser}" --password="${databasepass}" "${databasename}"
+mysql --host="mysql" --user="${databaseuser}" --password="${databasepass}" "${databasename}"

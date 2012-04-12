@@ -6,6 +6,10 @@ class base {
 
 	notify{"Starting base config $vapp_name":}
 
+	#########################################################################
+	#Directories and files
+	#########################################################################
+
 	#hosts file
 	file { "/etc/hosts":
 		ensure => present,
@@ -39,8 +43,26 @@ class base {
 		mode   => 0644,
 	} 
 
+	#mysql helper functions
+	file { "/usr/local/bin/brisskit_db_param":
+		ensure => present,
+		owner  => 'root',
+		group  => 'root',
+		mode   => 0755,
+		source => "puppet:///modules/base/brisskit_db_param",
+	}
+	file { "/usr/local/bin/brisskit_db_login":
+		ensure => present,
+		owner  => 'root',
+		group  => 'root',
+		mode   => 0755,
+		source => "puppet:///modules/base/brisskit_db_login",
+	}
 
+
+	#########################################################################
 	#Users - The password hash is taken from /etc/shadow on this VM. UGLY!
+	#########################################################################
 	#Fictional user
 	$bob_pw='$6$hUNOhBMH$U8t1YDPO9mEPhYmkSwiwXn2xbHKdkJgtu710vQAPG.pOse0Fvl1kcXYKyKK4Xqje/NaRodaIsI6e1w8nlxMQS0'
 	user { "bob":
