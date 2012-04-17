@@ -36,3 +36,14 @@ node mysql-1 {
 node ga-puppet {
 	include ntp, puppet
 }
+
+#mail server
+node ga-mail {
+	include ntp, puppet
+}
+
+#backup vm
+node ga-backup {
+	include ntp, puppet
+}
+
