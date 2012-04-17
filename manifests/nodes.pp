@@ -20,9 +20,19 @@ node base {
 
 #All VMs in the bru1 vApp
 node /^bru1-.*$/ {
-	include base, ntp
+	include base, ntp, puppet
 }
 
-#node 'bru1-mysql.brisskit.le.ac.uk' {
-#	include mysqlpw
-#}
+node mysql-1 {
+	include base, ntp 
+}
+
+##############################################
+#BE VERY CAREFUL WITH THE ONES BELOW, THEY ARE
+#THE MANAAGEMENT VMS!
+##############################################
+
+#puppet master. Be careful not to become self aware.
+node ga-puppet {
+	include ntp, puppet
+}
