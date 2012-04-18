@@ -30,6 +30,7 @@ node /^bru1-.*$/ {
 class ga_base {
 	include ntp
 	include puppet
+	include ga_hosts
 	include users::olly
 }
 
