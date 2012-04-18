@@ -1,49 +1,51 @@
-node base {
-	include base, ntp
+#The base bru packages that should go in each bru VM
+class bru_base {
+	include base
+	include ntp
+	include puppet
+	include users::olly
 }
 
-#node 'bru3-(.*)$/' {
-#	include logwatch
-#}
 
-#node '/^(.*)-redcap$/' {
-#	include mysql-server-core-5.1
-#}
+#################################################
+#BRU1 nodes
+#################################################
 
-#node 'bru1-civi' {
-#	include brisskit
-#}
+#civicrm
+node 'bru1-civicrm.brisskit.le.ac.uk' {
+	include bru_base
+	include users::saj, users::soma
+}
 
-#node 'bru1-camp' {
-#	include base
-#}
-
-#All VMs in the bru1 vApp
+#any other ones that have been missed out
 node /^bru1-.*$/ {
-	include base, ntp, puppet
+	include bru_base
 }
 
-node mysql-1 {
-	include base, ntp 
-}
 
-##############################################
+#################################################
 #BE VERY CAREFUL WITH THE ONES BELOW, THEY ARE
 #THE MANAAGEMENT VMS!
-##############################################
+#################################################
+class ga_base {
+	include ntp
+	include puppet
+	include users::olly
+}
 
-#puppet master. Be careful not to become self aware.
+
+#puppet master. Be careful not to become self aware :)
 node ga-puppet {
-	include ntp, puppet
+	include ga_base
 }
 
 #mail server
 node ga-mail {
-	include ntp, puppet
+	include ga_base
 }
 
 #backup vm
 node ga-backup {
-	include ntp, puppet
+	include ga_base
 }
 
