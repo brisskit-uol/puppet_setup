@@ -6,12 +6,20 @@ class postfix {
 
 	notify{"Starting postfix config $vapp_name":}
 
-	#########################################################################
-	#Directories and files
-	#########################################################################
+	#Make sure installed
+	package { "postfix": 
+        	ensure => installed 
+    	}
+
+	#Make sure running
+	service { "postfix":
+		ensure     => "running",
+		hasrestart => true,
+	}
 
 	#hosts file
 	file { "/etc/postfix/main.cf":
+		notify => Service["postfix"],
 		ensure => present,
 		owner  => 'root',
 		group  => 'root',
