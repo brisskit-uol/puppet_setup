@@ -10,11 +10,23 @@ class bru_base {
 #################################################
 #BRU1 nodes
 #################################################
+#catissue
+node 'bru1-catissue.brisskit.le.ac.uk' {
+	include bru_base
+	include postfix
+}
 
 #civicrm
 node 'bru1-civicrm.brisskit.le.ac.uk' {
 	include bru_base
+	include postfix
 	include users::saj, users::soma
+}
+
+#redcap
+node 'bru1-redcap.brisskit.le.ac.uk' {
+	include bru_base
+	include postfix
 }
 
 #any other ones that have been missed out
