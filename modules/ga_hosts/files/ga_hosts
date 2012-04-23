@@ -18,8 +18,8 @@
 
 #global admin
 192.168.0.100   ga-mail.brisskit.le.ac.uk ga-mail
-192.168.0.103   ga-pound-1.brisskit.le.ac.uk ga-pound-1 pound-1 pound
-192.168.0.117   ga-backup.brisskite.le.ac.uk ga-backup
+192.168.0.103   ga-pound.brisskit.le.ac.uk ga-pound pound
+192.168.0.117   ga-backup.brisskit.le.ac.uk ga-backup
 192.168.0.115   ga-gimp.brisskit.le.ac.uk ga-gimp gimp	
 
 

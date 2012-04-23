@@ -53,7 +53,7 @@ node ga-puppet {
 }
 
 #mail server
-node ga-mail {
+node 'ga-mail.brisskit.le.ac.uk' {
 	include ga_base
 }
 
@@ -62,3 +62,11 @@ node ga-backup {
 	include ga_base
 }
 
+node ga-pound {
+	include ga_base
+	include postfix
+}
+
+node 'ga-gimp.brisskit.le.ac.uk' {
+	include ga_base
+}
