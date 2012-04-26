@@ -10,6 +10,11 @@ class bru_base {
 #################################################
 #BRU1 nodes
 #################################################
+node 'bru1-camp.brisskit.le.ac.uk' {
+	include bru_base
+	include users::integration
+}
+
 #catissue
 node 'bru1-catissue.brisskit.le.ac.uk' {
 	include bru_base
@@ -27,10 +32,41 @@ node 'bru1-civicrm.brisskit.le.ac.uk' {
 node 'bru1-redcap.brisskit.le.ac.uk' {
 	include bru_base
 	include postfix
+	include users::integration
 }
 
 #any other ones that have been missed out
 node /^bru1-.*$/ {
+	include bru_base
+	include users::integration
+}
+
+
+#################################################
+#BRU3
+#################################################
+#catissue
+node 'bru3-catissue.brisskit.le.ac.uk' {
+	include bru_base
+	include postfix
+	include users::saj, users::soma
+}
+
+#civicrm
+node 'bru3-civicrm.brisskit.le.ac.uk' {
+	include bru_base
+	include postfix
+	include users::saj, users::soma
+}
+
+#redcap
+node 'bru3-redcap.brisskit.le.ac.uk' {
+	include bru_base
+	include postfix
+}
+
+#any other ones that have been missed out
+node /^bru3-.*$/ {
 	include bru_base
 }
 
