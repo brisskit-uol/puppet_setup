@@ -10,6 +10,7 @@
 #vApps
 192.168.0.116	bru1
 192.168.0.104   bru2
+192.168.0.105   bru3
 192.168.0.109	demo
 
 #floating (temporary) VMs
