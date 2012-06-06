@@ -1,15 +1,15 @@
-class users::ss727{
+class users::jl99{
 
 	#########################################################################
 	#Users - The password hash is taken from /etc/shadow on the gimp VM. UGLY!
 	#########################################################################
-	#Soma
-        $ss727_pw='$6$5HiDZcVq$wX0yMsxw9loZpKB90HnpvVQvtnrFZegN30Ju4RNYVAXyad/mXyEf3ILn0HWsVEF0uExgtjGRCGHfm3cJPKJiX0'
-        user { "ss727":
+	#Jeff
+        $jl99_pw='$6$sXsz31a8$oUGK6LDFEYCJQtDLDdDm7U4AJHcHXBCFJB3Xa49NXkhqpsh0m8oAurl5EfZpygDHVM8RgHAyFe4UJ5WLh6pxN/'
+        user { "jl99":
                 ensure     => present,
                 shell      => "/bin/bash",
-                home       => "/home/ss727",
+                home       => "/home/jl99",
                 managehome => true,
-                password   => "$ss727_pw",
+                password   => "$jl99_pw",
         }
 }
