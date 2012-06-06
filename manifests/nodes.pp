@@ -57,6 +57,7 @@ node 'bru3-civicrm.brisskit.le.ac.uk' {
 node 'bru3-onyx.brisskit.le.ac.uk' {
 	include bru_base
 	include users::jeff
+}
 
 #any other ones that have been missed out
 node /^bru3-.*$/ {
