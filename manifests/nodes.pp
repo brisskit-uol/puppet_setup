@@ -25,7 +25,7 @@ node 'bru1-catissue.brisskit.le.ac.uk' {
 node 'bru1-civicrm.brisskit.le.ac.uk' {
 	include bru_base
 	include postfix
-	include users::saj, users::soma
+	include users::si84, users::ss727
 }
 
 
@@ -43,20 +43,20 @@ node /^bru1-.*$/ {
 node 'bru3-catissue.brisskit.le.ac.uk' {
 	include bru_base
 	include postfix
-	include users::saj, users::soma
+	include users::si84, users::ss727
 }
 
 #civicrm
 node 'bru3-civicrm.brisskit.le.ac.uk' {
 	include bru_base
 	include postfix
-	include users::rob, users::saj, users::soma
+	include users::rcf8, users::si84, users::ss727
 }
 
 #onyx
 node 'bru3-onyx.brisskit.le.ac.uk' {
 	include bru_base
-	include users::jeff
+	include users::jl99
 }
 
 #any other ones that have been missed out
