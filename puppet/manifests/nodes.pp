@@ -3,7 +3,7 @@ class bru_base {
 	include base
 	include ntp
 	include puppet
-	include users::olly
+	include users::ob30
 }
 
 
@@ -73,7 +73,7 @@ class ga_base {
 	include ntp
 	include puppet
 	include ga_hosts
-	include users::olly
+	include users::ob30
 }
 
 
