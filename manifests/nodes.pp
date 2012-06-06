@@ -43,7 +43,7 @@ node /^bru1-.*$/ {
 #to the other VMs
 node 'bru3-camp.brisskit.le.ac.uk' {
 	include bru_base
-	include users::jl99, users::rcf8, users::si84, users::ss727, users:tb143
+	include users::jl99, users::rcf8, users::si84, users::ss727, users::tb143
 }
 
 #catissue
