@@ -39,6 +39,13 @@ node /^bru1-.*$/ {
 #################################################
 #BRU3
 #################################################
+#camp - everyone needs to be on this to get
+#to the other VMs
+node 'bru3-camp.brisskit.le.ac.uk' {
+	include bru_base
+	include users::jl99, users::rcf8, users::si84, users::ss727, users:tb143
+}
+
 #catissue
 node 'bru3-catissue.brisskit.le.ac.uk' {
 	include bru_base
@@ -50,7 +57,7 @@ node 'bru3-catissue.brisskit.le.ac.uk' {
 node 'bru3-civicrm.brisskit.le.ac.uk' {
 	include bru_base
 	include postfix
-	include users::rcf8, users::si84, users::ss727
+	include users::rcf8, users::si84, users::ss727, users::tb143
 }
 
 #onyx
