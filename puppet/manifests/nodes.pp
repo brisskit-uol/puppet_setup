@@ -28,12 +28,6 @@ node 'bru1-civicrm.brisskit.le.ac.uk' {
 	include users::saj, users::soma
 }
 
-#redcap
-node 'bru1-redcap.brisskit.le.ac.uk' {
-	include bru_base
-	include postfix
-	include users::integration
-}
 
 #any other ones that have been missed out
 node /^bru1-.*$/ {
@@ -56,14 +50,13 @@ node 'bru3-catissue.brisskit.le.ac.uk' {
 node 'bru3-civicrm.brisskit.le.ac.uk' {
 	include bru_base
 	include postfix
-	include users::saj, users::soma
+	include users::rob, users::saj, users::soma
 }
 
-#redcap
-node 'bru3-redcap.brisskit.le.ac.uk' {
+#onyx
+node 'bru3-onyx.brisskit.le.ac.uk' {
 	include bru_base
-	include postfix
-}
+	include users::jeff
 
 #any other ones that have been missed out
 node /^bru3-.*$/ {

@@ -1,4 +1,4 @@
-class users::olly {
+class users::ob30 {
 
 	#########################################################################
 	#Users - The password hash is taken from /etc/shadow on this VM. UGLY!

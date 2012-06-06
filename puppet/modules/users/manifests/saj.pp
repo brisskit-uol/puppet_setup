@@ -1,4 +1,4 @@
-class users::saj{
+class users::si84{
 
 	#########################################################################
 	#Users - The password hash is taken from /etc/shadow on the gimp VM. UGLY!

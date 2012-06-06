@@ -1,15 +1,15 @@
-class users::ss727{
+class users::rcf8{
 
 	#########################################################################
 	#Users - The password hash is taken from /etc/shadow on the gimp VM. UGLY!
 	#########################################################################
-	#Soma
-        $ss727_pw='$6$5HiDZcVq$wX0yMsxw9loZpKB90HnpvVQvtnrFZegN30Ju4RNYVAXyad/mXyEf3ILn0HWsVEF0uExgtjGRCGHfm3cJPKJiX0'
-        user { "ss727":
+	#Rob Free
+        $rcf8_pw='$6$2P3m8sSV$Jw9iHdiAcxxFOUlcrVGotjA.JI9fZOJhhyT.nehBB28AT4lF8FiVkhPf44DJht3yeuHbDdCUyNoyhQXzwHKGt0'
+        user { "rcf8":
                 ensure     => present,
                 shell      => "/bin/bash",
-                home       => "/home/ss727",
+                home       => "/home/rcf8",
                 managehome => true,
-                password   => "$ss727_pw",
+                password   => "$rcf8_pw",
         }
 }
