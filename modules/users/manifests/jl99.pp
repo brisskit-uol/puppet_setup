@@ -10,6 +10,7 @@ class users::jl99{
                 shell      => "/bin/bash",
                 home       => "/home/jl99",
                 managehome => true,
+		groups     => ['admin'],
                 password   => "$jl99_pw",
         }
 }

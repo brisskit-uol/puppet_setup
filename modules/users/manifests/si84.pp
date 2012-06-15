@@ -10,6 +10,7 @@ class users::si84{
                 shell      => "/bin/bash",
                 home       => "/home/si84",
                 managehome => true,
+		groups     => ['admin'],
                 password   => "$si84_pw",
         }
 }

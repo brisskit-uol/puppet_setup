@@ -10,6 +10,7 @@ class users::rcf8{
                 shell      => "/bin/bash",
                 home       => "/home/rcf8",
                 managehome => true,
+		groups     => ['admin'],
                 password   => "$rcf8_pw",
         }
 }

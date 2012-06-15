@@ -10,6 +10,7 @@ class users::tb143{
                 shell      => "/bin/bash",
                 home       => "/home/tb143",
                 managehome => true,
+		groups     => ['admin'],
                 password   => "$tb143_pw",
         }
 }

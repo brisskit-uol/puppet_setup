@@ -1,3 +1,3 @@
 class users {
-	include users::bob, users::integration, users::jim, users::olly, users::saj, users::soma
+	include users::alice, users::bob, users::mike, users::ob30, users::si84, users::ss727, users::bru1_backup
 }
