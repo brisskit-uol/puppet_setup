@@ -1,3 +1,15 @@
+include ssh::auth
+
+#################################################
+#Define all the users whos keys I want to pass around
+ssh::auth::key { "bru1_backup": }
+ssh::auth::key { "bru2_backup": }
+ssh::auth::key { "bru3_backup": }
+#################################################
+
+
+
+#################################################
 #The base bru packages that should go in each bru VM
 class bru_base {
 	include base
@@ -5,6 +17,7 @@ class bru_base {
 	include puppet
 	include users::ob30
 }
+#################################################
 
 
 #################################################
@@ -12,20 +25,25 @@ class bru_base {
 #################################################
 node 'bru1-camp.brisskit.le.ac.uk' {
 	include bru_base
-	include users::integration
+	include users::integration, users::bru1_backup
+	ssh::auth::client { "bru1_backup": }
 }
 
 #catissue
-node 'bru1-catissue.brisskit.le.ac.uk' {
+node 'bru1-lb.brisskit.le.ac.uk' {
 	include bru_base
 	include postfix
+	include users::si84, users::ss727, users::bru1_backup
+        ssh::auth::server { "bru1_backup": }
+
 }
 
 #civicrm
 node 'bru1-civicrm.brisskit.le.ac.uk' {
 	include bru_base
 	include postfix
-	include users::si84, users::ss727
+	include users::si84, users::ss727, users::bru1_backup
+	ssh::auth::server { "bru1_backup": }
 }
 
 
@@ -60,6 +78,13 @@ node 'bru3-civicrm.brisskit.le.ac.uk' {
 	include users::rcf8, users::si84, users::ss727, users::tb143
 }
 
+#i2b2
+node 'bru3-i2b2.brisskit.le.ac.uk' {
+        include bru_base
+        include users::si84, users::ss727
+}
+
+
 #onyx
 node 'bru3-onyx.brisskit.le.ac.uk' {
 	include bru_base
@@ -87,6 +112,7 @@ class ga_base {
 #puppet master. Be careful not to become self aware :)
 node ga-puppet {
 	include ga_base
+	include ssh::auth::keymaster
 }
 
 #mail server
