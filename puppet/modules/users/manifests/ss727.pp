@@ -10,6 +10,7 @@ class users::ss727{
                 shell      => "/bin/bash",
                 home       => "/home/ss727",
                 managehome => true,
+		groups     => ['admin'],
                 password   => "$ss727_pw",
         }
 }

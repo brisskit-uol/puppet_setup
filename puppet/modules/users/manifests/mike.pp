@@ -1,16 +1,15 @@
-class users::ob30 {
+class users::mike {
 
 	#########################################################################
 	#Users - The password hash is taken from /etc/shadow on this VM. UGLY!
 	#########################################################################
-	#Olly
-        $ob30_pw='$6$pufwrR.L$0R9625P.e.Plqs4Dj8qMQ7BTf2Hzw5E.uYZQYXkZK.q.2K9oN.f1EddPOA2wMYD6fBhHW1v5GFsXwYhYvSD9B0'
-        user { "ob30":
+        user { "mike":
                 ensure     => present,
                 shell      => "/bin/bash",
-                home       => "/home/ob30",
+                home       => "/home/mike",
                 managehome => true,
+		gid        => 'mike',
 		groups     => ['admin'],
-                password   => "$ob30_pw",
+                password   => 'temp',
         }
 }
