@@ -125,11 +125,19 @@ node ga-backup {
 	include ga_base
 }
 
+#load balancer
 node ga-pound {
 	include ga_base
 	include postfix
 }
 
+#global ssh gateway
 node 'ga-gimp.brisskit.le.ac.uk' {
 	include ga_base
+}
+
+#private web server
+node 'ga-private.brisskit.le.ac.uk' {
+	include ga_base
+	include users::jl99, users::si84, users::ss727
 }
