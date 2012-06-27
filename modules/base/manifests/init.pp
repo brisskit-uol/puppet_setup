@@ -30,10 +30,21 @@ class base {
 	#brisskit mysql config directory
 	file { "/etc/brisskit/mysql":
 		ensure => directory,
-		owner  => 'ob30',
+		owner  => 'root',
 		group  => 'root',
 		mode   => 0644,
+		require => File["/etc/brisskit"],
 	}
+
+	#settings file - just the inst prefix atm
+        file { "/etc/brisskit/settings.cfg":
+                ensure => present,
+                owner  => 'root',
+                group  => 'root',
+                mode   => 0644,
+                source => "puppet:///modules/base/${vapp_name}_settings",
+		require => File["/etc/brisskit"],
+        }
 
 	#brisskit install directory
 	file { "/var/local/brisskit":
@@ -51,6 +62,7 @@ class base {
 		mode   => 0755,
 		source => "puppet:///modules/base/brisskit_db_param",
 	}
+
 	file { "/usr/local/bin/brisskit_db_login":
 		ensure => present,
 		owner  => 'root',
