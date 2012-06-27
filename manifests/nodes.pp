@@ -1,10 +1,15 @@
 include ssh::auth
 
 #################################################
-#Define all the users whos keys I want to pass around
+#Define all the BACKUP users whos keys I want to pass around
 ssh::auth::key { "bru1_backup": }
 ssh::auth::key { "bru2_backup": }
 ssh::auth::key { "bru3_backup": }
+#################################################
+
+#################################################
+#Define all the INTEGRATION users whos keys I want to pass around
+#ssh::auth::key { "bru1_integration": }
 #################################################
 
 
