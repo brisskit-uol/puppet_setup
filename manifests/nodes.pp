@@ -2,6 +2,8 @@ include ssh::auth
 
 #################################################
 #Define all the BACKUP users whos keys I want to pass around
+#These are stored on the puppet master in /var/lib/keys
+#These do not have to exist as users at this stage
 ssh::auth::key { "bru1_backup": }
 ssh::auth::key { "bru2_backup": }
 ssh::auth::key { "bru3_backup": }
@@ -9,7 +11,7 @@ ssh::auth::key { "bru3_backup": }
 
 #################################################
 #Define all the INTEGRATION users whos keys I want to pass around
-#ssh::auth::key { "bru1_integration": }
+ssh::auth::key { "integration": }
 #################################################
 
 
@@ -40,7 +42,7 @@ node 'bru1-lb.brisskit.le.ac.uk' {
 	include postfix
 	include users::si84, users::ss727, users::bru1_backup
         ssh::auth::server { "bru1_backup": }
-
+	#ssh::auth::server { "bru1_integration": }
 }
 
 #civicrm
@@ -73,7 +75,9 @@ node 'bru3-camp.brisskit.le.ac.uk' {
 node 'bru3-catissue.brisskit.le.ac.uk' {
 	include bru_base
 	include postfix
-	include users::si84, users::ss727
+	include users::integration, users::si84, users::ss727
+	ssh::auth::client { "integration": }
+	ssh::auth::server { "integration": }
 }
 
 #civicrm
@@ -86,7 +90,9 @@ node 'bru3-civicrm.brisskit.le.ac.uk' {
 #i2b2
 node 'bru3-i2b2.brisskit.le.ac.uk' {
         include bru_base
-        include users::si84, users::ss727
+        include users::integration, users::si84, users::ss727
+	ssh::auth::client { "integration": }
+	ssh::auth::server { "integration": }
 }
 
 
@@ -100,7 +106,6 @@ node 'bru3-onyx.brisskit.le.ac.uk' {
 node /^bru3-.*$/ {
 	include bru_base
 }
-
 
 
 #################################################
@@ -117,7 +122,9 @@ node 'demo-camp.brisskit.le.ac.uk' {
 node 'demo-catissue.brisskit.le.ac.uk' {
         include bru_base
         include postfix
-        include users::si84, users::ss727
+        include users::integration, users::si84, users::ss727
+	ssh::auth::client { "integration": }
+        ssh::auth::server { "integration": }
 }
 
 #civicrm
@@ -130,7 +137,9 @@ node 'demo-civicrm.brisskit.le.ac.uk' {
 #i2b2
 node 'demo-i2b2.brisskit.le.ac.uk' {
         include bru_base
-        include users::si84, users::ss727
+        include users::integration, users::si84, users::ss727
+        ssh::auth::client { "integration": }
+	ssh::auth::server { "integration": }
 }
 
 
@@ -144,6 +153,11 @@ node 'demo-onyx.brisskit.le.ac.uk' {
 node /^demo-.*$/ {
         include bru_base
 }
+
+
+
+
+
 
 
 
