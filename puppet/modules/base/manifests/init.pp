@@ -30,8 +30,8 @@ class base {
 	#brisskit mysql config directory
 	file { "/etc/brisskit/mysql":
 		ensure => directory,
-		owner  => 'root',
-		group  => 'root',
+		owner  => 'ob30',
+		group  => 'ob30',
 		mode   => 0644,
 		require => File["/etc/brisskit"],
 	}
