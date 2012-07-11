@@ -1,5 +1,9 @@
 #!/bin/bash
 
+#####################################################################
+#This file is managed by puppet. Do not edit as changes will be lost!
+#####################################################################
+
 #Have a go at backing civicrm up.
 #Olly Butters
 
