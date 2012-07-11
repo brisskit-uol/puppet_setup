@@ -287,6 +287,7 @@ define ssh_auth_key_client ($ensure, $filename, $group, $home, $user) {
 
 define ssh_auth_key_server ($ensure, $group, $home, $options, $user) {
 
+
   # on the keymaster:
   $key_src_dir = "${ssh::auth::keymaster_storage}/${title}"
   $key_src_file = "${key_src_dir}/key.pub"                 
@@ -321,8 +322,8 @@ define ssh_auth_key_server ($ensure, $group, $home, $options, $user) {
         ensure  => "present",
         type    => $keytype,
         key     => $modulus,
-        options => $options ? { "" => undef, default => $options },
-      }
+        options => $options ? { "" => undef, default => $options }, 
+}
     }} # if ... else ... else
   } # if ... else
 
