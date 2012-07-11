@@ -1,0 +1,56 @@
+#!/bin/bash
+
+#Have a go at running the full back up.
+#Olly Butters
+
+#11/7/12
+
+#####################################################################
+#Our local directories.
+LOCAL_ROOT_DIR="/var/local/brisskit/"
+LOCAL_FILE_DIR=${LOCAL_ROOT_DIR}backup/files/
+
+
+#The directories on the remote machines.
+REMOTE_ROOT_DIR="/var/local/brisskit/"
+REMOTE_FILE_DIR=${REMOTE_ROOT_DIR}backup/files/
+REMOTE_SOURCE_DIR=${REMOTE_ROOT_DIR}backup/source/
+
+#####################################################################
+#Open some logs etc
+
+echo "Starting global master at: "`date`
+
+#####################################################################
+#bru1
+#####################################################################
+echo -e "\n----------------------------------------------"
+echo "Starting bru1 at: "`date`
+
+#Where the remote backup script lives
+VAPP_BACKUP_SOURCE=${REMOTE_SOURCE_DIR}vapp_master.sh
+
+#Run the backup script
+ssh vapp_backup@bru1 ${VAPP_BACKUP_SOURCE}
+
+#Check return value
+
+#Check file exists
+
+#Check target dir exists
+if [ ! -d "${LOCAL_FILE_DIR}bru1" ]
+then
+	mkdir "${LOCAL_FILE_DIR}bru1"
+fi
+
+#Copy the files across
+rsync -a vapp_backup@bru1:${REMOTE_FILE_DIR}* ${LOCAL_FILE_DIR}bru1/
+
+
+echo "Finished bru1 at: "`date`
+echo -e "----------------------------------------------\n"
+#####################################################################
+
+echo "Finished global master at: "`date`
+
+
