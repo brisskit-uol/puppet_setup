@@ -89,6 +89,9 @@ node 'bru3-camp.brisskit.le.ac.uk' {
         ssh::auth::server { "master_backup": user => "vapp_backup" } #Copy master_backup pub key to vapp_backup authorized_keys
         ssh::auth::client { "vapp_backup": }                         #Get vapp_backup private key
 
+
+	package {'mysql-client': ensure => present}
+
 }
 
 #catissue

@@ -1,5 +1,9 @@
 #!/bin/bash
 
+#####################################################################
+#This file is managed by puppet. Do not edit as changes will be lost!
+#####################################################################
+
 #Have a go at running the full back up.
 #Olly Butters
 
@@ -44,12 +48,51 @@ then
 fi
 
 #Copy the files across
-rsync -a vapp_backup@bru1:${REMOTE_FILE_DIR}* ${LOCAL_FILE_DIR}bru1/
+rsync -a --omit-dir-times vapp_backup@bru1:${REMOTE_FILE_DIR}* ${LOCAL_FILE_DIR}bru1/
 
 
 echo "Finished bru1 at: "`date`
 echo -e "----------------------------------------------\n"
 #####################################################################
+
+
+
+
+#####################################################################
+#bru3
+#####################################################################
+echo -e "\n----------------------------------------------"
+echo "Starting bru3 at: "`date`
+
+#Where the remote backup script lives
+VAPP_BACKUP_SOURCE=${REMOTE_SOURCE_DIR}vapp_master.sh
+
+#Run the backup script
+ssh vapp_backup@bru3 ${VAPP_BACKUP_SOURCE}
+
+#Check return value
+
+#Check file exists
+
+#Check target dir exists
+if [ ! -d "${LOCAL_FILE_DIR}bru3" ]
+then
+        mkdir "${LOCAL_FILE_DIR}bru3"
+fi
+
+#Copy the files across
+rsync -a --omit-dir-times vapp_backup@bru3:${REMOTE_FILE_DIR}* ${LOCAL_FILE_DIR}bru3/
+
+
+echo "Finished bru3 at: "`date`
+echo -e "----------------------------------------------\n"
+#####################################################################
+
+
+
+
+
+
 
 echo "Finished global master at: "`date`
 

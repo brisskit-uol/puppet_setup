@@ -9,7 +9,8 @@ class backup::source_files {
                 ensure  => file,
                 owner   => "root",
                 group   => "backup",
-                mode    => '610',
+                mode    => '650',
+		source  => 'puppet:///modules/backup/admin.sh',
                 require => File["/var/local/brisskit/backup/source"],
         }
 
@@ -18,7 +19,8 @@ class backup::source_files {
                 ensure  => file,
                 owner   => "root",
                 group   => "backup",
-                mode    => '610',
+                mode    => '650',
+		source  => 'puppet:///modules/backup/civicrm.sh',
                 require => File["/var/local/brisskit/backup/source"],
         }
 
@@ -27,7 +29,8 @@ class backup::source_files {
                 ensure  => file,
                 owner   => "root",
                 group   => "backup",
-                mode    => '610',
+                mode    => '650',
+		source  => 'puppet:///modules/backup/global_master.sh',
                 require => File["/var/local/brisskit/backup/source"],
         }
 
@@ -36,7 +39,8 @@ class backup::source_files {
                 ensure  => file,
                 owner   => "root",
                 group   => "backup",
-                mode    => '610',
+                mode    => '650',
+		source  => 'puppet:///modules/backup/vapp_master.sh',
                 require => File["/var/local/brisskit/backup/source"],
         }
 }
