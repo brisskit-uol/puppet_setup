@@ -101,6 +101,11 @@ node 'bru3-catissue.brisskit.le.ac.uk' {
 	include users::integration, users::si84, users::ss727
 	ssh::auth::client { "integration": }
 	ssh::auth::server { "integration": }
+
+        #Backup stuff
+        include backup::base                                     #Set up file tree
+        include backup::users::vm_backup                         #Set up users
+        ssh::auth::server { "vapp_backup": user => "vm_backup" } #Copy vapp_backup pub key to vm_backup authorized_keys
 }
 
 #civicrm
@@ -128,6 +133,11 @@ node 'bru3-i2b2.brisskit.le.ac.uk' {
 node 'bru3-onyx.brisskit.le.ac.uk' {
 	include bru_base
 	include users::jl99
+
+        #Backup stuff
+        include backup::base                                     #Set up file tree
+        include backup::users::vm_backup                         #Set up users
+        ssh::auth::server { "vapp_backup": user => "vm_backup" } #Copy vapp_backup pub key to vm_backup authorized_keys
 }
 
 #any other ones that have been missed out
@@ -150,7 +160,7 @@ node 'demo-camp.brisskit.le.ac.uk' {
 node 'demo-catissue.brisskit.le.ac.uk' {
         include bru_base
         include postfix
-        include users::integration, users::si84, users::ss727
+        include users::integration, users::jl99, users::si84, users::ss727
 	ssh::auth::client { "integration": }
         ssh::auth::server { "integration": }
 }
@@ -159,13 +169,13 @@ node 'demo-catissue.brisskit.le.ac.uk' {
 node 'demo-civicrm.brisskit.le.ac.uk' {
         include bru_base
         include postfix
-        include users::rcf8, users::si84, users::ss727, users::tb143
+        include users::jl99, users::rcf8, users::si84, users::ss727, users::tb143
 }
 
 #i2b2
 node 'demo-i2b2.brisskit.le.ac.uk' {
         include bru_base
-        include users::integration, users::si84, users::ss727
+        include users::integration, users::jl99, users::si84, users::ss727
         ssh::auth::client { "integration": }
 	ssh::auth::server { "integration": }
 }

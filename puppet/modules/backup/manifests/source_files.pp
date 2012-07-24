@@ -14,6 +14,19 @@ class backup::source_files {
                 require => File["/var/local/brisskit/backup/source"],
         }
 
+
+        #catissue.sh script
+        file { "/var/local/brisskit/backup/source/catissue.sh":
+                ensure  => file,
+                owner   => "root",
+                group   => "backup",
+                mode    => '650',
+                source  => 'puppet:///modules/backup/catissue.sh',
+                require => File["/var/local/brisskit/backup/source"],
+        }
+
+
+
 	#civicrm.sh script
         file { "/var/local/brisskit/backup/source/civicrm.sh":
                 ensure  => file,
@@ -31,6 +44,16 @@ class backup::source_files {
                 group   => "backup",
                 mode    => '650',
 		source  => 'puppet:///modules/backup/global_master.sh',
+                require => File["/var/local/brisskit/backup/source"],
+        }
+
+        #onyx.sh script
+        file { "/var/local/brisskit/backup/source/onyx.sh":
+                ensure  => file,
+                owner   => "root",
+                group   => "backup",
+                mode    => '650',
+                source  => 'puppet:///modules/backup/onyx.sh',
                 require => File["/var/local/brisskit/backup/source"],
         }
 

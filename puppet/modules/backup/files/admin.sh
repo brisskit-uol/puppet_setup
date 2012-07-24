@@ -23,8 +23,20 @@
 ROOT_DIR="/var/local/brisskit/"
 FILE_DIR=${ROOT_DIR}backup/files/
 
+#How long to keep backups for (DAYS)
+MAX_BACKUP_FILE_AGE=7
+#####################################################################
+#Nothing to see/edit below here!
 
 echo "  Starting dump on admin VM"
+
+
+#####################################################################
+#Delete some old files
+#####################################################################
+echo "Deleting files over ${MAX_BACKUP_FILE_AGE} days old."
+find ${FILE_DIR}*.tar.gz -mtime +${MAX_BACKUP_FILE_AGE} -type f -exec rm {} \;
+
 
 cd ${FILE_DIR}
 
