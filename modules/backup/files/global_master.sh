@@ -13,6 +13,7 @@
 
 #####################################################################
 #Our local directories.
+#####################################################################
 LOCAL_ROOT_DIR="/var/local/brisskit/"
 LOCAL_FILE_DIR=${LOCAL_ROOT_DIR}backup/files/
 
@@ -22,10 +23,26 @@ REMOTE_ROOT_DIR="/var/local/brisskit/"
 REMOTE_FILE_DIR=${REMOTE_ROOT_DIR}backup/files/
 REMOTE_SOURCE_DIR=${REMOTE_ROOT_DIR}backup/source/
 
+
+#How long to keep backups for (DAYS)
+MAX_BACKUP_FILE_AGE=7
+#####################################################################
+#Nothing to see/edit below here!
+
+
 #####################################################################
 #Open some logs etc
+#####################################################################
 
 echo "Starting global master at: "`date`
+
+
+#####################################################################
+#Delete some old files
+#####################################################################
+echo "Deleting files over ${MAX_BACKUP_FILE_AGE} days old."
+find ${LOCAL_FILE_DIR}*/*/*.tar.gz -mtime +${MAX_BACKUP_FILE_AGE} -type f -exec rm {} \;
+
 
 #####################################################################
 #bru1

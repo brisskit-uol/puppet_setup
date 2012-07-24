@@ -7,7 +7,7 @@
 #Have a go at backing onyx up.
 #Olly Butters
 
-#23/6/12
+#24/6/12
 
 #To work I am assuming mysqldump is installed which is actually
 #in mysql-client
@@ -25,7 +25,7 @@ ROOT_DIR="/var/local/brisskit/"
 FILE_DIR=${ROOT_DIR}backup/files/
 
 
-echo "Starting dump on onyx VM"
+echo "  Starting dump on onyx VM"
 
 cd ${FILE_DIR}
 
@@ -38,7 +38,7 @@ dump="mysqldump --host=$dbhost --user=$dbuser --password=$dbpass $dbname"
 
 #Make a date-time stamp to label this as.
 datetime=$(date +"%Y-%m-%d-%H-%M")
-echo "Datetime stamp: "$datetime
+echo "  Datetime stamp: "$datetime
 
 #Make the directory to put this in
 dir_name="${datetime}_onyx"
@@ -52,7 +52,7 @@ ${dump} > onyx.sql
 
 cd ../
 
-echo "Dumpfile: "${dir_name}".tar.gz"
+echo "  Dumpfile: "${dir_name}".tar.gz"
 
 #tar everything up
 tar -czf ${dir_name}.tar.gz ${dir_name}
@@ -60,4 +60,4 @@ tar -czf ${dir_name}.tar.gz ${dir_name}
 #delete the directory
 rm -r ${dir_name}
 
-echo "Finished dump on onyx VM"
+echo "  Finished dump on onyx VM"
