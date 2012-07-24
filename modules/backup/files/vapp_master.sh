@@ -7,7 +7,7 @@
 #Have a go at running the full back up.
 #Olly Butters
 
-#23/7/12
+#24/7/12
 
 #####################################################################
 #Our local directories.
@@ -20,13 +20,26 @@ REMOTE_ROOT_DIR="/var/local/brisskit/"
 REMOTE_FILE_DIR=${REMOTE_ROOT_DIR}backup/files/
 REMOTE_SOURCE_DIR=${REMOTE_ROOT_DIR}backup/source/
 
+#How long to keep backups for on the vapp (DAYS)
+MAX_BACKUP_FILE_AGE=1
+#####################################################################
+#Nothing to see/edit below here!
+
 #####################################################################
 #Open some logs etc
-
+#####################################################################
 echo " Starting vapp_master at: "`date`
 
+
 #####################################################################
-#admin. Should just be the admin VM for now
+#Delete some old files
+#####################################################################
+echo " Deleting local files over ${MAX_BACKUP_FILE_AGE} days old."
+find ${LOCAL_FILE_DIR}*/*.tar.gz -mtime +${MAX_BACKUP_FILE_AGE} -type f -exec rm {} \;
+
+
+#####################################################################
+#admin.
 #####################################################################
 echo -e "\n ----------------------------------------------"
 echo " Starting admin at: "`date`
@@ -105,13 +118,50 @@ echo " Finished civicrm at: "`date`
 echo " ----------------------------------------------"
 #####################################################################
 
+
 #####################################################################
 #catissue
 #####################################################################
+echo -e "\n ----------------------------------------------"
+echo " Starting onyx at: "`date`
+
+#Where the remote backup script lives
+CATISSUE_BACKUP_SOURCE=${REMOTE_SOURCE_DIR}catissue.sh
 
 
+#Check if VM is pingable. It might be down, or they might not
+#have this service installed.
+ping -c 1 -w 5 catissue &> /dev/null
+if [ $? -eq 0 ]
+then
 
+  #Its up, so lets do the backup
+  echo " catissue is up!"
+
+  #Run the backup script
+  ssh vm_backup@catissue $CATISSUE_BACKUP_SOURCE
+
+  #Check return value
+
+  #Check file exists
+
+  #Check target dir exists
+  if [ ! -d "${LOCAL_FILE_DIR}catissue" ]
+  then
+          mkdir "${LOCAL_FILE_DIR}catissue"
+  fi
+
+  #Copy the files across
+  rsync vm_backup@catissue:${REMOTE_FILE_DIR}* ${LOCAL_FILE_DIR}catissue/
+
+else
+
+  #Its down, so lets not even bother.
+  echo " catissue is down!"
+
+fi
 #####################################################################
+
 
 #####################################################################
 #onyx
