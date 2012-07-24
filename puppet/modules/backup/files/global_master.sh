@@ -7,7 +7,9 @@
 #Have a go at running the full back up.
 #Olly Butters
 
-#11/7/12
+#This needs to be run as master_backup user as keys have been shared around.
+
+#13/7/12
 
 #####################################################################
 #Our local directories.
@@ -29,6 +31,7 @@ echo "Starting global master at: "`date`
 #bru1
 #####################################################################
 echo -e "\n----------------------------------------------"
+echo "----------------------------------------------"
 echo "Starting bru1 at: "`date`
 
 #Where the remote backup script lives
@@ -52,6 +55,7 @@ rsync -a --omit-dir-times vapp_backup@bru1:${REMOTE_FILE_DIR}* ${LOCAL_FILE_DIR}
 
 
 echo "Finished bru1 at: "`date`
+echo "----------------------------------------------"
 echo -e "----------------------------------------------\n"
 #####################################################################
 
@@ -62,6 +66,7 @@ echo -e "----------------------------------------------\n"
 #bru3
 #####################################################################
 echo -e "\n----------------------------------------------"
+echo "----------------------------------------------"
 echo "Starting bru3 at: "`date`
 
 #Where the remote backup script lives
@@ -85,6 +90,7 @@ rsync -a --omit-dir-times vapp_backup@bru3:${REMOTE_FILE_DIR}* ${LOCAL_FILE_DIR}
 
 
 echo "Finished bru3 at: "`date`
+echo "----------------------------------------------"
 echo -e "----------------------------------------------\n"
 #####################################################################
 
