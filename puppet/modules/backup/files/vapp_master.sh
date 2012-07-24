@@ -119,6 +119,10 @@ echo " ----------------------------------------------"
 echo -e "\n ----------------------------------------------"
 echo " Starting onyx at: "`date`
 
+#Where the remote backup script lives
+ONYX_BACKUP_SOURCE=${REMOTE_SOURCE_DIR}onyx.sh
+
+
 #Check if VM is pingable. It might be down, or they might not
 #have this service installed.
 ping -c 1 -w 5 onyx &> /dev/null 
@@ -127,6 +131,22 @@ then
 
   #Its up, so lets do the backup
   echo " onyx is up!"
+
+  #Run the backup script
+  ssh vm_backup@onyx $ONYX_BACKUP_SOURCE
+
+  #Check return value
+
+  #Check file exists
+
+  #Check target dir exists
+  if [ ! -d "${LOCAL_FILE_DIR}onyx" ]
+  then
+          mkdir "${LOCAL_FILE_DIR}onyx"
+  fi
+
+  #Copy the files across
+  rsync vm_backup@onyx:${REMOTE_FILE_DIR}* ${LOCAL_FILE_DIR}onyx/
 
 else
 
