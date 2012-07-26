@@ -224,6 +224,14 @@ node ga-backup {
 	include backup::base
 	include backup::users::master_backup
 	ssh::auth::client { "master_backup": }
+
+	cron { run_backup:
+		command => "/var/local/brisskit/backup/source/global_master.sh",
+		user    => master_backup,
+		hour	=> 3,
+		minute  => 0
+	}
+
 }
 
 #load balancer
