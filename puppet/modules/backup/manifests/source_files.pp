@@ -4,6 +4,9 @@
 
 class backup::source_files {
 
+	#############################################################
+	#Customer vapp data
+
         #admin.sh script
         file { "/var/local/brisskit/backup/source/admin.sh":
                 ensure  => file,
@@ -66,4 +69,21 @@ class backup::source_files {
 		source  => 'puppet:///modules/backup/vapp_master.sh',
                 require => File["/var/local/brisskit/backup/source"],
         }
+
+
+	#############################################################
+	#Global admin
+        #vapp_master.sh script
+        file { "/var/local/brisskit/backup/source/puppet.sh":
+                ensure  => file,
+                owner   => "root",
+                group   => "backup",
+                mode    => '650',
+                source  => 'puppet:///modules/backup/puppet.sh',
+                require => File["/var/local/brisskit/backup/source"],
+        }
+
+
+
+
 }

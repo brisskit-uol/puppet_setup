@@ -21,8 +21,8 @@
 #Start with the DB. 
 #I assume I am running on the onyx box, so have access...
 
-ROOT_DIR="/var/local/brisskit/"
-FILE_DIR=${ROOT_DIR}backup/files/
+LOCAL_ROOT_DIR="/var/local/brisskit/"
+LOCAL_FILE_DIR=${LOCAL_ROOT_DIR}backup/files/customer/
 
 #How long to keep backups for (DAYS)
 MAX_BACKUP_FILE_AGE=1
@@ -36,11 +36,11 @@ echo "  Starting dump on onyx VM"
 #####################################################################
 #Delete some old files
 #####################################################################
-echo "Deleting files over ${MAX_BACKUP_FILE_AGE} days old."
+echo "  Deleting files over ${MAX_BACKUP_FILE_AGE} days old."
 find ${LOCAL_FILE_DIR}*.tar.gz -mtime +${MAX_BACKUP_FILE_AGE} -type f -exec rm -v {} \; 2>/dev/null
 
 
-cd ${FILE_DIR}
+cd ${LOCAL_FILE_DIR}
 
 dbhost="$(brisskit_db_param onyx host)"
 dbname="$(brisskit_db_param onyx name)"

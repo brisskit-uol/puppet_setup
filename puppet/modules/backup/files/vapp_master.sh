@@ -7,17 +7,17 @@
 #Have a go at running the full back up.
 #Olly Butters
 
-#24/7/12
+#30/7/12
 
 #####################################################################
 #Our local directories.
 LOCAL_ROOT_DIR="/var/local/brisskit/"
-LOCAL_FILE_DIR=${LOCAL_ROOT_DIR}backup/files/
+LOCAL_FILE_DIR=${LOCAL_ROOT_DIR}backup/files/customer/
 
 
 #The directories on the remote machines.
 REMOTE_ROOT_DIR="/var/local/brisskit/"
-REMOTE_FILE_DIR=${REMOTE_ROOT_DIR}backup/files/
+REMOTE_FILE_DIR=${REMOTE_ROOT_DIR}backup/files/customer/
 REMOTE_SOURCE_DIR=${REMOTE_ROOT_DIR}backup/source/
 
 #How long to keep backups for on the vapp (DAYS)
@@ -160,6 +160,8 @@ else
   echo " catissue is down!"
 
 fi
+echo " Finished catissue at: "`date`
+echo " ----------------------------------------------"
 #####################################################################
 
 
@@ -207,12 +209,15 @@ fi
 
 echo " Finished onyx at: "`date`
 echo " ----------------------------------------------"
+#####################################################################
 
 
 #####################################################################
 #i2b2
+#####################################################################
 
+#####################################################################
 
-echo " Finished vapp_master at: "`date`
+echo -e "\n Finished vapp_master at: "`date`
 
 
