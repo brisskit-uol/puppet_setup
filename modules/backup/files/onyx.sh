@@ -7,7 +7,7 @@
 #Have a go at backing onyx up.
 #Olly Butters
 
-#24/6/12
+#25/6/12
 
 #To work I am assuming mysqldump is installed which is actually
 #in mysql-client
@@ -37,7 +37,7 @@ echo "  Starting dump on onyx VM"
 #Delete some old files
 #####################################################################
 echo "Deleting files over ${MAX_BACKUP_FILE_AGE} days old."
-find ${LOCAL_FILE_DIR}*.tar.gz -mtime +${MAX_BACKUP_FILE_AGE} -type f -exec rm {} \;
+find ${LOCAL_FILE_DIR}*.tar.gz -mtime +${MAX_BACKUP_FILE_AGE} -type f -exec rm -v {} \; 2>/dev/null
 
 
 cd ${FILE_DIR}
