@@ -15,12 +15,12 @@
 #Our local directories.
 #####################################################################
 LOCAL_ROOT_DIR="/var/local/brisskit/"
-LOCAL_FILE_DIR=${LOCAL_ROOT_DIR}backup/files/
+LOCAL_FILE_DIR=${LOCAL_ROOT_DIR}backup/files/customer/
 LOCAL_LOG_DIR=${LOCAL_ROOT_DIR}backup/log/
 
 #The directories on the remote machines.
 REMOTE_ROOT_DIR="/var/local/brisskit/"
-REMOTE_FILE_DIR=${REMOTE_ROOT_DIR}backup/files/
+REMOTE_FILE_DIR=${REMOTE_ROOT_DIR}backup/files/customer/
 REMOTE_SOURCE_DIR=${REMOTE_ROOT_DIR}backup/source/
 
 
@@ -84,13 +84,14 @@ fi
 #Delete some old files
 #####################################################################
 echo "Deleting files over ${MAX_BACKUP_FILE_AGE} days old." >> ${LOCAL_LOG_FILE}
-find ${LOCAL_FILE_DIR}*/*/*.tar.gz -mtime +${MAX_BACKUP_FILE_AGE} -type f -exec rm {} \;
+find ${LOCAL_FILE_DIR}*/*/*.tar.gz -mtime +${MAX_BACKUP_FILE_AGE} -type f -exec rm {} \; 2>/dev/null
 
 
 #####################################################################
 #bru1
 #####################################################################
 echo -e "\n----------------------------------------------" >> ${LOCAL_LOG_FILE}
+echo "----------BRU1--------------------------------" >> ${LOCAL_LOG_FILE}
 echo "----------------------------------------------" >> ${LOCAL_LOG_FILE}
 echo "Starting bru1 at: "`date` >> ${LOCAL_LOG_FILE}
 
@@ -98,7 +99,7 @@ echo "Starting bru1 at: "`date` >> ${LOCAL_LOG_FILE}
 VAPP_BACKUP_SOURCE=${REMOTE_SOURCE_DIR}vapp_master.sh
 
 #Run the backup script
-#ssh vapp_backup@bru1 ${VAPP_BACKUP_SOURCE} >> ${LOCAL_LOG_FILE}
+ssh vapp_backup@bru1 ${VAPP_BACKUP_SOURCE} >> ${LOCAL_LOG_FILE}
 
 #Check return value
 
@@ -111,7 +112,7 @@ then
 fi
 
 #Copy the files across
-#rsync -a --omit-dir-times vapp_backup@bru1:${REMOTE_FILE_DIR}* ${LOCAL_FILE_DIR}bru1/ >> ${LOCAL_LOG_FILE}
+rsync -a --omit-dir-times vapp_backup@bru1:${REMOTE_FILE_DIR}* ${LOCAL_FILE_DIR}bru1/ >> ${LOCAL_LOG_FILE}
 
 
 echo "Finished bru1 at: "`date` >> ${LOCAL_LOG_FILE}
@@ -126,6 +127,7 @@ echo -e "----------------------------------------------\n" >> ${LOCAL_LOG_FILE}
 #bru3
 #####################################################################
 echo -e "\n----------------------------------------------" >> ${LOCAL_LOG_FILE}
+echo "----------BRU3--------------------------------" >> ${LOCAL_LOG_FILE}
 echo "----------------------------------------------" >> ${LOCAL_LOG_FILE}
 echo "Starting bru3 at: "`date` >> ${LOCAL_LOG_FILE}
 
@@ -133,7 +135,7 @@ echo "Starting bru3 at: "`date` >> ${LOCAL_LOG_FILE}
 VAPP_BACKUP_SOURCE=${REMOTE_SOURCE_DIR}vapp_master.sh
 
 #Run the backup script
-#ssh vapp_backup@bru3 ${VAPP_BACKUP_SOURCE} >> ${LOCAL_LOG_FILE}
+ssh vapp_backup@bru3 ${VAPP_BACKUP_SOURCE} >> ${LOCAL_LOG_FILE}
 
 #Check return value
 
@@ -146,7 +148,7 @@ then
 fi
 
 #Copy the files across
-#rsync -a --omit-dir-times vapp_backup@bru3:${REMOTE_FILE_DIR}* ${LOCAL_FILE_DIR}bru3/ >> ${LOCAL_LOG_FILE}
+rsync -a --omit-dir-times vapp_backup@bru3:${REMOTE_FILE_DIR}* ${LOCAL_FILE_DIR}bru3/ >> ${LOCAL_LOG_FILE}
 
 
 echo "Finished bru3 at: "`date` >> ${LOCAL_LOG_FILE}

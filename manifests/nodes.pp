@@ -211,6 +211,9 @@ class ga_base {
 node ga-puppet {
 	include ga_base
 	include ssh::auth::keymaster
+
+        #Backup stuff
+        include backup::base                                     #Set up file tree
 }
 
 #mail server
