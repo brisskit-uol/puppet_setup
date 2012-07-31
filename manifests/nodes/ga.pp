@@ -17,7 +17,10 @@ node ga-puppet {
 	include ssh::auth::keymaster
 
         #Backup stuff
-        include backup::base                                     #Set up file tree
+        include backup::base                                       #Set up file tree
+	include backup::users::ga_backup                           #Set up users
+        ssh::auth::server { "master_backup": user => "ga_backup" } #Copy master_backup pub key to vapp_backup authorized_keys
+
 }
 
 #mail server
