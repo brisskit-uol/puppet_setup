@@ -99,7 +99,7 @@ echo "Starting puppet backup at: "`date` >> ${LOCAL_LOG_FILE}
 BACKUP_SOURCE=${REMOTE_SOURCE_DIR}puppet.sh
 
 #Run the backup script
-ssh ga_backup@puppet ${BACKUP_SOURCE} >> ${LOCAL_LOG_FILE}
+ssh ga_puppet_backup@puppet ${BACKUP_SOURCE} >> ${LOCAL_LOG_FILE}
 
 #Check return value
 
@@ -112,7 +112,7 @@ then
 fi
 
 #Copy the files across
-rsync -a --omit-dir-times ga_backup@puppet:${REMOTE_FILE_DIR}* ${LOCAL_FILE_DIR}puppet/ >> ${LOCAL_LOG_FILE}
+rsync -a --omit-dir-times ga_puppet_backup@puppet:${REMOTE_FILE_DIR}* ${LOCAL_FILE_DIR}puppet/ >> ${LOCAL_LOG_FILE}
 
 
 echo "Finished puppet backup at: "`date` >> ${LOCAL_LOG_FILE}

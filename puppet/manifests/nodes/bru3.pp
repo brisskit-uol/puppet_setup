@@ -64,6 +64,12 @@ node 'bru3-onyx.brisskit.le.ac.uk' {
         ssh::auth::server { "vapp_backup": user => "vm_backup" } #Copy vapp_backup pub key to vm_backup authorized_keys
 }
 
+#openesb
+node 'bru3-openesb.brisskit.le.ac.uk' {
+        include bru_base
+        include users::si84
+}
+
 #any other ones that have been missed out
 node /^bru3-.*$/ {
 	include bru_base
