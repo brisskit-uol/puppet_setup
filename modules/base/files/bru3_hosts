@@ -18,11 +18,12 @@
 192.168.2.106   bru3-mysql.brisskit.le.ac.uk bru3-mysql mysql
 192.168.2.107   bru3-sqlserver.brisskit.le.ac.uk bru3-sqlserver sqlserver
 192.168.2.108   bru3-onyx.brisskit.le.ac.uk bru3-onyx onyx
+192.168.2.109	bru3-openesb.brisskit.le.ac.uk bru3-openesb openesb
 
 #All the global admin hostnames
 192.168.0.100   ga-mail.brisskit.le.ac.uk ga-mail
 192.168.0.102   ga-puppet.brisskit.le.ac.uk ga-puppet puppet
-192.168.0.103   ga-pound.brisskit.le.ac.uk ga-pound pound
+192.168.0.103   ga-pound.brisskit.le.ac.uk ga-pound
 192.168.0.106	ga-private.brisskit.le.ac.uk ga-private private private.brisskit.le.ac.uk
 192.168.0.117   ga-backup.brisskit.le.ac.uk ga-backup
 192.168.0.115   ga-gimp.brisskit.le.ac.uk ga-gimp gimp

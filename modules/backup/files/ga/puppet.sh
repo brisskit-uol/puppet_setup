@@ -41,7 +41,7 @@ mkdir $dir_name
 cd $dir_name
 
 #Copy the files across
-rsync -a /var/lib/puppet .
+rsync -a /var/lib/puppet/ .
 
 
 cd ../
