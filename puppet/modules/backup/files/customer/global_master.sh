@@ -156,7 +156,39 @@ echo "----------------------------------------------" >> ${LOCAL_LOG_FILE}
 echo -e "----------------------------------------------\n" >> ${LOCAL_LOG_FILE}
 #####################################################################
 
+####################
+#Parameterized
+THIS_VAPP="demo"
 
+echo -e "\n----------------------------------------------" >> ${LOCAL_LOG_FILE}
+echo "----------${THIS_VAPP}--------------------------------" >> ${LOCAL_LOG_FILE}
+echo "----------------------------------------------" >> ${LOCAL_LOG_FILE}
+echo "Starting ${THIS_VAPP} at: "`date` >> ${LOCAL_LOG_FILE}
+
+#Where the remote backup script lives
+VAPP_BACKUP_SOURCE=${REMOTE_SOURCE_DIR}vapp_master.sh
+
+#Run the backup script
+ssh vapp_backup@${THIS_VAPP} ${VAPP_BACKUP_SOURCE} >> ${LOCAL_LOG_FILE}
+
+#Check return value
+
+#Check file exists
+
+#Check target dir exists
+if [ ! -d "${LOCAL_FILE_DIR}${THIS_VAPP}" ]
+then
+        mkdir "${LOCAL_FILE_DIR}${THIS_VAPP}"
+fi
+
+#Copy the files across
+rsync -a --omit-dir-times vapp_backup@${THIS_VAPP}:${REMOTE_FILE_DIR}* ${LOCAL_FILE_DIR}${THIS_VAPP}/ >> ${LOCAL_LOG_FILE}
+
+
+echo "Finished ${THIS_VAPP} at: "`date` >> ${LOCAL_LOG_FILE}
+echo "----------------------------------------------" >> ${LOCAL_LOG_FILE}
+echo -e "----------------------------------------------\n" >> ${LOCAL_LOG_FILE}
+#####################################################################
 
 
 
