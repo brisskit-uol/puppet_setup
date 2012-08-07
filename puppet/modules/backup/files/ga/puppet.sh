@@ -40,8 +40,15 @@ mkdir $dir_name
 #Move to the back up directory
 cd $dir_name
 
+#Make the dirs to put the data in 
+#mkdir -p var/lib
+
+#Move to the var/lib dir
+#cd var/lib
+
 #Copy the files across
-rsync -a /var/lib/puppet/ .
+rsync -a /var/lib/puppet .
+rsync -a /var/lib/keys .
 
 
 cd ../
