@@ -99,7 +99,7 @@ echo "Starting puppet backup at: "`date` >> ${LOCAL_LOG_FILE}
 BACKUP_SOURCE=${REMOTE_SOURCE_DIR}puppet.sh
 
 #Run the backup script
-ssh ga_puppet_backup@puppet ${BACKUP_SOURCE} >> ${LOCAL_LOG_FILE}
+#ssh ga_puppet_backup@puppet ${BACKUP_SOURCE} >> ${LOCAL_LOG_FILE}
 
 #Check return value
 

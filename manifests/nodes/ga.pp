@@ -21,6 +21,19 @@ node ga-puppet {
 	include backup::users::ga_puppet_backup                           #Set up users
         ssh::auth::server { "master_backup": user => "ga_puppet_backup" } #Copy master_backup pub key to ga_puppet_backup authorized_keys
 
+	#All these files are owned by puppet, and keep changing their status to 
+	#owner read-only, so this either has to run as puppet or root. Puppet isnt
+	#a real user so I dont know how to do that! Means we have a pair of CRON jobs
+	#to synchronize.
+        cron { run_puppet_backup:
+                command => "/var/local/brisskit/backup/source/puppet.sh",
+                user    => root,
+                hour    => 13,
+                minute  => 25
+        }
+
+
+
 }
 
 #mail server
@@ -35,6 +48,17 @@ node ga-backup {
 	include backup::users::master_backup
 	ssh::auth::client { "master_backup": }
 
+
+        #Puppet master
+        cron { run_puppet_copy_backup:
+                command => "/var/local/brisskit/backup/source/puppet_master.sh",
+                user    => master_backup,
+                hour    => 13,
+                minute  => 30
+        }
+
+
+	#Customer data
 	cron { run_backup:
 		command => "/var/local/brisskit/backup/source/global_master.sh",
 		user    => master_backup,
