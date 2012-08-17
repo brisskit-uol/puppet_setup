@@ -87,8 +87,20 @@ class backup::source_files {
 	#Global admin
 	case $hostname
 	{
+		#This is where all the controler scripts have to sit
 		ga-backup:
 		{
+                        #drupal_master.sh script
+                        file { "/var/local/brisskit/backup/source/drupal_master.sh":
+                                ensure  => file,
+                                owner   => "root",
+                                group   => "backup",
+                                mode    => '650',
+                                source  => 'puppet:///modules/backup/pubweb/drupal_master.sh',
+                                require => File["/var/local/brisskit/backup/source"],
+                        }
+
+
 		        #puppet_master.sh script
         		file { "/var/local/brisskit/backup/source/puppet_master.sh":
                 		ensure  => file,
@@ -121,6 +133,24 @@ class backup::source_files {
                                 source  => 'puppet:///modules/backup/ga/puppet.sh',
                                 require => File["/var/local/brisskit/backup/source"],
                         }
+		}
+	}
+
+        #############################################################
+        #pubweb
+        case $hostname
+        {
+                pub-drupal-2:
+                {
+                      	#drupal.sh script
+                        file { "/var/local/brisskit/backup/source/drupal.sh":
+                                ensure  => file,
+                                owner   => "root",
+                                group   => "backup",
+                                mode    => '650',
+                                source  => 'puppet:///modules/backup/pubweb/drupal.sh',
+                                require => File["/var/local/brisskit/backup/source"],
+                        } 
 		}
 	}
 }

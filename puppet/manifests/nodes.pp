@@ -13,6 +13,8 @@ import "nodes/bru1"
 import "nodes/bru3"
 import "nodes/demo"
 
+import "nodes/pub_web"
+
 #Global admin vApp
 import "nodes/ga"
 
