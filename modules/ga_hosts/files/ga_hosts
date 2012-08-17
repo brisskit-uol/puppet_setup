@@ -26,5 +26,6 @@
 
 #public web
 192.168.0.200	pubweb.brisskit.le.ac.uk pubweb
-
+192.168.0.201	pub-drupal-1.brisskit.le.ac.uk
+192.168.0.202	pub-drupal-2.brisskit.le.ac.uk pub-drupal-2
 

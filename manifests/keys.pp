@@ -10,6 +10,7 @@ ssh::auth::key { "vapp_backup":}      #The user on customer camp that drive the 
 ssh::auth::key { "vm_backup": }       #The user on the child VMs in the customer vApps
 ssh::auth::key { "ga_backup":}        #The user on the ga VMs
 ssh::auth::key { "ga_puppet_backup":} #The user on the ga_puppet VM
+ssh::auth::key { "pubweb_backup":}    #The user on the public websites VM
 #####################################################################
 
 #####################################################################

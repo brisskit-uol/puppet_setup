@@ -49,11 +49,20 @@ node ga-backup {
 	ssh::auth::client { "master_backup": }
 
 
+	##############BACKUP SCHEDULES##################
+        #Drupal master
+        cron { run_puppet_copy_backup:
+                command => "/var/local/brisskit/backup/source/drupal_master.sh",
+                user    => master_backup,
+                hour    => 1,
+                minute  => 0
+        }
+
         #Puppet master
         cron { run_puppet_copy_backup:
                 command => "/var/local/brisskit/backup/source/puppet_master.sh",
                 user    => master_backup,
-                hour    => 13,
+                hour    => 1,
                 minute  => 30
         }
 
@@ -65,6 +74,7 @@ node ga-backup {
 		hour	=> 3,
 		minute  => 0
 	}
+	################################################
 
 }
 

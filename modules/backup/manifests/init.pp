@@ -65,6 +65,15 @@ class backup::base {
                 require => [File["/var/local/brisskit/backup/files"], Group["backup"]],
         }
 
+        #brisskit pubweb backup file destination directory
+        file { "/var/local/brisskit/backup/files/pubweb":
+                ensure  => directory,
+                recurse => true,
+                owner   => 'root',
+                group   => 'backup',
+                mode    => 0664,
+                require => [File["/var/local/brisskit/backup/files"], Group["backup"]],
+        }
 
         #brisskit backup log directory
         file { "/var/local/brisskit/backup/log":
@@ -305,6 +314,58 @@ class backup::users::ga_puppet_backup {
                 shell      => "/bin/bash",
                 gid        => "puppet",
                 groups     => ["backup", "puppet", "root", "${username}"],
+                home       => "/home/${username}",
+                managehome => true,
+                require    => Group["${username}"],
+        }
+
+        #Make sure we have a home dir to put stuff in
+        file { "/home/${username}":
+                ensure  => directory,
+                owner   => "${username}",
+                group   => "${username}",
+                mode    => '644',
+                require => [Group["${username}"], User["${username}"]],
+        }
+
+        #Make sure we have a .ssh dir to put stuff in
+        file { "/home/${username}/.ssh":
+                ensure  => directory,
+                owner   => "${username}",
+                group   => "${username}",
+                mode    => '644',
+                require => File["/home/${username}"],
+        }
+
+        #Make sure we have an authorized keys file to put keys in
+        file { "/home/${username}/.ssh/authorized_keys":
+                ensure  => file,
+                owner   => "${username}",
+                group   => "${username}",
+                mode    => '600',
+                require => File["/home/${username}/.ssh"],
+        }
+}
+
+
+#The user that lives on the PUBLIC WEBSITES VMs that do the backups
+#Note the groups have www-data set so can read the files
+class backup::users::pubweb_backup {
+
+        $username="pubweb_backup"
+
+
+       #Make a group that all the files should belong to 
+        group { "${username}":
+                ensure =>present,
+        }
+
+        #Make the user
+        user { $username:
+                ensure     => present,
+                shell      => "/bin/bash",
+                gid        => "${username}",
+                groups     => ["backup", "www-data"],
                 home       => "/home/${username}",
                 managehome => true,
                 require    => Group["${username}"],
