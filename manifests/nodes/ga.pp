@@ -51,7 +51,7 @@ node ga-backup {
 
 	##############BACKUP SCHEDULES##################
         #Drupal master
-        cron { run_puppet_copy_backup:
+        cron { run_drupal_copy_backup:
                 command => "/var/local/brisskit/backup/source/drupal_master.sh",
                 user    => master_backup,
                 hour    => 1,
