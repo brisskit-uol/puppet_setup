@@ -16,7 +16,7 @@ class base {
 		owner  => 'root',
 		group  => 'root',
 		mode   => 0644,
-		source => "puppet:///modules/base/${vapp_name}_hosts",
+		source => "puppet:///modules/base/hosts/${vapp_name}_hosts",
 	}
 
 	#brisskit config directory
@@ -42,7 +42,7 @@ class base {
                 owner  => 'root',
                 group  => 'root',
                 mode   => 0644,
-                source => "puppet:///modules/base/${vapp_name}_settings",
+                source => "puppet:///modules/base/settings/${vapp_name}_settings",
 		require => File["/etc/brisskit"],
         }
 
