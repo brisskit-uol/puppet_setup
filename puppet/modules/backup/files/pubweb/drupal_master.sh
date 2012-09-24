@@ -9,7 +9,7 @@
 
 #This needs to be run as master_backup user as keys have been shared around.
 
-#17/8/12
+#23/8/12
 
 #####################################################################
 #Our local directories.
@@ -124,12 +124,12 @@ then
 fi
 
 
-#Copy the files across
-rsync -a --omit-dir-times pubweb_backup@pub-drupal-2:${REMOTE_FILE_DIR}* ${LOCAL_FILE_DIR}drupal/database/ >> ${LOCAL_LOG_FILE}
+#Copy the DB dumps across
+rsync -a --omit-dir-times --no-perms pubweb_backup@pub-drupal-2:${REMOTE_FILE_DIR}* ${LOCAL_FILE_DIR}drupal/database/ >> ${LOCAL_LOG_FILE}
 
 
 #Now copy the file tree across
-rsync -a --omit-dir-times pubweb_backup@pub-drupal-2:${REMOTE_WEB_FILES}* ${LOCAL_FILE_DIR}drupal/files/ >> ${LOCAL_LOG_FILE}
+rsync -a --omit-dir-times --no-perms --delete pubweb_backup@pub-drupal-2:${REMOTE_WEB_FILES}* ${LOCAL_FILE_DIR}drupal/files/ >> ${LOCAL_LOG_FILE}
 
 
 echo "Finished drupal backup at: "`date` >> ${LOCAL_LOG_FILE}
