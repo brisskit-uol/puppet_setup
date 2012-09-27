@@ -15,6 +15,13 @@ import "nodes/demo"
 
 import "nodes/pub_web"
 
+#hack event vApps
+import "nodes/hack2"
+import "nodes/hack3"
+import "nodes/hack4"
+import "nodes/hack5"
+import "nodes/hack6"
+
 #Global admin vApp
 import "nodes/ga"
 
