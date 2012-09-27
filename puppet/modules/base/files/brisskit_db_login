@@ -1,19 +1,39 @@
 #!/bin/bash
 
 #Automagically log into the DB
+#Would be nice to do some checking on the return values from the param function.
+
 #>brisskit_db_login redcap
 
-#12/4/12
+#27/9/12
 
 database=$1
+
+#Make sure we have a DB to look for!
+if [ -z "${database}" ]
+then
+    echo "No database defined! Usage: brisskit_db_param <db_name>"
+    exit
+fi
+
 databasehost="$(brisskit_db_param ${database} host)"
 databasename="$(brisskit_db_param ${database} name)"
 databaseuser="$(brisskit_db_param ${database} user)"
 databasepass="$(brisskit_db_param ${database} pass)"
 
+#This is a bit of a painful hack. The mysql user has localhost as its allowed address. 
+if [ "${databasehost}" == "mysql" ]
+then
+    databasehost=localhost
+fi
+
+#Added for backwards compatibilty where we didnt have hosts defined at install
 if [ -z "${databasehost}" ]
 then
     databasehost=mysql
 fi
-        
+
+echo "Login command being called:"
+echo "mysql --host=${databasehost} --user=${databaseuser} --password=${databasepass} ${databasename}"
+
 mysql --host="${databasehost}" --user="${databaseuser}" --password="${databasepass}" "${databasename}"
