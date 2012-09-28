@@ -5,7 +5,7 @@
 
 #>brisskit_db_login redcap
 
-#27/9/12
+#28/9/12
 
 database=$1
 
@@ -22,10 +22,10 @@ databaseuser="$(brisskit_db_param ${database} user)"
 databasepass="$(brisskit_db_param ${database} pass)"
 
 #This is a bit of a painful hack. The mysql user has localhost as its allowed address. 
-#if [ "${databasehost}" == "mysql" ]
-#then
-#    databasehost=localhost
-#fi
+if [[ "$(hostname)" == *mysql ]]
+then
+    databasehost=localhost
+fi
 
 #Added for backwards compatibilty where we didnt have hosts defined at install
 if [ -z "${databasehost}" ]
