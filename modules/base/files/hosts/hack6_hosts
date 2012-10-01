@@ -34,3 +34,5 @@
 192.168.0.103    bru3.brisskit.le.ac.uk
 192.168.0.103    demo.brisskit.le.ac.uk
 
+#The new netowrk layout needs to push data to the vApp pound
+192.168.2.100    hack6.brisskit.le.ac.uk
