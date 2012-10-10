@@ -18,26 +18,42 @@ class users::virtual
 	#List of all the virtual users - these need to be realized elsewhere
 
 	#Hack event users - TEMPORARY. The PW is the same in each case... (2/10/12)
-	@ssh_user { "temp":     password => '$6$KhCog/O2$sYBsrvVSTa33E1Tt.KW8LihCf/8zcenTs7L5GAfmhLePJ6XeG5lGpyUFsibdRUu.4ViRP0D1WgL.Oipnq4FqY/'}
+	@ssh_user { "temp":        password => '$6$KhCog/O2$sYBsrvVSTa33E1Tt.KW8LihCf/8zcenTs7L5GAfmhLePJ6XeG5lGpyUFsibdRUu.4ViRP0D1WgL.Oipnq4FqY/'}
 
 
-	@ssh_user { "adrian": password => '$6$KhCog/O2$sYBsrvVSTa33E1Tt.KW8LihCf/8zcenTs7L5GAfmhLePJ6XeG5lGpyUFsibdRUu.4ViRP0D1WgL.Oipnq4FqY/'}
-	@ssh_user { "christiana": password => '$6$KhCog/O2$sYBsrvVSTa33E1Tt.KW8LihCf/8zcenTs7L5GAfmhLePJ6XeG5lGpyUFsibdRUu.4ViRP0D1WgL.Oipnq4FqY/'}
-	@ssh_user { "daphne": password => '$6$KhCog/O2$sYBsrvVSTa33E1Tt.KW8LihCf/8zcenTs7L5GAfmhLePJ6XeG5lGpyUFsibdRUu.4ViRP0D1WgL.Oipnq4FqY/'}
-	@ssh_user { "fangmin": password => '$6$KhCog/O2$sYBsrvVSTa33E1Tt.KW8LihCf/8zcenTs7L5GAfmhLePJ6XeG5lGpyUFsibdRUu.4ViRP0D1WgL.Oipnq4FqY/'}
-	@ssh_user { "gerrit": password => '$6$KhCog/O2$sYBsrvVSTa33E1Tt.KW8LihCf/8zcenTs7L5GAfmhLePJ6XeG5lGpyUFsibdRUu.4ViRP0D1WgL.Oipnq4FqY/'}
-	@ssh_user { "jens": password => '$6$KhCog/O2$sYBsrvVSTa33E1Tt.KW8LihCf/8zcenTs7L5GAfmhLePJ6XeG5lGpyUFsibdRUu.4ViRP0D1WgL.Oipnq4FqY/'}
-	@ssh_user { "jonathan": password => '$6$KhCog/O2$sYBsrvVSTa33E1Tt.KW8LihCf/8zcenTs7L5GAfmhLePJ6XeG5lGpyUFsibdRUu.4ViRP0D1WgL.Oipnq4FqY/'}
-	@ssh_user { "malcolmn": password => '$6$KhCog/O2$sYBsrvVSTa33E1Tt.KW8LihCf/8zcenTs7L5GAfmhLePJ6XeG5lGpyUFsibdRUu.4ViRP0D1WgL.Oipnq4FqY/'}
-	@ssh_user { "malcolmt": password => '$6$KhCog/O2$sYBsrvVSTa33E1Tt.KW8LihCf/8zcenTs7L5GAfmhLePJ6XeG5lGpyUFsibdRUu.4ViRP0D1WgL.Oipnq4FqY/'}
-	@ssh_user { "martin": password => '$6$KhCog/O2$sYBsrvVSTa33E1Tt.KW8LihCf/8zcenTs7L5GAfmhLePJ6XeG5lGpyUFsibdRUu.4ViRP0D1WgL.Oipnq4FqY/'}
-	@ssh_user { "neil": password => '$6$KhCog/O2$sYBsrvVSTa33E1Tt.KW8LihCf/8zcenTs7L5GAfmhLePJ6XeG5lGpyUFsibdRUu.4ViRP0D1WgL.Oipnq4FqY/'}
-	@ssh_user { "nick": password => '$6$KhCog/O2$sYBsrvVSTa33E1Tt.KW8LihCf/8zcenTs7L5GAfmhLePJ6XeG5lGpyUFsibdRUu.4ViRP0D1WgL.Oipnq4FqY/'}
-	@ssh_user { "paul": password => '$6$KhCog/O2$sYBsrvVSTa33E1Tt.KW8LihCf/8zcenTs7L5GAfmhLePJ6XeG5lGpyUFsibdRUu.4ViRP0D1WgL.Oipnq4FqY/'}
-	@ssh_user { "rob": password => '$6$KhCog/O2$sYBsrvVSTa33E1Tt.KW8LihCf/8zcenTs7L5GAfmhLePJ6XeG5lGpyUFsibdRUu.4ViRP0D1WgL.Oipnq4FqY/'}
-	@ssh_user { "simon": password => '$6$KhCog/O2$sYBsrvVSTa33E1Tt.KW8LihCf/8zcenTs7L5GAfmhLePJ6XeG5lGpyUFsibdRUu.4ViRP0D1WgL.Oipnq4FqY/'}
-	@ssh_user { "srikant": password => '$6$KhCog/O2$sYBsrvVSTa33E1Tt.KW8LihCf/8zcenTs7L5GAfmhLePJ6XeG5lGpyUFsibdRUu.4ViRP0D1WgL.Oipnq4FqY/'}
-	@ssh_user { "tito": password => '$6$KhCog/O2$sYBsrvVSTa33E1Tt.KW8LihCf/8zcenTs7L5GAfmhLePJ6XeG5lGpyUFsibdRUu.4ViRP0D1WgL.Oipnq4FqY/'}
-	@ssh_user { "veerle": password => '$6$KhCog/O2$sYBsrvVSTa33E1Tt.KW8LihCf/8zcenTs7L5GAfmhLePJ6XeG5lGpyUFsibdRUu.4ViRP0D1WgL.Oipnq4FqY/'}
+	@ssh_user { "adamr":       password => '$6$KhCog/O2$sYBsrvVSTa33E1Tt.KW8LihCf/8zcenTs7L5GAfmhLePJ6XeG5lGpyUFsibdRUu.4ViRP0D1WgL.Oipnq4FqY/'}
+	@ssh_user { "adamw":       password => '$6$KhCog/O2$sYBsrvVSTa33E1Tt.KW8LihCf/8zcenTs7L5GAfmhLePJ6XeG5lGpyUFsibdRUu.4ViRP0D1WgL.Oipnq4FqY/'}
+	@ssh_user { "adrianm":     password => '$6$KhCog/O2$sYBsrvVSTa33E1Tt.KW8LihCf/8zcenTs7L5GAfmhLePJ6XeG5lGpyUFsibdRUu.4ViRP0D1WgL.Oipnq4FqY/'}
+	@ssh_user { "andyc":       password => '$6$KhCog/O2$sYBsrvVSTa33E1Tt.KW8LihCf/8zcenTs7L5GAfmhLePJ6XeG5lGpyUFsibdRUu.4ViRP0D1WgL.Oipnq4FqY/'}
+	@ssh_user { "andrewl":     password => '$6$KhCog/O2$sYBsrvVSTa33E1Tt.KW8LihCf/8zcenTs7L5GAfmhLePJ6XeG5lGpyUFsibdRUu.4ViRP0D1WgL.Oipnq4FqY/'}
+	@ssh_user { "anthonyt":    password => '$6$KhCog/O2$sYBsrvVSTa33E1Tt.KW8LihCf/8zcenTs7L5GAfmhLePJ6XeG5lGpyUFsibdRUu.4ViRP0D1WgL.Oipnq4FqY/'}
+	@ssh_user { "christianam": password => '$6$KhCog/O2$sYBsrvVSTa33E1Tt.KW8LihCf/8zcenTs7L5GAfmhLePJ6XeG5lGpyUFsibdRUu.4ViRP0D1WgL.Oipnq4FqY/'}
+	@ssh_user { "christianb":  password => '$6$KhCog/O2$sYBsrvVSTa33E1Tt.KW8LihCf/8zcenTs7L5GAfmhLePJ6XeG5lGpyUFsibdRUu.4ViRP0D1WgL.Oipnq4FqY/'}
+	@ssh_user { "daphnec":     password => '$6$KhCog/O2$sYBsrvVSTa33E1Tt.KW8LihCf/8zcenTs7L5GAfmhLePJ6XeG5lGpyUFsibdRUu.4ViRP0D1WgL.Oipnq4FqY/'}
+	@ssh_user { "davem":       password => '$6$KhCog/O2$sYBsrvVSTa33E1Tt.KW8LihCf/8zcenTs7L5GAfmhLePJ6XeG5lGpyUFsibdRUu.4ViRP0D1WgL.Oipnq4FqY/'}
+	@ssh_user { "fangmins":    password => '$6$KhCog/O2$sYBsrvVSTa33E1Tt.KW8LihCf/8zcenTs7L5GAfmhLePJ6XeG5lGpyUFsibdRUu.4ViRP0D1WgL.Oipnq4FqY/'}
+	@ssh_user { "gavinw":      password => '$6$KhCog/O2$sYBsrvVSTa33E1Tt.KW8LihCf/8zcenTs7L5GAfmhLePJ6XeG5lGpyUFsibdRUu.4ViRP0D1WgL.Oipnq4FqY/'}
+	@ssh_user { "gerritw":     password => '$6$KhCog/O2$sYBsrvVSTa33E1Tt.KW8LihCf/8zcenTs7L5GAfmhLePJ6XeG5lGpyUFsibdRUu.4ViRP0D1WgL.Oipnq4FqY/'}
+	@ssh_user { "jang":        password => '$6$KhCog/O2$sYBsrvVSTa33E1Tt.KW8LihCf/8zcenTs7L5GAfmhLePJ6XeG5lGpyUFsibdRUu.4ViRP0D1WgL.Oipnq4FqY/'}
+	@ssh_user { "jenss":       password => '$6$KhCog/O2$sYBsrvVSTa33E1Tt.KW8LihCf/8zcenTs7L5GAfmhLePJ6XeG5lGpyUFsibdRUu.4ViRP0D1WgL.Oipnq4FqY/'}
+	@ssh_user { "jonathant":   password => '$6$KhCog/O2$sYBsrvVSTa33E1Tt.KW8LihCf/8zcenTs7L5GAfmhLePJ6XeG5lGpyUFsibdRUu.4ViRP0D1WgL.Oipnq4FqY/'}
+	@ssh_user { "jonathanr":   password => '$6$KhCog/O2$sYBsrvVSTa33E1Tt.KW8LihCf/8zcenTs7L5GAfmhLePJ6XeG5lGpyUFsibdRUu.4ViRP0D1WgL.Oipnq4FqY/'}
+	@ssh_user { "karinem":     password => '$6$KhCog/O2$sYBsrvVSTa33E1Tt.KW8LihCf/8zcenTs7L5GAfmhLePJ6XeG5lGpyUFsibdRUu.4ViRP0D1WgL.Oipnq4FqY/'}
+	@ssh_user { "kirstyp":     password => '$6$KhCog/O2$sYBsrvVSTa33E1Tt.KW8LihCf/8zcenTs7L5GAfmhLePJ6XeG5lGpyUFsibdRUu.4ViRP0D1WgL.Oipnq4FqY/'}
+	@ssh_user { "mahendram":   password => '$6$KhCog/O2$sYBsrvVSTa33E1Tt.KW8LihCf/8zcenTs7L5GAfmhLePJ6XeG5lGpyUFsibdRUu.4ViRP0D1WgL.Oipnq4FqY/'}
+	@ssh_user { "malcolmn":    password => '$6$KhCog/O2$sYBsrvVSTa33E1Tt.KW8LihCf/8zcenTs7L5GAfmhLePJ6XeG5lGpyUFsibdRUu.4ViRP0D1WgL.Oipnq4FqY/'}
+	@ssh_user { "malcolmt":    password => '$6$KhCog/O2$sYBsrvVSTa33E1Tt.KW8LihCf/8zcenTs7L5GAfmhLePJ6XeG5lGpyUFsibdRUu.4ViRP0D1WgL.Oipnq4FqY/'}
+	@ssh_user { "martinh":     password => '$6$KhCog/O2$sYBsrvVSTa33E1Tt.KW8LihCf/8zcenTs7L5GAfmhLePJ6XeG5lGpyUFsibdRUu.4ViRP0D1WgL.Oipnq4FqY/'}
+	@ssh_user { "neilb":       password => '$6$KhCog/O2$sYBsrvVSTa33E1Tt.KW8LihCf/8zcenTs7L5GAfmhLePJ6XeG5lGpyUFsibdRUu.4ViRP0D1WgL.Oipnq4FqY/'}
+	@ssh_user { "nickh":       password => '$6$KhCog/O2$sYBsrvVSTa33E1Tt.KW8LihCf/8zcenTs7L5GAfmhLePJ6XeG5lGpyUFsibdRUu.4ViRP0D1WgL.Oipnq4FqY/'}
+	@ssh_user { "paulm":       password => '$6$KhCog/O2$sYBsrvVSTa33E1Tt.KW8LihCf/8zcenTs7L5GAfmhLePJ6XeG5lGpyUFsibdRUu.4ViRP0D1WgL.Oipnq4FqY/'}
+	@ssh_user { "richarda":    password => '$6$KhCog/O2$sYBsrvVSTa33E1Tt.KW8LihCf/8zcenTs7L5GAfmhLePJ6XeG5lGpyUFsibdRUu.4ViRP0D1WgL.Oipnq4FqY/'}
+	@ssh_user { "robf":        password => '$6$KhCog/O2$sYBsrvVSTa33E1Tt.KW8LihCf/8zcenTs7L5GAfmhLePJ6XeG5lGpyUFsibdRUu.4ViRP0D1WgL.Oipnq4FqY/'}
+	@ssh_user { "russp":       password => '$6$KhCog/O2$sYBsrvVSTa33E1Tt.KW8LihCf/8zcenTs7L5GAfmhLePJ6XeG5lGpyUFsibdRUu.4ViRP0D1WgL.Oipnq4FqY/'}
+	@ssh_user { "simonh":      password => '$6$KhCog/O2$sYBsrvVSTa33E1Tt.KW8LihCf/8zcenTs7L5GAfmhLePJ6XeG5lGpyUFsibdRUu.4ViRP0D1WgL.Oipnq4FqY/'}
+	@ssh_user { "srikantha":   password => '$6$KhCog/O2$sYBsrvVSTa33E1Tt.KW8LihCf/8zcenTs7L5GAfmhLePJ6XeG5lGpyUFsibdRUu.4ViRP0D1WgL.Oipnq4FqY/'}
+	@ssh_user { "timb":        password => '$6$KhCog/O2$sYBsrvVSTa33E1Tt.KW8LihCf/8zcenTs7L5GAfmhLePJ6XeG5lGpyUFsibdRUu.4ViRP0D1WgL.Oipnq4FqY/'}
+	@ssh_user { "titoc":       password => '$6$KhCog/O2$sYBsrvVSTa33E1Tt.KW8LihCf/8zcenTs7L5GAfmhLePJ6XeG5lGpyUFsibdRUu.4ViRP0D1WgL.Oipnq4FqY/'}
+	@ssh_user { "veerlee":     password => '$6$KhCog/O2$sYBsrvVSTa33E1Tt.KW8LihCf/8zcenTs7L5GAfmhLePJ6XeG5lGpyUFsibdRUu.4ViRP0D1WgL.Oipnq4FqY/'}
 
 }
