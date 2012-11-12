@@ -38,7 +38,7 @@ class backup::base {
         #brisskit backup file destination directory
         file { "/var/local/brisskit/backup/files":
                 ensure  => directory,
-		recurse => true,
+		#recurse => true,
                 owner   => 'root',
                 group   => 'backup',
                 mode    => 0664,
@@ -68,7 +68,7 @@ class backup::base {
         #brisskit pubweb backup file destination directory
         file { "/var/local/brisskit/backup/files/pubweb":
                 ensure  => directory,
-                recurse => true,
+                #recurse => true,
                 owner   => 'root',
                 group   => 'backup',
                 mode    => 0664,
