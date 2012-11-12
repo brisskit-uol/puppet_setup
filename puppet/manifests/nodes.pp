@@ -5,6 +5,7 @@ class bru_base {
 	include ntp
 	include puppet
 	include users::ob30
+	include users::virtual
 }
 #####################################################################
 

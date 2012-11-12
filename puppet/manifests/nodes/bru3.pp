@@ -56,7 +56,7 @@ node 'bru3-i2b2.brisskit.le.ac.uk' {
 #onyx
 node 'bru3-onyx.brisskit.le.ac.uk' {
 	include bru_base
-	include users::jl99
+	include users::jl99, users::si84
 
         #Backup stuff
         include backup::base                                     #Set up file tree
