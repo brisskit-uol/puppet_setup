@@ -20,7 +20,8 @@
 192.168.0.115   ga-gimp.brisskit.le.ac.uk ga-gimp gimp	
 
 #public web
-192.168.0.200	pubweb.brisskit.le.ac.uk pubweb wiki mediawiki
+192.168.0.200	pubweb.brisskit.le.ac.uk pubweb
+192.168.0.201	pub-wiki-2.brisskit.le.ac.uk pub-wiki-2 wiki
 192.168.0.202	pub-drupal-2.brisskit.le.ac.uk pub-drupal-2 drupal
 
 #Solve NATing problem
