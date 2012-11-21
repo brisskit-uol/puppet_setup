@@ -7,7 +7,7 @@
 #Have a go at backing the mediawiki DB up. 
 #Olly Butters
 
-#16/11/12
+#20/11/12
 
 #To work I am assuming mysqldump is installed which is actually
 #in mysql-client
@@ -52,6 +52,12 @@ cd $dir_name
 
 #Do the mysqldump
 ${dump} > wiki.sql
+
+#Lets do a dump with the mediawiki script too. This will give us an xml file that 
+#we can restore CONTENT with, but not users, stats, images etc. Current will give
+#us the current state of the wiki, i.e. no history. Full gives us all edits ever.
+php /var/local/brisskit/mediawiki/w/maintenance/dumpBackup.php --current > current.xml
+php /var/local/brisskit/mediawiki/w/maintenance/dumpBackup.php --full > full.xml
 
 cd ../
 
