@@ -101,3 +101,12 @@ node 'ga-private.brisskit.le.ac.uk' {
 	include ga_base
 	include users::jl99, users::si84, users::ss727
 }
+
+
+#private web server
+node 'ga-maven.brisskit.le.ac.uk' {
+        include ga_base
+        include users::jl99
+}
+
+
