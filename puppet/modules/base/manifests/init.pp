@@ -36,6 +36,15 @@ class base {
 		require => File["/etc/brisskit"],
 	}
 
+        #brisskit keys directory
+        file { "/etc/brisskit/keys":
+                ensure => directory,
+                owner  => 'ob30',
+                group  => 'ob30',
+                mode   => 0600,
+                require => File["/etc/brisskit"],
+        }
+
 	#settings file - just the inst prefix atm
         file { "/etc/brisskit/settings.cfg":
                 ensure => present,
