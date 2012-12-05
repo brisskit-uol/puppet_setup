@@ -19,6 +19,7 @@
 192.168.0.117   ga-backup.brisskit.le.ac.uk ga-backup
 192.168.0.115   ga-gimp.brisskit.le.ac.uk ga-gimp gimp	
 192.168.0.220	ga-maven.brisskit.le.ac.uk ga-maven maven
+192.168.0.221	ga-nagios.brisskit.le.ac.uk ga-nagios nagios
 
 #public web
 192.168.0.200	pubweb.brisskit.le.ac.uk pubweb
