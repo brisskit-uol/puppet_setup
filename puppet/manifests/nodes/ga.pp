@@ -109,4 +109,9 @@ node 'ga-maven.brisskit.le.ac.uk' {
         include users::jl99
 }
 
+#nagios server
+node 'ga-nagios.brisskit.le.ac.uk' {
+        include ga_base
+	include users::russ
+}
 
