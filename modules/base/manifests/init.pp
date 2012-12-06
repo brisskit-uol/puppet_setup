@@ -39,9 +39,9 @@ class base {
         #brisskit keys directory
         file { "/etc/brisskit/keys":
                 ensure => directory,
-                owner  => 'ob30',
-                group  => 'ob30',
-                mode   => 0600,
+                owner  => 'root',
+                group  => 'root',
+                mode   => 0644,
                 require => File["/etc/brisskit"],
         }
 

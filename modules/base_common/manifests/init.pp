@@ -23,6 +23,16 @@ class base_common {
 		require => File["/etc/brisskit"],
 	}
 
+        #brisskit keys directory
+        file { "/etc/brisskit/keys":
+                ensure  => directory,
+                owner   => 'ob30',
+                group   => 'ob30',
+                mode    => 0600,
+		recurse => true,
+                require => File["/etc/brisskit"],
+        }
+
 	#brisskit install directory
 	file { "/var/local/brisskit":
 		ensure => directory,
