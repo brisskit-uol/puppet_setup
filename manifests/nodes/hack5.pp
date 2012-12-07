@@ -60,5 +60,6 @@ node /^hack5-.*$/ {
 	include bru_base
 	include users::jl99
 	include users::hack
+	include users::si84
 }
 

@@ -70,6 +70,13 @@ node 'bru3-openesb.brisskit.le.ac.uk' {
         include users::si84
 }
 
+
+#pound
+node 'bru3-pound.brisskit.le.ac.uk' {
+        include bru_base
+        include pound
+}
+
 #any other ones that have been missed out
 node /^bru3-.*$/ {
 	include bru_base

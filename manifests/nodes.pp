@@ -23,6 +23,8 @@ import "nodes/hack4"
 import "nodes/hack5"
 import "nodes/hack6"
 
+import "nodes/jeff_i2b2"
+
 #Global admin vApp
 import "nodes/ga"
 
