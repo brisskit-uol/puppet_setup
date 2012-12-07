@@ -1,4 +1,283 @@
-#This would be a pound config file
+#####################################################################
+#This file is managed by puppet. Do not edit as changes will be lost!
+#####################################################################
+#Confing for LOCAL pound implementation, i.e. in the vApp
 
-Redirect = <%= @name %>
+#This file is derived from a template in puppet, the main variable is
+#the vapp name, if this is wrong then pound will not work as you expect!
 
+#vapp name = <%= @vapp_name %>
+
+#General pound notes:
+#I want to match either EXACTLY the software url or it with
+#a slash on the end, not it with other stuff on the end ie
+#redcap      - ok
+#redcap/     - ok
+#redcapx     - not ok
+#so there is the or in the URL match.
+
+#This is the SSL version that is under development
+
+#Olly Butters
+#7/12/12
+
+######################################################################
+## global options:
+
+User		"www-data"
+Group		"www-data"
+#RootJail	"/chroot/pound"
+
+## Logging: (goes to syslog by default)
+##	0	no logging
+##	1	normal
+##	2	extended
+##	3	Apache-style (common log format)
+LogLevel	3
+
+## check backend every X secs:
+Alive		30
+
+## use hardware-accelleration card supported by openssl(1):
+#SSLEngine	"<hw>"
+
+# poundctl control socket
+Control "/var/run/pound/poundctl.socket"
+
+#i2b2 seems to time out on some queries, this is a temporary hack until
+#we can figure out why! 9/3/12
+Client 300
+TimeOut 300
+
+ListenHTTPS
+        Address 192.168.2.100
+        Port 443
+
+	#This is the certificate for the whole vApp
+	Cert "/etc/brisskit/keys/<%= @vapp_name %>.pem"
+
+        ######################################
+        #Pages that dont have a favicon generate errors in the log files
+        #So link to a temporary one.
+        Service
+                URL ".+\.ico$"
+                Redirect "http://www2.le.ac.uk/favicon.ico"
+        End
+
+	######################################
+        #Admin portal
+        Service
+                URL "^/admin$|^/admin/+.*"
+                BackEnd
+                        Address 192.168.2.101
+                        Port 80
+                End
+        End
+        ######################################
+
+        ######################################
+        #caTissue. Note that this pushes :80 to :8080
+        Service
+                URL "^/catissuecore$|^/catissuecore/+.*"
+                BackEnd
+                        Address 192.168.2.103
+                        Port 8080
+                End
+        End
+
+        Service
+                URL "^/civi.catissue.ws*"
+                BackEnd
+                        Address 192.168.2.103
+                        Port 8080
+                End
+        End
+        ######################################
+
+	######################################
+        #civicrm
+        Service
+                URL "^/civicrm$|^/civicrm/+.*"
+                BackEnd
+                        Address 192.168.2.105
+                        Port 80
+                End
+        End
+	######################################
+
+        ######################################
+        #i2b2
+        Service
+                URL "^/i2b2$|^/i2b2/+.*"
+                BackEnd
+                        Address 192.168.2.104
+                        Port 80
+                End
+        End
+        ######################################
+
+        ######################################
+        #onyx. Note this is pushing :80 to :8080
+        Service
+                URL "^/onyx$|^/onyx/+.*|^/onyxWS/+.*"
+                BackEnd
+                        Address 192.168.2.108
+                        Port 8080
+                End
+        End
+        ######################################
+
+        ######################################
+        #Default to camp if nothing else found
+        Service
+                URL "^/.*"
+                BackEnd
+                        Address 192.168.2.101
+                        Port 80
+                End
+        End
+        ######################################
+End
+
+######################################################################
+##Listen to port 80 traffic
+######################################################################
+ListenHTTP
+	Address 192.168.2.100
+	Port 80
+
+	######################################
+	#Admin portal
+	Service
+		URL "^/admin$|^/admin/+.*"
+		Redirect "https://<%= @vapp_name %>.brisskit.le.ac.uk/admin/"
+	End
+	######################################
+
+	######################################
+	#caTissue. Note that this pushes :80 to :8080
+	Service
+		URL "^/catissuecore$|^/catissuecore/+.*"
+		Redirect "https://<%= @vapp_name %>.brisskit.le.ac.uk/catissuecore/"	
+	End
+
+	Service
+		URL "^/civi.catissue.ws*"
+		BackEnd
+			Address 192.168.2.103
+			Port 8080
+		End
+	End
+	######################################
+
+	######################################
+	#civicrm
+	Service
+		URL "^/civicrm$|^/civicrm/+.*"
+		Redirect "https://<%= @vapp_name %>.brisskit.le.ac.uk/civicrm/"
+	End
+	######################################
+
+	######################################
+	#i2b2
+	Service
+		URL "^/i2b2$|^/i2b2/+.*"
+		Redirect "https://<%= @vapp_name %>.brisskit.le.ac.uk/i2b2/"
+	End
+	######################################
+
+	######################################
+	#onyx. Note this is pushing :80 to :8080
+	Service
+		URL "^/onyx$|^/onyx/+.*|^/onyxWS/+.*"
+		Redirect "https://<%= @vapp_name %>.brisskit.le.ac.uk/onyx/"
+	End
+	######################################
+
+	######################################
+	#redcap
+	Service
+		URL "^/redcap$|^/redcap/+.*"
+		BackEnd
+			Address 192.168.2.102
+			Port 80
+		End
+	End
+	######################################
+
+	######################################
+	#Default to camp if nothing else found
+	Service
+		URL "^/.*"
+		Redirect "https://<%= @vapp_name %>.brisskit.le.ac.uk"
+	End
+	######################################
+End
+
+#####################################################################
+#Listen to port 8080 traffic
+#####################################################################
+ListenHTTP
+	Address 192.168.2.100
+	Port	8080
+
+	######################################
+	#catissuecore
+	Service
+		URL "^/catissuecore$|^/catissuecore/+.*"
+		BackEnd
+			Address	192.168.2.103
+			Port	8080
+		End
+	End
+
+        Service
+                URL "^/civi.catissue.ws*"
+                BackEnd
+                        Address 192.168.2.103
+                        Port 8080
+                End
+        End
+	######################################
+
+	######################################
+	#i2b2
+	Service
+		URL "^/i2b2$|^/i2b2/+.*"
+		BackEnd
+			Address	192.168.2.104
+			Port	8080
+		End
+	End
+
+        Service
+                URL "^/i2b2WS/+.*"
+                BackEnd
+                        Address 192.168.2.104
+                        Port    8080
+                End
+        End
+	######################################
+
+	######################################
+	#onyx
+	Service
+		URL "^/onyx$|^/onyx/+.*|^/onyxWS/+.*"
+		BackEnd
+			Address 192.168.2.108
+			Port 8080
+		End
+	End
+	######################################
+
+	######################################
+	#Default to camp if nothing else found
+	Service
+		URL "^/.*"
+		BackEnd
+			Address 192.168.2.101
+			Port 80
+		End
+	End
+	######################################
+End

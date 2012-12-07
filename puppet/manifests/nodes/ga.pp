@@ -14,6 +14,7 @@ class ga_base {
 #puppet master. Be careful not to become self aware :)
 node ga-puppet {
 	include ga_base
+	include users::russ
 	include ssh::auth::keymaster
 
         #Backup stuff
@@ -113,5 +114,7 @@ node 'ga-maven.brisskit.le.ac.uk' {
 node 'ga-nagios.brisskit.le.ac.uk' {
         include ga_base
 	include users::russ
+
+	include nagios
 }
 
