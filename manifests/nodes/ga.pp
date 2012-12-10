@@ -3,7 +3,7 @@
 #THE MANAAGEMENT VMS!
 #################################################
 class ga_base {
-	include ga_base_file
+	include base_ga
 	include ntp
 	include puppet
 	include ga_hosts
