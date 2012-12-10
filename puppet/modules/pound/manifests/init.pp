@@ -1,5 +1,5 @@
 ###########################################################
-#Look after pound in the vApp
+#Install pound in the vApp and configure it too
 class pound {
 
 	#Lets figure out the vApp name
@@ -15,6 +15,17 @@ class pound {
 	service { "pound":
         	ensure => running,
     	}
+
+        #Configure pound to start on VM boot
+        file { "/etc/default/pound":
+                path    => "/etc/default/pound",
+		ensure  => present,
+                owner   => root,
+                group   => root,
+                mode    => 644,
+                source => "puppet:///modules/pound/startup.txt",
+                notify  => Service["pound"],
+        }
 
 	#Make the config file from the template and restart pound
 	file { "pound.cfg":
