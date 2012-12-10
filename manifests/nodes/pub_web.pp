@@ -1,17 +1,17 @@
 #################################################
 #Public facing websites
 #################################################
-class pub_base {
-	include base_pub
-	include ntp
-	include puppet
-	include ga_hosts
-	include users::ob30
-}
+#class pub_base {
+#	include base_pub
+#	include ntp
+#	include puppet
+#	include ga_hosts
+#	include users::ob30
+#}
 
 #Drupal7 and civicrm VM
 node 'pub-drupal-2.brisskit.le.ac.uk' {
-        include pub_base
+        include base_pub
 
 	#Backup stuff
         include backup::base                                           #Set up file tree
@@ -21,7 +21,7 @@ node 'pub-drupal-2.brisskit.le.ac.uk' {
 
 #mediawiki 
 node 'pub-wiki-2.brisskit.le.ac.uk' {
-        include pub_base
+        include base_pub
 
         #Backup stuff
         include backup::base                                           #Set up file tree

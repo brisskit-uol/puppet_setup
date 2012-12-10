@@ -2,6 +2,12 @@
 #ie customer VMs, GA VMs and pubweb VMs
 class base_global {
 
+	#Other modules first
+	include ntp
+	include puppet
+	include users::ob30
+
+
 	#########################################################################
 	#Directories and files
 	#########################################################################

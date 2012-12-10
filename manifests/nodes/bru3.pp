@@ -4,7 +4,7 @@
 #camp - everyone needs to be on this to get
 #to the other VMs
 node 'bru3-camp.brisskit.le.ac.uk' {
-	include bru_base
+	include base_customer
 	include users::jl99, users::rcf8, users::si84, users::ss727, users::tb143
 
         #Backup stuff
@@ -20,7 +20,7 @@ node 'bru3-camp.brisskit.le.ac.uk' {
 
 #catissue
 node 'bru3-catissue.brisskit.le.ac.uk' {
-	include bru_base
+	include base_customer
 	include postfix
 	include users::integration, users::si84, users::ss727
 	ssh::auth::client { "integration": }
@@ -34,7 +34,7 @@ node 'bru3-catissue.brisskit.le.ac.uk' {
 
 #civicrm
 node 'bru3-civicrm.brisskit.le.ac.uk' {
-	include bru_base
+	include base_customer
 	include postfix
 	include users::rcf8, users::si84, users::ss727, users::tb143
 
@@ -46,7 +46,7 @@ node 'bru3-civicrm.brisskit.le.ac.uk' {
 
 #i2b2
 node 'bru3-i2b2.brisskit.le.ac.uk' {
-        include bru_base
+        include base_customer
         include users::integration, users::si84, users::ss727
 	ssh::auth::client { "integration": }
 	ssh::auth::server { "integration": }
@@ -55,7 +55,7 @@ node 'bru3-i2b2.brisskit.le.ac.uk' {
 
 #onyx
 node 'bru3-onyx.brisskit.le.ac.uk' {
-	include bru_base
+	include base_customer
 	include users::jl99, users::si84
 
         #Backup stuff
@@ -66,19 +66,19 @@ node 'bru3-onyx.brisskit.le.ac.uk' {
 
 #openesb
 node 'bru3-openesb.brisskit.le.ac.uk' {
-        include bru_base
+        include base_customer
         include users::si84
 }
 
 
 #pound
 node 'bru3-pound.brisskit.le.ac.uk' {
-        include bru_base
+        include base_customer
         include pound
 }
 
 #any other ones that have been missed out
 node /^bru3-.*$/ {
-	include bru_base
+	include base_customer
 }
 

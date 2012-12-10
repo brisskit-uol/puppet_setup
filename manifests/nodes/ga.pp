@@ -2,18 +2,18 @@
 #BE VERY CAREFUL WITH THE ONES BELOW, THEY ARE
 #THE MANAAGEMENT VMS!
 #################################################
-class ga_base {
-	include base_ga
-	include ntp
-	include puppet
+#class ga_base {
+#	include base_ga
+#	include ntp
+#	include puppet
 #	include ga_hosts
-	include users::ob30
-}
+#	include users::ob30
+#}
 
 
 #puppet master. Be careful not to become self aware :)
 node ga-puppet {
-	include ga_base
+	include base_ga
 	include users::russ
 	include ssh::auth::keymaster
 
@@ -32,19 +32,16 @@ node ga-puppet {
                 hour    => 13,
                 minute  => 25
         }
-
-
-
 }
 
 #mail server
 node 'ga-mail.brisskit.le.ac.uk' {
-	include ga_base
+	include base_ga
 }
 
 #backup vm
 node ga-backup {
-	include ga_base
+	include base_ga
 	include backup::base
 	include backup::users::master_backup
 	ssh::auth::client { "master_backup": }
@@ -88,31 +85,31 @@ node ga-backup {
 
 #load balancer
 node ga-pound {
-	include ga_base
+	include base_ga
 	include postfix
 }
 
 #global ssh gateway
 node 'ga-gimp.brisskit.le.ac.uk' {
-	include ga_base
+	include base_ga
 }
 
 #private web server
 node 'ga-private.brisskit.le.ac.uk' {
-	include ga_base
+	include base_ga
 	include users::jl99, users::si84, users::ss727
 }
 
 
 #private web server
 node 'ga-maven.brisskit.le.ac.uk' {
-        include ga_base
+        include base_ga
         include users::jl99
 }
 
 #nagios server
 node 'ga-nagios.brisskit.le.ac.uk' {
-        include ga_base
+        include base_ga
 	include users::russ
 
 	include nagios

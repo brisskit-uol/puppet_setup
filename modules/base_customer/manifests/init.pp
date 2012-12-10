@@ -2,7 +2,12 @@
 #Note the requirement on the base_global class.
 class base_customer {
 
+	#Common settings
 	require base_global
+
+	#Long list of potential users. These need to be realised elsewhere.
+	include users::virtual	
+
 
 	#Lets figure out the vApp name
 	$parts = split("${fqdn}", '-')
