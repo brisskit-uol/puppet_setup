@@ -4,7 +4,7 @@
 #camp - everyone needs to be on this to get
 #to the other VMs
 node 'demo-camp.brisskit.le.ac.uk' {
-        include bru_base
+        include base_customer
         include users::jl99, users::rcf8, users::si84, users::ss727, users::tb143
 
 	#Backup stuff
@@ -18,7 +18,7 @@ node 'demo-camp.brisskit.le.ac.uk' {
 
 #catissue
 node 'demo-catissue.brisskit.le.ac.uk' {
-        include bru_base
+        include base_customer
         include postfix
         include users::integration, users::jl99, users::si84, users::ss727
 	ssh::auth::client { "integration": }
@@ -34,7 +34,7 @@ node 'demo-catissue.brisskit.le.ac.uk' {
 
 #civicrm
 node 'demo-civicrm.brisskit.le.ac.uk' {
-        include bru_base
+        include base_customer
         include postfix
         include users::jl99, users::rcf8, users::si84, users::ss727, users::tb143
 
@@ -48,7 +48,7 @@ node 'demo-civicrm.brisskit.le.ac.uk' {
 
 #i2b2
 node 'demo-i2b2.brisskit.le.ac.uk' {
-        include bru_base
+        include base_customer
         include users::integration, users::jl99, users::si84, users::ss727
         ssh::auth::client { "integration": }
 	ssh::auth::server { "integration": }
@@ -57,7 +57,7 @@ node 'demo-i2b2.brisskit.le.ac.uk' {
 
 #onyx
 node 'demo-onyx.brisskit.le.ac.uk' {
-        include bru_base
+        include base_customer
         include users::jl99, users::si84
 
         #Backup stuff
@@ -70,6 +70,6 @@ node 'demo-onyx.brisskit.le.ac.uk' {
 
 #any other ones that have been missed out
 node /^demo-.*$/ {
-        include bru_base
+        include base_customer
 }
 

@@ -1,12 +1,12 @@
 ####################################################################
 #The base bru packages that should go in each bru VM
-class bru_base {
-	include base_customer
-	include ntp
-	include puppet
-	include users::ob30
-	include users::virtual
-}
+#class bru_base {
+#	include base_customer
+#	include ntp
+#	include puppet
+#	include users::ob30
+#	include users::virtual
+#}
 #####################################################################
 
 #Customer vApps
