@@ -1,6 +1,6 @@
 #Files and directories common to the whole stack,
 #ie customer VMs, GA VMs and pubweb VMs
-class base_common {
+class base_global {
 
 	#########################################################################
 	#Directories and files
@@ -47,7 +47,7 @@ class base_common {
 		owner  => 'root',
 		group  => 'root',
 		mode   => 0755,
-		source => "puppet:///modules/base/brisskit_db_param",
+		source => "puppet:///modules/base_global/brisskit_db_param",
 	}
 
 	file { "/usr/local/bin/brisskit_db_login":
@@ -55,6 +55,6 @@ class base_common {
 		owner  => 'root',
 		group  => 'root',
 		mode   => 0755,
-		source => "puppet:///modules/base/brisskit_db_login",
+		source => "puppet:///modules/base_global/brisskit_db_login",
 	}
 }
