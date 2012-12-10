@@ -1,10 +1,14 @@
+#This is the definition of the customer vApps.
+#Note the requirement on the base_global class.
 class base_customer {
+
+	require base_global
 
 	#Lets figure out the vApp name
 	$parts = split("${fqdn}", '-')
 	$vapp_name = $parts[0]
 
-	notify{"Starting base config $vapp_name":}
+	notify{"Starting base_customer config $vapp_name":}
 
 	#########################################################################
 	#Directories and files
@@ -16,7 +20,7 @@ class base_customer {
 		owner  => 'root',
 		group  => 'root',
 		mode   => 0644,
-		source => "puppet:///modules/base/hosts/${vapp_name}_hosts",
+		source => "puppet:///modules/base_customer/hosts/${vapp_name}_hosts",
 	}
 
 	#settings file - just the inst prefix atm
@@ -25,7 +29,7 @@ class base_customer {
                 owner  => 'root',
                 group  => 'root',
                 mode   => 0644,
-                source => "puppet:///modules/base/settings/${vapp_name}_settings",
+                source => "puppet:///modules/base_customer/settings/${vapp_name}_settings",
 		require => File["/etc/brisskit"],
         }
 }
