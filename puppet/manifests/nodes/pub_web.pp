@@ -2,7 +2,7 @@
 #Public facing websites
 #################################################
 class pub_base {
-	include base_common
+	include base_pub
 	include ntp
 	include puppet
 	include ga_hosts
