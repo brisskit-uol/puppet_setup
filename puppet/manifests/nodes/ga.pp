@@ -6,7 +6,7 @@ class ga_base {
 	include base_ga
 	include ntp
 	include puppet
-	include ga_hosts
+#	include ga_hosts
 	include users::ob30
 }
 
