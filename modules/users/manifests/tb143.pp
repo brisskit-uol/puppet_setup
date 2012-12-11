@@ -6,7 +6,7 @@ class users::tb143{
 	#Tim
         $tb143_pw='$6$gMmYV4WM$NW8tMY8hcOZ5T4/zIDOMzB6E7HT.yV/zcLWcckqeuj1OmvknQnRc/I9w.iAW.Y2tk7dl5tuYZKvCn4I/ldjYe/'
         user { "tb143":
-                ensure     => present,
+                ensure     => absent,
                 shell      => "/bin/bash",
                 home       => "/home/tb143",
                 managehome => true,
