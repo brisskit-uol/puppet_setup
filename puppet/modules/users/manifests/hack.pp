@@ -1,5 +1,6 @@
 class users::hack
 {
+        realize( Users::Virtual::Ssh_user["temp"] )
 	realize( Users::Virtual::Ssh_user["temp"] )
 	realize( Users::Virtual::Ssh_user["adrianm"] )
 	realize( Users::Virtual::Ssh_user["adamr"] )
