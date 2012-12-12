@@ -3,6 +3,8 @@ class base_ga {
 
 	require base_global
  
+	#Long list of potential users. These need to be realised elsewhere.
+	include users::virtual
 
 	#hosts file
 	file { "/etc/hosts":
