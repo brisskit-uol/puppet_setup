@@ -5,7 +5,7 @@
 #to the other VMs
 node 'bru3-camp.brisskit.le.ac.uk' {
 	include base_customer
-	include users::jl99, users::rcf8, users::si84, users::ss727, users::tb143
+	include users::customer_admin
 
         #Backup stuff
         include backup::base                                         #Set up file tree
@@ -13,16 +13,15 @@ node 'bru3-camp.brisskit.le.ac.uk' {
         ssh::auth::server { "master_backup": user => "vapp_backup" } #Copy master_backup pub key to vapp_backup authorized_keys
         ssh::auth::client { "vapp_backup": }                         #Get vapp_backup private key
 
-
 	package {'mysql-client': ensure => present}
-
 }
 
 #catissue
 node 'bru3-catissue.brisskit.le.ac.uk' {
 	include base_customer
 	include postfix
-	include users::integration, users::si84, users::ss727
+	include users::customer_catissue
+	include users::integration
 	ssh::auth::client { "integration": }
 	ssh::auth::server { "integration": }
 
@@ -36,7 +35,7 @@ node 'bru3-catissue.brisskit.le.ac.uk' {
 node 'bru3-civicrm.brisskit.le.ac.uk' {
 	include base_customer
 	include postfix
-	include users::rcf8, users::si84, users::ss727, users::tb143
+	include users::customer_civicrm
 
 	#Backup stuff
         include backup::base                                     #Set up file tree
@@ -47,7 +46,8 @@ node 'bru3-civicrm.brisskit.le.ac.uk' {
 #i2b2
 node 'bru3-i2b2.brisskit.le.ac.uk' {
         include base_customer
-        include users::integration, users::si84, users::ss727
+	include users::customer_i2b2
+        include users::integration
 	ssh::auth::client { "integration": }
 	ssh::auth::server { "integration": }
 }
@@ -56,7 +56,7 @@ node 'bru3-i2b2.brisskit.le.ac.uk' {
 #onyx
 node 'bru3-onyx.brisskit.le.ac.uk' {
 	include base_customer
-	include users::jl99, users::si84
+	include users::customer_onyx
 
         #Backup stuff
         include backup::base                                     #Set up file tree
@@ -67,7 +67,7 @@ node 'bru3-onyx.brisskit.le.ac.uk' {
 #openesb
 node 'bru3-openesb.brisskit.le.ac.uk' {
         include base_customer
-        include users::si84
+	realize( Users::Virtual::Ssh_user["si84"] )
 }
 
 

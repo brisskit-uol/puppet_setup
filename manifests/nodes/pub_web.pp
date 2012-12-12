@@ -1,13 +1,6 @@
 #################################################
 #Public facing websites
 #################################################
-#class pub_base {
-#	include base_pub
-#	include ntp
-#	include puppet
-#	include ga_hosts
-#	include users::ob30
-#}
 
 #Drupal7 and civicrm VM
 node 'pub-drupal-2.brisskit.le.ac.uk' {

@@ -6,7 +6,10 @@
 #i2b2
 node 'jeff-i2b2.brisskit.le.ac.uk' {
         include base_customer
-        include users::integration, users::si84, users::jl99
+	
+	include users::customer_i2b2
+        include users::integration
+
 	ssh::auth::client { "integration": }
 	ssh::auth::server { "integration": }
 }

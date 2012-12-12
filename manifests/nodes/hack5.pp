@@ -7,7 +7,8 @@
 #to the other VMs
 node 'hack5-camp.brisskit.le.ac.uk' {
 	include base_customer
-	include users::jl99, users::rcf8, users::si84
+
+	include users::customer_admin
 	include users::hack
 
 	package {'mysql-client': ensure => present}
@@ -17,8 +18,11 @@ node 'hack5-camp.brisskit.le.ac.uk' {
 node 'hack5-catissue.brisskit.le.ac.uk' {
 	include base_customer
 	include postfix
-	include users::integration, users::si84, users::ss727
+
+	include users::customer_catissue
+	include users::integration
 	include users::hack
+
 	ssh::auth::client { "integration": }
 	ssh::auth::server { "integration": }
 }
@@ -27,15 +31,19 @@ node 'hack5-catissue.brisskit.le.ac.uk' {
 node 'hack5-civicrm.brisskit.le.ac.uk' {
 	include base_customer
 	include postfix
-	include users::rcf8, users::si84, users::tb143
+
+	include users::customer_civicrm
 	include users::hack
 }
 
 #i2b2
 node 'hack5-i2b2.brisskit.le.ac.uk' {
         include base_customer
-        include users::integration, users::jl99, users::si84
+
+	include users::customer_i2b2
+        include users::integration
 	include users::hack
+
 	ssh::auth::client { "integration": }
 	ssh::auth::server { "integration": }
 }
@@ -44,22 +52,24 @@ node 'hack5-i2b2.brisskit.le.ac.uk' {
 #onyx
 node 'hack5-onyx.brisskit.le.ac.uk' {
 	include base_customer
-	include users::jl99
+
+	include users::customer_onyx
 	include users::hack
 }
 
 #openesb
 node 'hack5-openesb.brisskit.le.ac.uk' {
         include base_customer
-        include users::si84
+
+	realize( Users::Virtual::Ssh_user["si84"] )
 	include users::hack
 }
 
 #any other ones that have been missed out
 node /^hack5-.*$/ {
 	include base_customer
-	include users::jl99
+	realize( Users::Virtual::Ssh_user["si84"] )
+	realize( Users::Virtual::Ssh_user["jl99"] )
 	include users::hack
-	include users::si84
 }
 
