@@ -2,19 +2,11 @@
 #BE VERY CAREFUL WITH THE ONES BELOW, THEY ARE
 #THE MANAAGEMENT VMS!
 #################################################
-#class ga_base {
-#	include base_ga
-#	include ntp
-#	include puppet
-#	include ga_hosts
-#	include users::ob30
-#}
-
 
 #puppet master. Be careful not to become self aware :)
 node ga-puppet {
 	include base_ga
-	include users::russ
+	
 	include ssh::auth::keymaster
 
         #Backup stuff
@@ -97,21 +89,22 @@ node 'ga-gimp.brisskit.le.ac.uk' {
 #private web server
 node 'ga-private.brisskit.le.ac.uk' {
 	include base_ga
-	include users::jl99, users::si84, users::ss727
+	realize( Users::Virtual::Ssh_user["jl99"] )
+	realize( Users::Virtual::Ssh_user["si84"] )
 }
 
 
-#private web server
+#maven server
 node 'ga-maven.brisskit.le.ac.uk' {
         include base_ga
-        include users::jl99
+        realize( Users::Virtual::Ssh_user["jl99"] )
 }
 
 #nagios server
 node 'ga-nagios.brisskit.le.ac.uk' {
         include base_ga
-	include users::russ
-
+	realize( Users::Virtual::Ssh_user["russ"] )
 	include nagios
+	include nagios::target
 }
 
