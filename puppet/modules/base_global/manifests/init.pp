@@ -5,7 +5,7 @@ class base_global {
 	#Other modules first
 	include ntp
 	include puppet
-	include users::ob30
+	include users::global
 
 
 	#########################################################################
