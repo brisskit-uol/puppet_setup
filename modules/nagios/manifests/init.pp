@@ -71,4 +71,17 @@ class nagios {
 		"htpasswd.users",
 		"nagios.cfg",
 		"resource.cfg" ]: }
+
+	Nagios_host <<||>>
+
+	class target {
+		@@nagios_host { $fqdn:
+			ensure	=> present,
+			alias	=> $hostname,
+			address	=> $ipaddress,
+			use	=> "generic-host",
+			target	=> "/etc/nagios3/conf.d/host_${fqdn}.cfg",
+		}
+	}
+
 }
