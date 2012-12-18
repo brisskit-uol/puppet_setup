@@ -100,6 +100,13 @@ node 'ga-maven.brisskit.le.ac.uk' {
         realize( Users::Virtual::Ssh_user["jl99"] )
 }
 
+#maven server
+node 'ga-maven2.brisskit.le.ac.uk' {
+        include base_ga
+        realize( Users::Virtual::Ssh_user["jl99"] )
+}
+
+
 #nagios server
 node 'ga-nagios.brisskit.le.ac.uk' {
         include base_ga
