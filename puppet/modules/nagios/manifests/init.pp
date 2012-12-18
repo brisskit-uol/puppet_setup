@@ -6,12 +6,12 @@ class nagios {
 		ensure => installed,
 	}
 
-	service { "nagios3":
-		ensure		=> running,
-		hasrestart	=> true,
-		hasstatus	=> true,
-		require		=> Package[nagios3],
-	}
+#	service { "nagios3":
+#		ensure		=> running,
+#		hasrestart	=> true,
+#		hasstatus	=> true,
+#		require		=> Package[nagios3],
+#	}
 
 	service { "apache2":
 		ensure		=> running,
@@ -54,7 +54,7 @@ class nagios {
 		]:
 		ensure 	=> absent,
 		force	=> true,
-		notify	=> Service["nagios3"],
+#		notify	=> Service["nagios3"],
 	}
 
 	define nagios-config() {
@@ -72,6 +72,17 @@ class nagios {
 		"nagios.cfg",
 		"resource.cfg" ]: }
 
+	define nagios-config-confd() {
+		file { "/etc/nagios3/conf.d/${name}":
+			source	=> "puppet:///modules/nagios/${name}",
+			require	=> Package["nagios3"],
+			notify	=> Exec["nagios-config-check"],
+		}
+	}
+
+	nagios-config-confd { [ "service_templates.cfg",
+		"host_templates.cfg", ]: }
+
 	Nagios_host <<||>>
 
 	class target {
@@ -82,6 +93,7 @@ class nagios {
 			use	=> "generic-host",
 			target	=> "/etc/nagios3/conf.d/host_${fqdn}.cfg",
 		}
+	
 	}
 
 }

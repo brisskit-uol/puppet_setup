@@ -14,6 +14,9 @@ node 'bru3-camp.brisskit.le.ac.uk' {
         ssh::auth::client { "vapp_backup": }                         #Get vapp_backup private key
 
 	package {'mysql-client': ensure => present}
+
+	include nagios::target	# Create nagios cfg file for host
+
 }
 
 #catissue
@@ -30,6 +33,23 @@ node 'bru3-catissue.brisskit.le.ac.uk' {
         include backup::users::vm_backup                         #Set up users
         ssh::auth::server { "vapp_backup": user => "vm_backup" } #Copy vapp_backup pub key to vm_backup authorized_keys
 }
+
+
+#catissue2
+node 'bru3-catissue2.brisskit.le.ac.uk' {
+        include base_customer
+        include postfix
+        include users::customer_catissue
+        include users::integration
+        ssh::auth::client { "integration": }
+        ssh::auth::server { "integration": }
+
+        #Backup stuff
+        include backup::base                                     #Set up file tree
+        include backup::users::vm_backup                         #Set up users
+        ssh::auth::server { "vapp_backup": user => "vm_backup" } #Copy vapp_backup pub key to vm_backup authorized_keys
+}
+
 
 #civicrm
 node 'bru3-civicrm.brisskit.le.ac.uk' {
