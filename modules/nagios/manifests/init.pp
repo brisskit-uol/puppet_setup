@@ -6,12 +6,12 @@ class nagios {
 		ensure => installed,
 	}
 
-#	service { "nagios3":
-#		ensure		=> running,
-#		hasrestart	=> true,
-#		hasstatus	=> true,
-#		require		=> Package[nagios3],
-#	}
+	service { "nagios3":
+		ensure		=> running,
+		hasrestart	=> true,
+		hasstatus	=> true,
+		require		=> Package[nagios3],
+	}
 
 	service { "apache2":
 		ensure		=> running,
@@ -25,14 +25,20 @@ class nagios {
 		refreshonly	=> true,
 	}
 
-#	file { "/etc/nagios3/htpasswd.users":
-#		notify	=> Service["apache2"],
-#		ensure	=> present,
-#		owner	=> 'root',
-#		group	=> 'root',
-#		mode	=> 0644,
-#		source	=> "puppet:///modules/nagios/htpasswd.users",
-#	}
+	file { "/etc/nagios3/htpasswd.users":
+		notify	=> Service["apache2"],
+		ensure	=> present,
+		owner	=> 'root',
+		group	=> 'root',
+		mode	=> 0644,
+		source	=> "puppet:///modules/nagios/htpasswd.users",
+	}
+
+	file { "/etc/nagios3/apache2.conf":
+		ensure	=> present,
+		notify	=> Service["apache2"],
+		source	=> "puppet:///modules/nagios/apache2.conf",
+	}
 
 	file { "/var/local/brisskit/nagios-server":
 		ensure	=> directory,
@@ -57,6 +63,7 @@ class nagios {
 #		notify	=> Service["nagios3"],
 	}
 
+
 	define nagios-config() {
 		file { "/etc/nagios3/${name}":
 			source	=> "puppet:///modules/nagios/${name}",
@@ -65,10 +72,8 @@ class nagios {
 		}
 	}
 
-	nagios-config { [ "apache2.conf",
-		"cgi.cfg",
+	nagios-config { [ "cgi.cfg",
 		"commands.cfg",
-		"htpasswd.users",
 		"nagios.cfg",
 		"resource.cfg" ]: }
 
@@ -80,20 +85,62 @@ class nagios {
 		}
 	}
 
-	nagios-config-confd { [ "service_templates.cfg",
-		"host_templates.cfg", ]: }
+	nagios-config-confd { [ "servicetemplates.cfg",
+		"hosttemplates.cfg",
+		"contacts.cfg",
+		"timeperiods.cfg",
+		"hostgroups.cfg",
+		"services.cfg", ]: }
 
-	Nagios_host <<||>>
+	file { "/etc/nagios3/conf.d":
+		ensure  => directory,
+		owner   => 'root',
+		group   => 'root',
+		mode    => 0644,
+		recurse => true,
+		require => Package["nagios3"],
+		notify  => Exec["nagios-config-check"],
+	}
 
-	class target {
-		@@nagios_host { $fqdn:
-			ensure	=> present,
-			alias	=> $hostname,
-			address	=> $ipaddress,
-			use	=> "generic-host",
-			target	=> "/etc/nagios3/conf.d/host_${fqdn}.cfg",
-		}
-	
+	file { "/var/local/brisskit/nrdp":
+		ensure	=> directory,
+		owner	=> 'root',
+		group	=> 'nagios',
+		mode	=> 0644,
+		recurse	=> true,
+		source	=> "puppet:///modules/nagios/nrdp",
+	}
+
+	file { "/var/lib/nagios3/tmp":
+		ensure	=> directory,
+		owner	=> 'nagios',
+		group	=> 'www-data',
+		mode	=> 0660,
+		require	=> Package["nagios3"],
+	}
+
+	file { "/etc/apache2/conf.d/nrdp.conf":
+		ensure	=> link,
+		target	=> "/var/local/brisskit/nrdp/nrdp.conf",
+		require	=> Package["nagios3"],
+		notify	=> Service["apache2"],
+	}
+
+	user { "www-data":
+		groups	=> "nagios",
+		notify	=> Service["apache2"],
+	}
+
+	Nagios_host <<||>> {
+
+		notify	=> File["/etc/nagios3/conf.d"],
+
+	}
+
+	Nagios_service <<||>> {
+
+		notify	=> File["/etc/nagios3/conf.d"],
+
 	}
 
 }
