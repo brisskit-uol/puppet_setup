@@ -119,6 +119,11 @@ class nagios {
 		require	=> Package["nagios3"],
 	}
 
+	file { "/var/lib/nagios3/spool/checkresults":
+		mode	=> 0770,
+		require	=> Package["nagios3"],
+	}
+
 	file { "/etc/apache2/conf.d/nrdp.conf":
 		ensure	=> link,
 		target	=> "/var/local/brisskit/nrdp/nrdp.conf",

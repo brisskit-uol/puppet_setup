@@ -1,9 +1,9 @@
 #!/bin/bash
 
 host=$(/bin/hostname --fqdn)
-check=$(/usr/lib/nagios/plugins/check_disk -w 20% -c 10% -e)
+check=$(/usr/lib/nagios/plugins/check_ssh $host)
 rc=$?
-service_name="Disk Space"
+service_name="SSH"
 token="token1234"
 url=http://192.168.0.221/nrdp/
 
