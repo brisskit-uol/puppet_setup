@@ -31,17 +31,9 @@ class nagios::target::base {
 		require => Package["nagios-plugins"],
 	}
 
-	@@nagios_service { "check-dummy-test-${hostname}":
-		use		=> "dummy-check",
-		host_name	=> $fqdn,
-		target		=> "/etc/nagios3/conf.d/service_${fqdn}.cfg",
-	}
-
-	@@nagios_service { "check-dummy-fail-${hostname}":
-		use		=> "dummy-fail",
-		host_name	=> $fqdn,
-		target		=> "/etc/nagios3/conf.d/service_${fqdn}.cfg",
-	}
+	#########################
+	# Check Disk Space	#
+	#########################
 
 	@@nagios_service { "check-disk-space-${hostname}":
 		use		=> "check-disk-space",
@@ -51,7 +43,7 @@ class nagios::target::base {
 	}
 
 	cron { "check_disk":
-		command	=> "/var/local/brisskit/nagios-client/check_disk.sh",
+		command	=> "/var/local/brisskit/nagios-client/check_disk.sh > /dev/null 2>&1",
 		user	=> "root",
 		minute	=> "*/5",
 		require => File["/var/local/brisskit/nagios-client/check_disk.sh"],
@@ -61,8 +53,63 @@ class nagios::target::base {
 		ensure	=> present,
 		owner	=> "root",
 		group	=> "root",
-		mode	=> 0755,
+		mode	=> 0500,
 		source	=> "puppet:///modules/nagios/check_disk.sh",
+		require	=> File["/var/local/brisskit/nagios-client"],
+	}
+
+	#########################
+	# Check Current Load	#
+	#########################
+
+	@@nagios_service { "check-current-load-${fqdn}":
+		use		=> check-current-load,
+		host_name	=> $fqdn,
+		target		=> "/etc/nagios3/conf.d/service_${fqdn}.cfg",
+		require		=> Cron["check_load"],
+	}
+
+        cron { "check_load":
+                command => "/var/local/brisskit/nagios-client/check_load.sh > /dev/null 2>&1",
+                user    => "root",
+                minute  => "*/5",
+                require => File["/var/local/brisskit/nagios-client/check_load.sh"],
+        }
+
+        file { "/var/local/brisskit/nagios-client/check_load.sh":
+                ensure  => present,
+                owner   => "root",
+                group   => "root",
+                mode    => 0500,
+                source  => "puppet:///modules/nagios/check_load.sh",
+                require => File["/var/local/brisskit/nagios-client"],
+        }
+	
+	#################
+	# Check SSH	#
+	#################
+
+	@@nagios_service { "check-ssh-${fqdn}":
+		use		=> check-ssh,
+		host_name	=> $fqdn,
+		target		=> "/etc/nagios3/conf.d/service_${fqdn}.cfg",
+		require		=> Cron["check_ssh"],
+	}
+	
+
+	cron { "check_ssh":
+		command	=> "/var/local/brisskit/nagios-client/check_ssh.sh > /dev/null 2>&1",
+		user	=> "root",
+		minute	=> "*/5",
+		require	=> File["/var/local/brisskit/nagios-client/check_ssh.sh"],
+	}
+
+	file { "/var/local/brisskit/nagios-client/check_ssh.sh":
+		ensure	=> present,
+		owner	=> "root",
+		group	=> "root",
+		mode	=> 0500,
+		source	=> "puppet:///modules/nagios/check_ssh.sh",
 		require	=> File["/var/local/brisskit/nagios-client"],
 	}
 

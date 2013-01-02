@@ -22,4 +22,9 @@ class nagios::commands {
 		require	=> File["/var/local/brisskit/nagios-server"],
 	}
 
+	package { "curl":
+		ensure	=> installed,
+		require	=> File["/var/local/brisskit/nagios-server/notify_by_pushover.sh"],
+	}
+
 }
