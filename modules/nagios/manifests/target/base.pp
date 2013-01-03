@@ -181,7 +181,7 @@ class nagios::target::base {
 	@@nagios_service { "check-zombie-procs-${fqdn}":
 		use		=> check-zombie-procs,
 		host_name	=> $fqdn,
-		target		=> "/etc/nagios3/conf.d/service_$[fqdn}.cfg",
+		target		=> "/etc/nagios3/conf.d/service_${fqdn}.cfg",
 		require		=> Cron["check_zombie_procs"],
 	}
 
@@ -208,7 +208,7 @@ class nagios::target::base {
 	@@nagios_service { "check-total-procs-${fqdn}":
 		use	     => check-total-procs,
 		host_name       => $fqdn,
-		target	  => "/etc/nagios3/conf.d/service_$[fqdn}.cfg",
+		target	  => "/etc/nagios3/conf.d/service_${fqdn}.cfg",
 		require	 => Cron["check_total_procs"],
 	}
 
@@ -235,7 +235,7 @@ class nagios::target::base {
 	@@nagios_service { "check-dns-${fqdn}":
 		use		=> check-dns,
 		host_name	=> $fqdn,
-		target		=> "/etc/nagios3/conf.d/service_$[fqdn}.cfg",
+		target		=> "/etc/nagios3/conf.d/service_${fqdn}.cfg",
 		require		=> Cron["check_dns"],
 	}
 
