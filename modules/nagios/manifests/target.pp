@@ -29,11 +29,37 @@ class nagios::target {
 		require => Package["nagios-plugins"],
 	}
 
+	#Lets figure out the vApp name
+	
+	$parts = split("${fqdn}", '-')
+	$vapp_name = $parts[0]
+
 	@@nagios_host { $fqdn:
+		ensure  		=> present,
+		alias   		=> $hostname,
+		address 		=> $ipaddress,
+		hostgroups		=> $vapp_name,
+		use     		=> "generic-host",
+		active_checks_enabled	=> 0,
+		check_freshness		=> 1,
+		freshness_threshold	=> 330,
+		check_command		=> "no-report!2!No report in 5 minutes",
+		target  		=> "/etc/nagios3/conf.d/host_${fqdn}.cfg",
+	}
+
+	cron { "check_host":
+		command => "/var/local/brisskit/nagios-client/check_host.sh > /dev/null 2>&1",
+		user    => "root",
+		minute  => "*/5",
+		require => File["/var/local/brisskit/nagios-client/check_host.sh"],
+	}
+
+	file { "/var/local/brisskit/nagios-client/check_host.sh":
 		ensure  => present,
-		alias   => $hostname,
-		address => $ipaddress,
-		use     => "generic-host",
-		target  => "/etc/nagios3/conf.d/host_${fqdn}.cfg",
+		owner   => "root",
+		group   => "root",
+		mode    => 0500,
+		source  => "puppet:///modules/nagios/check_host.sh",
+		require => File["/var/local/brisskit/nagios-client"],
 	}
 }
