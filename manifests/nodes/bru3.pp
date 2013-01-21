@@ -91,6 +91,14 @@ node 'bru3-openesb.brisskit.le.ac.uk' {
 }
 
 
+#openesb
+node 'bru3-openesbx.brisskit.le.ac.uk' {
+        include base_customer
+        realize( Users::Virtual::Ssh_user["si84"] )
+}
+
+
+
 #pound
 node 'bru3-pound.brisskit.le.ac.uk' {
         include base_customer
