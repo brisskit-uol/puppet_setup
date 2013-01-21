@@ -156,18 +156,36 @@ ListenHTTP
 
 	######################################
 	#caTissue. Note that this pushes :80 to :8080
-	Service
-		URL "^/catissuecore$|^/catissuecore/+.*"
-		Redirect "https://<%= @vapp_name %>.brisskit.le.ac.uk/catissuecore/"	
-	End
+#	Service
+#		URL "^/catissuecore$|^/catissuecore/+.*"
+#		Redirect "https://<%= @vapp_name %>.brisskit.le.ac.uk/catissuecore/"	
+#	End
 
+        #caTissue. Note that this pushes :80 to :8080
+        Service
+                URL "^/catissuecore$|^/catissuecore/+.*"
+                BackEnd
+                        Address 192.168.2.103
+                        Port 8080
+                End
+        End
+
+        Service
+                URL "^/civi.catissue.ws*"
+                BackEnd
+                        Address 192.168.2.103
+                        Port 8080
+                End
+        End
+	
 	Service
-		URL "^/civi.catissue.ws*"
-		BackEnd
-			Address 192.168.2.103
-			Port 8080
-		End
-	End
+                URL "^/catissueplusWS*"
+                BackEnd
+                        Address 192.168.2.103
+                        Port 8080
+                End
+        End
+
 	######################################
 
 	######################################

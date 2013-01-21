@@ -15,7 +15,7 @@ node 'bru3-camp.brisskit.le.ac.uk' {
 
 	package {'mysql-client': ensure => present}
 
-	include nagios::target	# Create nagios cfg file for host
+	include nagios::target::camp	# Create nagios cfg file for host
 
 }
 
@@ -36,7 +36,7 @@ node 'bru3-catissue.brisskit.le.ac.uk' {
 
 
 #catissue2
-node 'bru3-catissue2.brisskit.le.ac.uk' {
+node 'bru3-catissue3.brisskit.le.ac.uk' {
         include base_customer
         include postfix
         include users::customer_catissue
@@ -95,6 +95,13 @@ node 'bru3-openesb.brisskit.le.ac.uk' {
 node 'bru3-pound.brisskit.le.ac.uk' {
         include base_customer
         include pound
+}
+
+#mysql
+node 'bru3-mysql.brisskit.le.ac.uk' {
+        include base_customer
+        include users::customer_mysql
+	include nagios::target::mysql
 }
 
 #any other ones that have been missed out

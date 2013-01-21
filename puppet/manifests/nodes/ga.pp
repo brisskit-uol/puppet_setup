@@ -113,5 +113,6 @@ node 'ga-nagios.brisskit.le.ac.uk' {
 	realize( Users::Virtual::Ssh_user["russ"] )
 	include nagios
 	include nagios::target
+	include nagios::target::base
 }
 

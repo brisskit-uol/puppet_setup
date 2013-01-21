@@ -10,7 +10,7 @@ class users::virtual
                 	shell      => "/bin/bash",
                 	home       => "/home/$name",
                 	managehome => true,
-			groups     => ['admin'],
+			groups     => ['sudo'],
 			password   => "$password",
 		}
 	}

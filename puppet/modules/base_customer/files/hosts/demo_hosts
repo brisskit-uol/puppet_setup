@@ -15,7 +15,7 @@
 192.168.2.103   demo-catissue.brisskit.le.ac.uk demo-catissue catissue
 192.168.2.104   demo-i2b2.brisskit.le.ac.uk demo-i2b2 i2b2
 192.168.2.105   demo-civicrm.brisskit.le.ac.uk demo-civicrm civicrm
-192.168.2.106   demo-mysql.brisskit.le.ac.uk demo-mysql mysql
+192.168.2.150   demo-mysql2.brisskit.le.ac.uk demo-mysql mysql mysql2 demo-mysql2
 192.168.2.107   demo-sqlserver.brisskit.le.ac.uk demo-sqlserver sqlserver
 192.168.2.108   demo-onyx.brisskit.le.ac.uk demo-onyx onyx
 
