@@ -90,6 +90,7 @@ class nagios {
 		"contacts.cfg",
 		"timeperiods.cfg",
 		"hostgroups.cfg",
+		"servicegroups.cfg",
 		"services.cfg", ]: }
 
 	file { "/etc/nagios3/conf.d":
@@ -121,6 +122,11 @@ class nagios {
 
 	file { "/var/lib/nagios3/spool/checkresults":
 		mode	=> 0770,
+		require	=> Package["nagios3"],
+	}
+
+	file { "/var/lib/nagios3/rw":
+		mode	=> 0710,
 		require	=> Package["nagios3"],
 	}
 

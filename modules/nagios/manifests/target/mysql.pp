@@ -7,7 +7,7 @@ class nagios::target::mysql {
 		host_name	=> $fqdn,
 		target		=> "/etc/nagios3/conf.d/service_${fqdn}.cfg",
 		require		=> Cron["check_mysql_query"],	
-}
+	}
 
 	cron { "check_mysql_query":
 		command => "/var/local/brisskit/nagios-client/check_mysql_query.sh > /dev/null 2>&1",

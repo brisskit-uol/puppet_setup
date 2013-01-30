@@ -1,7 +1,7 @@
 #!/bin/bash
 
 host=$(/bin/hostname --fqdn)
-check=$(/usr/lib/nagios/plugins/check_procs -s Z -w 1 -c 5)
+check=$(/usr/lib/nagios/plugins/check_procs -s Z -w 5 -c 10)
 rc=$?
 service_name="Zombie Processes"
 token="token1234"

@@ -31,14 +31,17 @@ class nagios::target {
 
 	#Lets figure out the vApp name
 	
-	$parts = split("${fqdn}", '-')
+	$parts = split("${fqdn}", '[-.]')
 	$vapp_name = $parts[0]
+	$vm_role = $parts[1]
+	$nagios_hostgroups = "${vapp_name}, ${vm_role}"
 
 	@@nagios_host { $fqdn:
 		ensure  		=> present,
 		alias   		=> $hostname,
 		address 		=> $ipaddress,
-		hostgroups		=> $vapp_name,
+		#hostgroups		=> $vapp_name,
+		hostgroups		=> $nagios_hostgroups,
 		use     		=> "generic-host",
 		active_checks_enabled	=> 0,
 		check_freshness		=> 1,

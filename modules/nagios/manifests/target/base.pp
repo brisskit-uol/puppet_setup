@@ -9,6 +9,7 @@ class nagios::target::base {
 	@@nagios_service { "check-disk-space-${fqdn}":
 		use		=> "check-disk-space",
 		host_name	=> $fqdn,
+		servicegroups	=> "check-disk-space",
 		target		=> "/etc/nagios3/conf.d/service_${fqdn}.cfg",
 		require		=> Cron["check_disk"],
 	}
@@ -36,6 +37,7 @@ class nagios::target::base {
 	@@nagios_service { "check-current-load-${fqdn}":
 		use		=> check-current-load,
 		host_name	=> $fqdn,
+		servicegroups	=> "check-current-load",
 		target		=> "/etc/nagios3/conf.d/service_${fqdn}.cfg",
 		require		=> Cron["check_load"],
 	}
@@ -63,6 +65,7 @@ class nagios::target::base {
 	@@nagios_service { "check-ssh-${fqdn}":
 		use		=> check-ssh,
 		host_name	=> $fqdn,
+		servicegroups	=> "check-ssh",
 		target		=> "/etc/nagios3/conf.d/service_${fqdn}.cfg",
 		require		=> Cron["check_ssh"],
 	}
@@ -91,6 +94,7 @@ class nagios::target::base {
 	@@nagios_service { "check-mem-${fqdn}":
 		use		=> check-mem,
 		host_name	=> $fqdn,
+		servicegroups	=> "check-mem",
 		target		=> "/etc/nagios3/conf.d/service_${fqdn}.cfg",
 		require		=> Cron["check_mem"],
 	}
@@ -127,6 +131,7 @@ class nagios::target::base {
 	@@nagios_service { "check-current-users-${fqdn}":
 		use		=> check-current-users,
 		host_name	=> $fqdn,
+		servicegroups	=> "check-current-users",
 		target		=> "/etc/nagios3/conf.d/service_${fqdn}.cfg",
 		require		=> Cron["check_users"],
 	}
@@ -154,6 +159,7 @@ class nagios::target::base {
 	@@nagios_service { "check-ntp-time-${fqdn}":
 		use		=> check-ntp-time,
 		host_name	=> $fqdn,
+		servicegroups	=> "check-ntp-time",
 		target		=> "/etc/nagios3/conf.d/service_${fqdn}.cfg",
 		require		=> Cron["check_ntp"],
 	}
@@ -181,6 +187,7 @@ class nagios::target::base {
 	@@nagios_service { "check-zombie-procs-${fqdn}":
 		use		=> check-zombie-procs,
 		host_name	=> $fqdn,
+		servicegroups	=> "check-zombie-procs",
 		target		=> "/etc/nagios3/conf.d/service_${fqdn}.cfg",
 		require		=> Cron["check_zombie_procs"],
 	}
@@ -206,10 +213,11 @@ class nagios::target::base {
 	#################################
 
 	@@nagios_service { "check-total-procs-${fqdn}":
-		use	     => check-total-procs,
-		host_name       => $fqdn,
-		target	  => "/etc/nagios3/conf.d/service_${fqdn}.cfg",
-		require	 => Cron["check_total_procs"],
+		use		=> check-total-procs,
+		host_name 	=> $fqdn,
+		servicegroups	=> "check-total-procs",
+		target		=> "/etc/nagios3/conf.d/service_${fqdn}.cfg",
+		require		=> Cron["check_total_procs"],
 	}
 
 	cron { "check_total_procs":
@@ -235,6 +243,7 @@ class nagios::target::base {
 	@@nagios_service { "check-dns-${fqdn}":
 		use		=> check-dns,
 		host_name	=> $fqdn,
+		servicegroups	=> "check-dns",
 		target		=> "/etc/nagios3/conf.d/service_${fqdn}.cfg",
 		require		=> Cron["check_dns"],
 	}
@@ -253,6 +262,43 @@ class nagios::target::base {
 		mode	=> 0500,
 		source	=> "puppet:///modules/nagios/check_dns.sh",
 		require	=> File["/var/local/brisskit/nagios-client"],
+	}
+
+	#################
+	# Check Puppet	#
+	#################
+
+	@@nagios_service { "check-puppet-${fqdn}":
+		use             => check-puppet,
+		host_name       => $fqdn,
+		servicegroups	=> "check-puppet",
+		target          => "/etc/nagios3/conf.d/service_${fqdn}.cfg",
+		require         => Cron["check_puppet"],
+	}
+
+	cron { "check_puppet":
+		command => "/var/local/brisskit/nagios-client/check_puppet.sh > /dev/null 2>&1",
+		user    => "root",
+		minute  => "*/5",
+		require => File["/var/local/brisskit/nagios-client/check_puppet.sh"],
+	}
+
+	file { "/var/local/brisskit/nagios-client/check_puppet.sh":
+		ensure  => present,
+		owner   => "root",
+		group   => "root",
+		mode    => 0500,
+		source  => "puppet:///modules/nagios/check_puppet.sh",
+		require => [ File["/var/local/brisskit/nagios-client"], File["/usr/lib/nagios/plugins/check_puppet"] ],
+	}
+
+	file { "/usr/lib/nagios/plugins/check_puppet":
+		ensure  => present,
+		owner   => "root",
+		group   => "root",
+		mode    => 0755,
+		source  => "puppet:///modules/nagios/check_puppet",
+		require => Package["nagios-plugins"],
 	}
 
 }
