@@ -11,6 +11,9 @@ node 'hack5-camp.brisskit.le.ac.uk' {
 	include users::customer_admin
 	include users::hack
 
+	realize( Users::Virtual::Ssh_user["tb143"] )
+
+
 	package {'mysql-client': ensure => present}
 }
 
@@ -43,6 +46,9 @@ node 'hack5-i2b2.brisskit.le.ac.uk' {
 	include users::customer_i2b2
         include users::integration
 	include users::hack
+
+	realize( Users::Virtual::Ssh_user["tb143"] )
+
 
 	ssh::auth::client { "integration": }
 	ssh::auth::server { "integration": }
