@@ -15,7 +15,7 @@ node 'bru3-camp.brisskit.le.ac.uk' {
 
 	package {'mysql-client': ensure => present}
 
-	include nagios::target::camp	# Create nagios cfg file for host
+	#include nagios::target::camp	# Create nagios cfg file for host
 
 }
 
@@ -87,14 +87,14 @@ node 'bru3-onyx.brisskit.le.ac.uk' {
 #openesb
 node 'bru3-openesb.brisskit.le.ac.uk' {
         include base_customer
-	realize( Users::Virtual::Ssh_user["si84"] )
+	include users::customer_openesb
 }
 
 
 #openesb
 node 'bru3-openesbx.brisskit.le.ac.uk' {
         include base_customer
-        realize( Users::Virtual::Ssh_user["si84"] )
+	include users::customer_openesb
 }
 
 
@@ -109,7 +109,7 @@ node 'bru3-pound.brisskit.le.ac.uk' {
 node 'bru3-mysql.brisskit.le.ac.uk' {
         include base_customer
         include users::customer_mysql
-	include nagios::target::mysql
+	#include nagios::target::mysql
 }
 
 #any other ones that have been missed out

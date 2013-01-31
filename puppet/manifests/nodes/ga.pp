@@ -110,9 +110,6 @@ node 'ga-maven2.brisskit.le.ac.uk' {
 #nagios server
 node 'ga-nagios.brisskit.le.ac.uk' {
         include base_ga
-	realize( Users::Virtual::Ssh_user["russ"] )
 	include nagios
-	include nagios::target
-	include nagios::target::base
 }
 

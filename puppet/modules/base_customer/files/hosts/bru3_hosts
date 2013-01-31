@@ -20,6 +20,7 @@
 192.168.2.108   bru3-onyx.brisskit.le.ac.uk bru3-onyx onyx
 192.168.2.109	bru3-openesb.brisskit.le.ac.uk bru3-openesb openesb
 192.168.2.110   bru3-openesbx.brisskit.le.ac.uk bru3-openesbx openesbx
+192.168.2.111   bru3-openesbw.brisskit.le.ac.uk bru3-openesbw openesbw
 
 #All the global admin hostnames
 192.168.0.100   ga-mail.brisskit.le.ac.uk ga-mail

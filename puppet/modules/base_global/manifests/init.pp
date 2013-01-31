@@ -6,6 +6,8 @@ class base_global {
 	include ntp
 	include puppet
 	include users::global
+	include nagios::target::base
+	include apt::get::update
 
 
 	#########################################################################

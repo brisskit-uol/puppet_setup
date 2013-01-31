@@ -24,6 +24,7 @@ class users::virtual
  	@ssh_user { "rp310":       password => '$6$Sh67MGFD$.DRno69E81ihD63JrWCJU9KIZricuXm2kTxSUJKZAlWkunZ3/4Mj0QCbI9obp/d4F.YUOfGjhDFWy7ZkHymO/0'}
 	@ssh_user { "russ":        password => '$6$Sh67MGFD$.DRno69E81ihD63JrWCJU9KIZricuXm2kTxSUJKZAlWkunZ3/4Mj0QCbI9obp/d4F.YUOfGjhDFWy7ZkHymO/0'}
 	@ssh_user { "si84":        password => '$6$33o7S6Zz$heDp.TsPOLgevc2/1Pq9.mLDUegbgmvYXJasLhqnlfsi368SjXh4xVMMVCJwOjOTyA8Prtxqh/d9mYUZWLhmw/'}
+	@ssh_user { "tb143":       password => '$6$7J2.vc8Y$oZBeOzpFwutE7aJNMY09Whf76JzvvRF314IPDYOd9e/7B4ygm5Z2llfVp0x2s41Ks2EsdwO0502wkjU1Ev.eL1'}
 
 
 
@@ -50,7 +51,7 @@ class users::virtual
 	@ssh_user { "karinem":     password => '$6$KhCog/O2$sYBsrvVSTa33E1Tt.KW8LihCf/8zcenTs7L5GAfmhLePJ6XeG5lGpyUFsibdRUu.4ViRP0D1WgL.Oipnq4FqY/', ensure => "absent"}
 	@ssh_user { "kirstyp":     password => '$6$KhCog/O2$sYBsrvVSTa33E1Tt.KW8LihCf/8zcenTs7L5GAfmhLePJ6XeG5lGpyUFsibdRUu.4ViRP0D1WgL.Oipnq4FqY/', ensure => "absent"}
 	@ssh_user { "mahendram":   password => '$6$KhCog/O2$sYBsrvVSTa33E1Tt.KW8LihCf/8zcenTs7L5GAfmhLePJ6XeG5lGpyUFsibdRUu.4ViRP0D1WgL.Oipnq4FqY/', ensure => "absent"}
-	@ssh_user { "malcolmn":    password => '$6$KhCog/O2$sYBsrvVSTa33E1Tt.KW8LihCf/8zcenTs7L5GAfmhLePJ6XeG5lGpyUFsibdRUu.4ViRP0D1WgL.Oipnq4FqY/'}
+	@ssh_user { "malcolmn":    password => '$6$KhCog/O2$sYBsrvVSTa33E1Tt.KW8LihCf/8zcenTs7L5GAfmhLePJ6XeG5lGpyUFsibdRUu.4ViRP0D1WgL.Oipnq4FqY/', ensure => "absent"}
 	@ssh_user { "malcolmt":    password => '$6$KhCog/O2$sYBsrvVSTa33E1Tt.KW8LihCf/8zcenTs7L5GAfmhLePJ6XeG5lGpyUFsibdRUu.4ViRP0D1WgL.Oipnq4FqY/', ensure => "absent"}
 	@ssh_user { "martinh":     password => '$6$KhCog/O2$sYBsrvVSTa33E1Tt.KW8LihCf/8zcenTs7L5GAfmhLePJ6XeG5lGpyUFsibdRUu.4ViRP0D1WgL.Oipnq4FqY/', ensure => "absent"}
 	@ssh_user { "neilb":       password => '$6$KhCog/O2$sYBsrvVSTa33E1Tt.KW8LihCf/8zcenTs7L5GAfmhLePJ6XeG5lGpyUFsibdRUu.4ViRP0D1WgL.Oipnq4FqY/', ensure => "absent"}
@@ -60,7 +61,7 @@ class users::virtual
 	@ssh_user { "robf":        password => '$6$KhCog/O2$sYBsrvVSTa33E1Tt.KW8LihCf/8zcenTs7L5GAfmhLePJ6XeG5lGpyUFsibdRUu.4ViRP0D1WgL.Oipnq4FqY/', ensure => "absent"}
 	@ssh_user { "russp":       password => '$6$KhCog/O2$sYBsrvVSTa33E1Tt.KW8LihCf/8zcenTs7L5GAfmhLePJ6XeG5lGpyUFsibdRUu.4ViRP0D1WgL.Oipnq4FqY/', ensure => "absent"}
 	@ssh_user { "simonh":      password => '$6$KhCog/O2$sYBsrvVSTa33E1Tt.KW8LihCf/8zcenTs7L5GAfmhLePJ6XeG5lGpyUFsibdRUu.4ViRP0D1WgL.Oipnq4FqY/', ensure => "absent"}
-	@ssh_user { "srikantha":   password => '$6$KhCog/O2$sYBsrvVSTa33E1Tt.KW8LihCf/8zcenTs7L5GAfmhLePJ6XeG5lGpyUFsibdRUu.4ViRP0D1WgL.Oipnq4FqY/'}
+	@ssh_user { "srikantha":   password => '$6$KhCog/O2$sYBsrvVSTa33E1Tt.KW8LihCf/8zcenTs7L5GAfmhLePJ6XeG5lGpyUFsibdRUu.4ViRP0D1WgL.Oipnq4FqY/', ensure => "absent"}
 	@ssh_user { "timb":        password => '$6$KhCog/O2$sYBsrvVSTa33E1Tt.KW8LihCf/8zcenTs7L5GAfmhLePJ6XeG5lGpyUFsibdRUu.4ViRP0D1WgL.Oipnq4FqY/', ensure => "absent"}
 	@ssh_user { "titoc":       password => '$6$KhCog/O2$sYBsrvVSTa33E1Tt.KW8LihCf/8zcenTs7L5GAfmhLePJ6XeG5lGpyUFsibdRUu.4ViRP0D1WgL.Oipnq4FqY/', ensure => "absent"}
 	@ssh_user { "veerlee":     password => '$6$KhCog/O2$sYBsrvVSTa33E1Tt.KW8LihCf/8zcenTs7L5GAfmhLePJ6XeG5lGpyUFsibdRUu.4ViRP0D1WgL.Oipnq4FqY/', ensure => "absent"}

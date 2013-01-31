@@ -4,7 +4,7 @@ class base_customer {
 
 	#Common settings
 	require base_global
-	require nagios::target::base
+	#require nagios::target::base
 
 	#Long list of potential users. These need to be realised elsewhere.
 	include users::virtual	
