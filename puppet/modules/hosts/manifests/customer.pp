@@ -4,7 +4,7 @@ class hosts::customer {
 
 	Host <<| tag == "ga" |>>
 
-	if $vm_role == "client" {
+	if $vm_role == "openesb" {
 
 		$openesb_hostname = "${vapp_name}.brisskit.le.ac.uk"
 
@@ -15,7 +15,6 @@ class hosts::customer {
 			ip		=> $ipaddress,
 			host_aliases	=> [ "${fqdn}", "${hostname}", "${vm_role}", ],
 			tag		=> "${vapp_name}",
-			#target		=> "/tmp/hosts_test2",
 		}
 
 	}
