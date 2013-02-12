@@ -48,7 +48,7 @@ class backup::base {
         #brisskit customer data backup file destination directory
         file { "/var/local/brisskit/backup/files/customer":
                 ensure  => directory,
-                recurse => true,
+                #recurse => true,
                 owner   => 'root',
                 group   => 'backup',
                 mode    => 0664,
@@ -58,7 +58,7 @@ class backup::base {
         #brisskit global admin backup file destination directory
         file { "/var/local/brisskit/backup/files/ga":
                 ensure  => directory,
-                recurse => true,
+                #recurse => true,
                 owner   => 'root',
                 group   => 'backup',
                 mode    => 0664,
@@ -78,7 +78,7 @@ class backup::base {
         #brisskit backup log directory
         file { "/var/local/brisskit/backup/log":
                 ensure  => directory,
-                recurse => true,
+                #recurse => true,
                 owner   => 'root',
                 group   => 'backup',
                 mode    => 0664,
