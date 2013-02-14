@@ -2,9 +2,6 @@ class nagios::target::camp {
 
 	require nagios::target
 
-	$parts = split("${fqdn}", '-')
-	$vapp_name = $parts[0]
-
 	@@nagios_service { "check-http-camp-${fqdn}":
 		use			=> "check-http-active",
 		host_name		=> $fqdn,
