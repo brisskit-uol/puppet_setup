@@ -2,9 +2,6 @@ class nagios::target::civicrm {
 
 	require nagios::target
 
-	$parts = split("${fqdn}", '-')
-	$vapp_name = $parts[0]
-
 	@@nagios_service { "check-http-civicrm-${fqdn}":
 		use			=> "check-http-active",
 		host_name		=> $fqdn,
