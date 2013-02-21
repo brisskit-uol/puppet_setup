@@ -1,0 +1,11 @@
+# This file is managed by puppet. Do not edit it as
+# changes will be deleted on the next puppet run
+
+<% if domainname.kind_of?(String) %>domain <%= domainname %>
+<% end -%>
+<% if searchpath.kind_of?(Array) %>search <%= searchpath.join(" ") %>
+<% end -%>
+<% if searchpath.kind_of?(String) %>search <%= searchpath %>
+<% end -%>
+<% nameservers.each do |ns| %>nameserver <%= ns %>
+<% end -%>
