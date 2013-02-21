@@ -8,6 +8,7 @@ class base_global {
 	include users::global
 	include nagios::target::base
 	include apt::get::update
+	include resolver::global
 
 
 	#########################################################################
