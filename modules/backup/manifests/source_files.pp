@@ -100,6 +100,17 @@ class backup::source_files {
                                 require => File["/var/local/brisskit/backup/source"],
                         }
 
+                        #maven_master.sh script
+                        file { "/var/local/brisskit/backup/source/maven_master.sh":
+                                ensure  => file,
+                                owner   => "root",
+                                group   => "backup",
+                                mode    => '650',
+                                source  => 'puppet:///modules/backup/ga/maven_master.sh',
+                                require => File["/var/local/brisskit/backup/source"],
+                        }
+
+
                         #mediawiki_master.sh script
                         file { "/var/local/brisskit/backup/source/mediawiki_master.sh":
                                 ensure  => file,
