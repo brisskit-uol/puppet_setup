@@ -18,7 +18,7 @@
 192.168.2.106   hack5-mysql.brisskit.le.ac.uk hack5-mysql mysql
 192.168.2.107   hack5-sqlserver.brisskit.le.ac.uk hack5-sqlserver sqlserver
 192.168.2.108   hack5-onyx.brisskit.le.ac.uk hack5-onyx onyx
-192.168.2.110	hack5-openesbx.brisskit.le.ac.uk hack5-openesbx openesbx
+192.168.2.110	hack5.brisskit.le.ac.uk hack5-openesbx.brisskit.le.ac.uk hack5-openesbx openesbx
 
 #All the global admin hostnames
 192.168.0.100   ga-mail.brisskit.le.ac.uk ga-mail
