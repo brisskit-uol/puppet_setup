@@ -38,6 +38,9 @@ node ga-backup {
 	include backup::users::master_backup
 	ssh::auth::client { "master_backup": }
 
+	include nagios::target::backup
+
+	include hosts::ga
 
 	##############BACKUP SCHEDULES##################
         #Drupal master
@@ -55,6 +58,15 @@ node ga-backup {
                 hour    => 1,
                 minute  => 15
         }
+
+        #maven master
+        cron { run_puppet_copy_backup:
+                command => "/var/local/brisskit/backup/source/maven_master.sh",
+                user    => master_backup,
+                hour    => 0,
+                minute  => 30
+        }
+
 
         #Puppet master
         cron { run_puppet_copy_backup:
@@ -84,6 +96,7 @@ node ga-pound {
 #global ssh gateway
 node 'ga-gimp.brisskit.le.ac.uk' {
 	include base_ga
+	include motd
 }
 
 #private web server
@@ -91,6 +104,8 @@ node 'ga-private.brisskit.le.ac.uk' {
 	include base_ga
 	realize( Users::Virtual::Ssh_user["jl99"] )
 	realize( Users::Virtual::Ssh_user["si84"] )
+
+	include hosts::ga
 }
 
 
@@ -98,12 +113,21 @@ node 'ga-private.brisskit.le.ac.uk' {
 node 'ga-maven.brisskit.le.ac.uk' {
         include base_ga
         realize( Users::Virtual::Ssh_user["jl99"] )
+
+	include hosts::ga
 }
 
 #maven server
 node 'ga-maven2.brisskit.le.ac.uk' {
         include base_ga
         realize( Users::Virtual::Ssh_user["jl99"] )
+
+	#Backup stuff
+        include backup::base                                       #Set up file tree
+	include backup::users::ga_backup                           #Set up users
+        ssh::auth::server { "master_backup": user => "ga_backup" } #Copy master_backup pub key to pubweb_backup authorized_keys
+
+	include hosts::ga
 }
 
 
@@ -111,5 +135,6 @@ node 'ga-maven2.brisskit.le.ac.uk' {
 node 'ga-nagios.brisskit.le.ac.uk' {
         include base_ga
 	include nagios
+	include hosts::ga
 }
 

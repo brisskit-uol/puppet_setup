@@ -15,6 +15,8 @@ node 'hack5-camp.brisskit.le.ac.uk' {
 
 
 	package {'mysql-client': ensure => present}
+
+	include hosts::customer
 }
 
 #catissue
@@ -28,6 +30,8 @@ node 'hack5-catissue.brisskit.le.ac.uk' {
 
 	ssh::auth::client { "integration": }
 	ssh::auth::server { "integration": }
+
+        include hosts::customer
 }
 
 #civicrm
@@ -37,6 +41,8 @@ node 'hack5-civicrm.brisskit.le.ac.uk' {
 
 	include users::customer_civicrm
 	include users::hack
+
+        include hosts::customer
 }
 
 #i2b2
@@ -52,6 +58,8 @@ node 'hack5-i2b2.brisskit.le.ac.uk' {
 
 	ssh::auth::client { "integration": }
 	ssh::auth::server { "integration": }
+
+	include hosts::customer
 }
 
 
@@ -61,14 +69,28 @@ node 'hack5-onyx.brisskit.le.ac.uk' {
 
 	include users::customer_onyx
 	include users::hack
+
+        include hosts::customer
 }
 
 #openesb
-node 'hack5-openesb.brisskit.le.ac.uk' {
+node 'hack5-openesbx.brisskit.le.ac.uk' {
         include base_customer
 
-	realize( Users::Virtual::Ssh_user["si84"] )
-	include users::hack
+
+	#hosts file
+	#file { "/etc/hosts":
+	#	ensure => present,
+	#	owner  => 'root',
+	#	group  => 'root',
+	#	mode   => 0644,
+	#	source => "puppet:///modules/base_customer/hosts/hack5_hosts_openesb",
+	#}
+
+        include hosts::customer
+ 
+#	realize( Users::Virtual::Ssh_user["si84"] )
+#	include users::hack
 }
 
 #any other ones that have been missed out
@@ -77,5 +99,7 @@ node /^hack5-.*$/ {
 	realize( Users::Virtual::Ssh_user["si84"] )
 	realize( Users::Virtual::Ssh_user["jl99"] )
 	include users::hack
+
+        include hosts::customer
 }
 

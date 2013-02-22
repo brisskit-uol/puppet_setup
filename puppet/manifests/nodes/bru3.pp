@@ -15,7 +15,10 @@ node 'bru3-camp.brisskit.le.ac.uk' {
 
 	package {'mysql-client': ensure => present}
 
-	#include nagios::target::camp	# Create nagios cfg file for host
+	include nagios::target::camp	# Create nagios cfg file for host
+
+	#Lets make this the pound server too.
+	include pound
 
 }
 
@@ -32,6 +35,8 @@ node 'bru3-catissue.brisskit.le.ac.uk' {
         include backup::base                                     #Set up file tree
         include backup::users::vm_backup                         #Set up users
         ssh::auth::server { "vapp_backup": user => "vm_backup" } #Copy vapp_backup pub key to vm_backup authorized_keys
+
+	include nagios::target::catissue
 }
 
 
@@ -57,6 +62,8 @@ node 'bru3-civicrm.brisskit.le.ac.uk' {
 	include postfix
 	include users::customer_civicrm
 
+	include nagios::target::civicrm
+
 	#Backup stuff
         include backup::base                                     #Set up file tree
         include backup::users::vm_backup                         #Set up users
@@ -70,6 +77,8 @@ node 'bru3-i2b2.brisskit.le.ac.uk' {
         include users::integration
 	ssh::auth::client { "integration": }
 	ssh::auth::server { "integration": }
+
+	include nagios::target::i2b2
 }
 
 
@@ -82,6 +91,8 @@ node 'bru3-onyx.brisskit.le.ac.uk' {
         include backup::base                                     #Set up file tree
         include backup::users::vm_backup                         #Set up users
         ssh::auth::server { "vapp_backup": user => "vm_backup" } #Copy vapp_backup pub key to vm_backup authorized_keys
+
+	include nagios::target::onyx
 }
 
 #openesb
