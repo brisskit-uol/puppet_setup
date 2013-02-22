@@ -7,11 +7,11 @@ class base_ga {
 	include users::virtual
 
 	#hosts file
-	file { "/etc/hosts":
-		ensure => present,
-		owner  => 'root',
-		group  => 'root',
-		mode   => 0644,
-		source => "puppet:///modules/base_ga/ga_hosts",
-	}
+	#file { "/etc/hosts":
+	#	ensure => present,
+	#	owner  => 'root',
+	#	group  => 'root',
+	#	mode   => 0644,
+	#	source => "puppet:///modules/base_ga/ga_hosts",
+	#}
 }
