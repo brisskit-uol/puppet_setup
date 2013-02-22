@@ -1,0 +1,32 @@
+#!/bin/sh
+
+#Give a bit of useful info when sshing in. Sits in
+#/etc/update-motd.d/
+#Needs to be maintained by hand currently, but will
+#probably script in the future
+
+#Olly Butters
+#22/2/13
+
+echo ""
+echo "\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/"
+echo "BRISSKit SSH gateway, and general web host"
+echo "===vApps available:==="
+echo "Name      Users                              URL"
+echo "bru3      (jl99/ob30/rcf8/si84/tb143)  bru3.brisskit.le.ac.uk"
+echo "demo      (jl99/ob30/rcf8/si84)        demo.brisskit.le.ac.uk"
+echo "hack3,4,5                                    hack3.brisskit.le.ac.uk"
+echo "\"ssh bru3\" will take you to the bru3 vApp admin VM"
+echo "from there you can ssh to the other VMs in the vApp."
+echo "--------------------------------------"
+echo "===Stand alone VMs available:==="
+echo "pub-wiki-2   (ob30) Wiki"
+echo "pub-drupal-2 (ob30) Public drupal pages"
+echo "ga-backup    (ob30)"
+echo "ga-mail      (ob30)"
+echo "ga-puppet    (ob30)"
+echo "ga-pound     (ob30)"
+echo "ga-private   (jl99/ob30/si84/ss727)"
+echo "\"ssh ga-puppet\" will take you to the stand alone puppet VM." 
+echo "\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/"
+echo ""
