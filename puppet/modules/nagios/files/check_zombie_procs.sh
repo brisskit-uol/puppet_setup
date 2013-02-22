@@ -1,6 +1,6 @@
 #!/bin/bash
 
-host=$(/bin/hostname --fqdn)
+host=$(/usr/bin/facter fqdn)
 check=$(/usr/lib/nagios/plugins/check_procs -s Z -w 5 -c 10)
 rc=$?
 service_name="Zombie Processes"

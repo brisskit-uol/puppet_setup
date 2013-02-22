@@ -1,6 +1,6 @@
 #!/bin/bash
 
-host=$(/bin/hostname --fqdn)
+host=$(/usr/bin/facter fqdn)
 check=$(/usr/lib/nagios/plugins/check_mem -w 90 -c 95)
 rc=$?
 service_name="Memory Usage"

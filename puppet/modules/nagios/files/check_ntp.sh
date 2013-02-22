@@ -1,6 +1,6 @@
 #!/bin/bash
 
-host=$(/bin/hostname --fqdn)
+host=$(/usr/bin/facter fqdn)
 check=$(/usr/lib/nagios/plugins/check_ntp_time -H localhost -w 0.5 -c 1.0)
 rc=$?
 service_name="NTP"

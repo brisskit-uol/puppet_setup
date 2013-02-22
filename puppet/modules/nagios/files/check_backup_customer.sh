@@ -1,6 +1,6 @@
 #!/bin/bash
 
-host=$(/bin/hostname --fqdn)
+host=$(/usr/bin/facter fqdn)
 dirs=$(find "/var/local/brisskit/backup/files/customer" -mindepth 2 -type d | awk 'ORS=" "')
 check=$(/usr/lib/nagios/plugins/check_newest_file_age -d "$dirs")
 rc=$?

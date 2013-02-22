@@ -1,6 +1,6 @@
 #!/bin/bash
 
-host=$(/bin/hostname --fqdn)
+host=$(/usr/bin/facter fqdn)
 check=$(/usr/lib/nagios/plugins/check_users -w 5 -c 10)
 rc=$?
 service_name="Current Users"

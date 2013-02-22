@@ -1,6 +1,6 @@
 #!/bin/bash
 
-host=$(/bin/hostname --fqdn)
+host=$(/usr/bin/facter fqdn)
 check=$(/usr/lib/nagios/plugins/check_disk -w 20% -c 10% -e -A -i '.gvfs')
 rc=$?
 service_name="Disk Space"
