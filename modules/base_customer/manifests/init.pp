@@ -21,13 +21,13 @@ class base_customer {
 	#########################################################################
 
 	#hosts file
-	file { "/etc/hosts":
-		ensure => present,
-		owner  => 'root',
-		group  => 'root',
-		mode   => 0644,
-		source => "puppet:///modules/base_customer/hosts/${vapp_name}_hosts",
-	}
+	#file { "/etc/hosts":
+	#	ensure => present,
+	#	owner  => 'root',
+	#	group  => 'root',
+	#	mode   => 0644,
+	#	source => "puppet:///modules/base_customer/hosts/${vapp_name}_hosts",
+	#}
 
 	#settings file - just the inst prefix atm
         file { "/etc/brisskit/settings.cfg":
