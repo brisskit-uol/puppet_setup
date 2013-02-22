@@ -21,6 +21,7 @@ class users::virtual
 	#BRISSKit team
     	@ssh_user { "jl99":        password => '$6$sUDIQM9G$CmOlasR//teeG3vrJVKdlhYk425GtiZYG2oSATdOk6LRn2DBevYf3nM8a8VK68oCignwWz9rXMvae.pU2Kwds0'}
        	@ssh_user { "ob30":        password => '$6$pufwrR.L$0R9625P.e.Plqs4Dj8qMQ7BTf2Hzw5E.uYZQYXkZK.q.2K9oN.f1EddPOA2wMYD6fBhHW1v5GFsXwYhYvSD9B0'}
+        @ssh_user { "rf103":       password => '$6$UmIvs4Jk$2CeLndglEjVBy65SAQMjefuJxeWV/6qPzaFZjJP806oi4lJT69tXGf1AY8Z/PPw6/E/CJOUjEKlU0ghUNizcm/'}
  	@ssh_user { "rp310":       password => '$6$Sh67MGFD$.DRno69E81ihD63JrWCJU9KIZricuXm2kTxSUJKZAlWkunZ3/4Mj0QCbI9obp/d4F.YUOfGjhDFWy7ZkHymO/0'}
 	@ssh_user { "russ":        password => '$6$Sh67MGFD$.DRno69E81ihD63JrWCJU9KIZricuXm2kTxSUJKZAlWkunZ3/4Mj0QCbI9obp/d4F.YUOfGjhDFWy7ZkHymO/0'}
 	@ssh_user { "si84":        password => '$6$33o7S6Zz$heDp.TsPOLgevc2/1Pq9.mLDUegbgmvYXJasLhqnlfsi368SjXh4xVMMVCJwOjOTyA8Prtxqh/d9mYUZWLhmw/'}
