@@ -3,8 +3,8 @@
 class pound {
 
 	#Lets figure out the vApp name
-	$parts = split("${fqdn}", '-')
-	$vapp_name = $parts[0]
+#	$parts = split("${fqdn}", '-')
+#	$vapp_name = $parts[-2]
 
 	#Make sure it is installed
 	package { "pound": 

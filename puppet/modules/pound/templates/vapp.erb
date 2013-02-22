@@ -50,7 +50,7 @@ Client 300
 TimeOut 300
 
 ListenHTTPS
-        Address 192.168.2.100
+        Address 192.168.2.101
         Port 443
 
 	#This is the certificate for the whole vApp
@@ -67,10 +67,12 @@ ListenHTTPS
 	######################################
         #Admin portal
         Service
-                URL "^/admin$|^/admin/+.*"
+        #        URL "^/admin$|^/admin/+.*"
+	        URL "^/admin"
+
                 BackEnd
                         Address 192.168.2.101
-                        Port 80
+                        Port 81
                 End
         End
         ######################################
@@ -134,7 +136,7 @@ ListenHTTPS
                 URL "^/.*"
                 BackEnd
                         Address 192.168.2.101
-                        Port 80
+                        Port 81
                 End
         End
         ######################################
@@ -144,7 +146,7 @@ End
 ##Listen to port 80 traffic
 ######################################################################
 ListenHTTP
-	Address 192.168.2.100
+	Address 192.168.2.101
 	Port 80
 
 	######################################
@@ -152,6 +154,14 @@ ListenHTTP
 	Service
 		URL "^/admin$|^/admin/+.*"
 		Redirect "https://<%= @vapp_name %>.brisskit.le.ac.uk/admin/"
+
+
+#                BackEnd
+ #                       Address 192.168.2.101
+  #                      Port 81
+   #             End
+
+
 	End
 	######################################
 
@@ -237,7 +247,7 @@ End
 #Listen to port 8080 traffic
 #####################################################################
 ListenHTTP
-	Address 192.168.2.100
+	Address 192.168.2.101
 	Port	8080
 
 	######################################
