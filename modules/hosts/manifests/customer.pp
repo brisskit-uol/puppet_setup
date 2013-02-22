@@ -14,7 +14,7 @@ class hosts::customer {
 
 	case $vm_role {
 
-			"openesb": {
+			"openesbx": {
 
 			# Collect host entries that do not have the same IP
 			# addresses as the openesb server and are in the
