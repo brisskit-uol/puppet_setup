@@ -1,6 +1,6 @@
 #!/bin/bash
 
-host=$(/bin/hostname --fqdn)
+host=$(/usr/bin/facter fqdn)
 check=$(/usr/lib/nagios/plugins/check_load -r -w 5.0,4.0,3.0 -c 10.0,6.0,4.0)
 rc=$?
 service_name="Current Load"

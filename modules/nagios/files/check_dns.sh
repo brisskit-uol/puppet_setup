@@ -1,6 +1,6 @@
 #!/bin/bash
 
-host=$(/bin/hostname --fqdn)
+host=$(/usr/bin/facter fqdn)
 check=$(/usr/lib/nagios/plugins/check_dns -H www.brisskit.org -a 193.63.182.225)
 rc=$?
 service_name="DNS"

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-host=$(/bin/hostname --fqdn)
+host=$(/usr/bin/facter fqdn)
 mysql_user=$(/usr/local/bin/brisskit_db_param nagios user)
 mysql_pass=$(/usr/local/bin/brisskit_db_param nagios pass)
 check=$(/usr/lib/nagios/plugins/check_mysql_query -q "SELECT 1+2" -c 3:3 -u $mysql_user -p $mysql_pass)
