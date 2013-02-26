@@ -3,6 +3,7 @@
 class base_global {
 
 	#Other modules first
+	include sshd
 	include ntp
 	include puppet
 	include users::global
