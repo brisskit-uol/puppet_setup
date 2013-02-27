@@ -7,7 +7,7 @@ check=$(/usr/lib/nagios/plugins/check_mysql_query -q "SELECT 1+2" -c 3:3 -u $mys
 rc=$?
 service_name="MySQL"
 token="b9zwe6ecstcrcdfem1703l0szrtntmij"
-url=http://192.168.0.221/nrdp/
+url=http://ga-nagios/nrdp/
 
 
 echo -e "$host\t$service_name\t$rc\t$check" | /var/local/brisskit/nagios-client/send_nrdp.sh -u $url -t $token
