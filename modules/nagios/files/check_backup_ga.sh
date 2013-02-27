@@ -1,5 +1,10 @@
 #!/bin/bash
 
+sleepseconds=60
+sleeptime=$(/usr/bin/facter macaddress | tr -cd [:digit:] | awk '{printf "%d\n",$1}')
+let sleeptime%=$sleepseconds
+sleep $sleeptime
+
 host=$(/usr/bin/facter fqdn)
 dirs=$(find "/var/local/brisskit/backup/files/ga" -mindepth 1 -type d | awk 'ORS=" "')
 check=$(/usr/lib/nagios/plugins/check_newest_file_age -d "$dirs")

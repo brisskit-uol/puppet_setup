@@ -1,5 +1,10 @@
 #!/bin/bash
 
+sleepseconds=60
+sleeptime=$(/usr/bin/facter macaddress | tr -cd [:digit:] | awk '{printf "%d\n",$1}')
+let sleeptime%=$sleepseconds
+sleep $sleeptime
+
 host=$(/usr/bin/facter fqdn)
 mysql_user=$(/usr/local/bin/brisskit_db_param nagios user)
 mysql_pass=$(/usr/local/bin/brisskit_db_param nagios pass)

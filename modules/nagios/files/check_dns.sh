@@ -1,5 +1,10 @@
 #!/bin/bash
 
+sleepseconds=60
+sleeptime=$(/usr/bin/facter macaddress | tr -cd [:digit:] | awk '{printf "%d\n",$1}')
+let sleeptime%=$sleepseconds
+sleep $sleeptime
+
 host=$(/usr/bin/facter fqdn)
 check=$(/usr/lib/nagios/plugins/check_dns -H www.brisskit.org -a 193.63.182.225)
 rc=$?
