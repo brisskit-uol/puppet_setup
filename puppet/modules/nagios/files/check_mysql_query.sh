@@ -6,7 +6,7 @@ mysql_pass=$(/usr/local/bin/brisskit_db_param nagios pass)
 check=$(/usr/lib/nagios/plugins/check_mysql_query -q "SELECT 1+2" -c 3:3 -u $mysql_user -p $mysql_pass)
 rc=$?
 service_name="MySQL"
-token="token1234"
+token="b9zwe6ecstcrcdfem1703l0szrtntmij"
 url=http://192.168.0.221/nrdp/
 
 

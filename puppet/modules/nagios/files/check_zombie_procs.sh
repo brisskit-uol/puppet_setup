@@ -4,7 +4,7 @@ host=$(/usr/bin/facter fqdn)
 check=$(/usr/lib/nagios/plugins/check_procs -s Z -w 5 -c 10)
 rc=$?
 service_name="Zombie Processes"
-token="token1234"
+token="t4vaakuiuxb1g82am9aci26uwsv2ga80"
 url=http://192.168.0.221/nrdp/
 
 

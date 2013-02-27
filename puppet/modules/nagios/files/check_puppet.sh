@@ -4,7 +4,7 @@ host=$(/usr/bin/facter fqdn)
 check=$(/usr/lib/nagios/plugins/check_puppet -w 630 -c 1260)
 rc=$?
 service_name="Puppet"
-token="token1234"
+token="1jn7nhfwdsmgyx5iljqr7bccue3q6nen"
 url=http://192.168.0.221/nrdp/
 
 
