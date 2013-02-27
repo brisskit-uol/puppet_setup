@@ -1,5 +1,10 @@
 #!/bin/bash
 
+sleepseconds=60
+sleeptime=$(/usr/bin/facter macaddress | tr -cd [:digit:] | awk '{printf "%d\n",$1}')
+let sleeptime%=$sleepseconds
+sleep $sleeptime
+
 host=$(/usr/bin/facter fqdn)
 check=$(/usr/lib/nagios/plugins/check_disk -w 20% -c 10% -e -A -i '.gvfs')
 rc=$?

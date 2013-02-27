@@ -1,5 +1,10 @@
 #!/bin/bash
 
+sleepseconds=60
+sleeptime=$(/usr/bin/facter macaddress | tr -cd [:digit:] | awk '{printf "%d\n",$1}')
+let sleeptime%=$sleepseconds
+sleep $sleeptime
+
 host=$(/usr/bin/facter fqdn)
 check=$(/usr/lib/nagios/plugins/check_mem -w 90 -c 95)
 rc=$?
