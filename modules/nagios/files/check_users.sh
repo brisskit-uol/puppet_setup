@@ -4,7 +4,7 @@ host=$(/usr/bin/facter fqdn)
 check=$(/usr/lib/nagios/plugins/check_users -w 5 -c 10)
 rc=$?
 service_name="Current Users"
-token="token1234"
+token="c33h3y0h70771kq622nrhqdofl2fxoxe"
 url=http://192.168.0.221/nrdp/
 
 

@@ -5,7 +5,7 @@ dirs=$(find "/var/local/brisskit/backup/files/customer" -mindepth 2 -type d | aw
 check=$(/usr/lib/nagios/plugins/check_newest_file_age -d "$dirs")
 rc=$?
 service_name="Backup Customer"
-token="token1234"
+token="hg9npuu3i8gfpuo9i1gy9o357ehg7jyu"
 url=http://192.168.0.221/nrdp/
 
 

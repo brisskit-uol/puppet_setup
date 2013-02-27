@@ -4,7 +4,7 @@ host=$(/usr/bin/facter fqdn)
 check=$(/usr/lib/nagios/plugins/check_mem -w 90 -c 95)
 rc=$?
 service_name="Memory Usage"
-token="token1234"
+token="s2hd2ky8hxs19n1243yh7t1sngt0btzi"
 url=http://192.168.0.221/nrdp/
 
 

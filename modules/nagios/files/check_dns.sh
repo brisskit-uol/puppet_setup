@@ -4,7 +4,7 @@ host=$(/usr/bin/facter fqdn)
 check=$(/usr/lib/nagios/plugins/check_dns -H www.brisskit.org -a 193.63.182.225)
 rc=$?
 service_name="DNS"
-token="token1234"
+token="gpikt91gm08swuf7e4m8ospuqnfma4iq"
 url=http://192.168.0.221/nrdp/
 
 
