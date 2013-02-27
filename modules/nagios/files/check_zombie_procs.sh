@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sleepseconds=60
+sleepseconds=120
 sleeptime=$(/usr/bin/facter macaddress | tr -cd [:digit:] | awk '{printf "%d\n",$1}')
 let sleeptime%=$sleepseconds
 sleep $sleeptime
