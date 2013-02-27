@@ -6,7 +6,7 @@
 #puppet master. Be careful not to become self aware :)
 node ga-puppet {
 	include base_ga
-	
+
 	include ssh::auth::keymaster
 
         #Backup stuff
@@ -40,8 +40,6 @@ node ga-backup {
 
 	include nagios::target::backup
 
-	include hosts::ga
-
 	##############BACKUP SCHEDULES##################
         #Drupal master
         cron { run_drupal_copy_backup:
@@ -60,7 +58,7 @@ node ga-backup {
         }
 
         #maven master
-        cron { run_puppet_copy_backup:
+        cron { run_maven_copy_backup:
                 command => "/var/local/brisskit/backup/source/maven_master.sh",
                 user    => master_backup,
                 hour    => 0,
@@ -105,7 +103,6 @@ node 'ga-private.brisskit.le.ac.uk' {
 	realize( Users::Virtual::Ssh_user["jl99"] )
 	realize( Users::Virtual::Ssh_user["si84"] )
 
-	include hosts::ga
 }
 
 
@@ -114,7 +111,6 @@ node 'ga-maven.brisskit.le.ac.uk' {
         include base_ga
         realize( Users::Virtual::Ssh_user["jl99"] )
 
-	include hosts::ga
 }
 
 #maven server
@@ -127,7 +123,6 @@ node 'ga-maven2.brisskit.le.ac.uk' {
 	include backup::users::ga_backup                           #Set up users
         ssh::auth::server { "master_backup": user => "ga_backup" } #Copy master_backup pub key to pubweb_backup authorized_keys
 
-	include hosts::ga
 }
 
 
@@ -135,6 +130,5 @@ node 'ga-maven2.brisskit.le.ac.uk' {
 node 'ga-nagios.brisskit.le.ac.uk' {
         include base_ga
 	include nagios
-	include hosts::ga
 }
 
