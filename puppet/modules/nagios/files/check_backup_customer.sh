@@ -6,7 +6,7 @@ check=$(/usr/lib/nagios/plugins/check_newest_file_age -d "$dirs")
 rc=$?
 service_name="Backup Customer"
 token="hg9npuu3i8gfpuo9i1gy9o357ehg7jyu"
-url=http://192.168.0.221/nrdp/
+url=http://ga-nagios/nrdp/
 
 
 echo -e "$host\t$service_name\t$rc\t$check" | /var/local/brisskit/nagios-client/send_nrdp.sh -u $url -t $token

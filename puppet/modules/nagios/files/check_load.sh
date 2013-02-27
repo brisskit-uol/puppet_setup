@@ -5,7 +5,7 @@ check=$(/usr/lib/nagios/plugins/check_load -r -w 5.0,4.0,3.0 -c 10.0,6.0,4.0)
 rc=$?
 service_name="Current Load"
 token="ec5fxn9x5ehdwy0o92iq9eg23cj9a42b"
-url=http://192.168.0.221/nrdp/
+url=http://ga-nagios/nrdp/
 
 
 echo -e "$host\t$service_name\t$rc\t$check" | /var/local/brisskit/nagios-client/send_nrdp.sh -u $url -t $token
