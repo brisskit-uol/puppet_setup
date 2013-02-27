@@ -9,6 +9,9 @@ class base_customer {
 	#Long list of potential users. These need to be realised elsewhere.
 	include users::virtual	
 
+	# Manage hosts file
+	include hosts::customer
+
 
 	#Lets figure out the vApp name
 	$parts = split("${fqdn}", '-')

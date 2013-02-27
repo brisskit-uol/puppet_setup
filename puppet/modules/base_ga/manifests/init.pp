@@ -6,6 +6,9 @@ class base_ga {
 	#Long list of potential users. These need to be realised elsewhere.
 	include users::virtual
 
+	# Manage hosts file
+	include hosts::ga
+
 	#hosts file
 	#file { "/etc/hosts":
 	#	ensure => present,
