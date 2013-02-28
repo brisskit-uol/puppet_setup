@@ -41,7 +41,7 @@
 # SETTINGS
 CRIT=7200
 WARN=3600
-statefile=$(/usr/bin/puppet --configprint statedir)/last_run_summary.yaml
+statefile=$(/usr/bin/puppet config print statedir)/last_run_summary.yaml
 
 # FUNCTIONS
 result () {
@@ -101,7 +101,7 @@ done
 
 # check puppet daemon:
 # I only know the cmd lines for Debian and CentOS/RedHat:
-[ "$(ps axf|egrep "/usr/bin/ruby /usr/sbin/[p]uppetd|/usr/bin/ruby1.8 /usr/bin/[p]uppet agent")" ] || result 4
+[ "$(ps axf|egrep "/usr/bin/ruby /usr/sbin/[p]uppetd|/usr/bin/ruby1.8 /usr/bin/[p]uppet agent|/usr/bin/ruby /usr/bin/[p]uppet master|/usr/bin/ruby /usr/bin/[p]uppet agent")" ] || result 4
 
 # check when last run happened
 line="$(grep last_run: ${statefile})"
