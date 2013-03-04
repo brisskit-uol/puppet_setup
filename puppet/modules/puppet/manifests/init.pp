@@ -1,3 +1,6 @@
+#Manage the puppet agent on each VM. This is included in the first run stage so
+#it completely runs before any other modules are called. This is defined by
+#how it is included in the base_global class.
 class puppet {
 
 	#Lets check we have a sensible environment variable set first.

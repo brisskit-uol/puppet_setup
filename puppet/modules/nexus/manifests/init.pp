@@ -6,12 +6,17 @@ class nexus {
                 ensure => present,
         }
 
-        #Make the user
+        #Make the nexus user (nexus runs as this)
         user { "nexus":
                 ensure     => present,
                 shell      => "/bin/bash",
                 gid        => "nexus",
                 require    => Group["nexus"],
         }
+
+
+	#Ideally I want to add nexus users to the nexus group here,
+	#but I cant figure out how to do that.
+
 }
 
