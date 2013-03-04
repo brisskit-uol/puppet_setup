@@ -16,6 +16,7 @@ class puppet::check_environment {
 		default:
 		{
 			notify{"Bad environment set! I have ${environment}":}
+			fail('Bad environment variable set in puppet.conf')
 		}
 	}
 }
