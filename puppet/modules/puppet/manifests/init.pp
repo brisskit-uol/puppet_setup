@@ -1,5 +1,8 @@
 class puppet {
 
+	#Lets check we have a sensible environment variable set first.
+	require puppet::check_environment
+
 	#Main puppet software
 	service { "puppet":
 		ensure     => "running",
@@ -16,10 +19,10 @@ class puppet {
 		mode   => 0644,
 		source => "puppet:///modules/puppet/puppet.conf.${environment}",
 	}
+}
 
 
-#notify{"${environment}":}
-
+class puppet::check_environment {
 
 	#Need to double check we have a valid environment
 	case "${environment}"
@@ -29,7 +32,14 @@ class puppet {
 			notify{"Eduserv!":}
 		}
 
+		uhl:
+		{
+			notify{"UHL!":}
+		}
+
+		default:
+		{
+			notify{"Bad environment set! I have ${environment}";}
+		}
 	}
-
-
 }
