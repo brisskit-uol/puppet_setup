@@ -109,6 +109,7 @@ node 'ga-private.brisskit.le.ac.uk' {
 #maven server
 node 'ga-maven.brisskit.le.ac.uk' {
         include base_ga
+	include nexus
         realize( Users::Virtual::Ssh_user["jl99"] )
 
 }
@@ -117,6 +118,8 @@ node 'ga-maven.brisskit.le.ac.uk' {
 node 'ga-maven2.brisskit.le.ac.uk' {
         include base_ga
         realize( Users::Virtual::Ssh_user["jl99"] )
+
+	include nexus
 
 	#Backup stuff
         include backup::base                                       #Set up file tree
