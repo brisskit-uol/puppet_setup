@@ -12,6 +12,11 @@ class base_customer {
 	# Manage hosts file
 	include hosts::customer
 
+	#Make sure unzip is installed - maven distributes as .zip
+	package { "unzip":
+		ensure => installed
+	}
+
 
 	#Lets figure out the vApp name
 	$parts = split("${fqdn}", '-')
