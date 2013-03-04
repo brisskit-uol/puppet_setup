@@ -2,10 +2,12 @@
 #ie customer VMs, GA VMs and pubweb VMs
 class base_global {
 
+	class {puppet: stage => first}
+
 	#Other modules first
 	include sshd
 	include ntp
-	include puppet
+#	include puppet
 	include users::global
 	include nagios::target::base
 	include apt::get::update
