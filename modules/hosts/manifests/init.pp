@@ -18,7 +18,7 @@ class hosts {
 			@@host { $fqdn:
 				ensure		=> present,
 				ip		=> $ipaddress,
-				host_aliases	=> ["${vm_role}.brisskit.org","${hostname}","${vm_role}",],
+				host_aliases	=> ["maven.brisskit.org","${vm_role}.brisskit.org","${hostname}","${vm_role}",],
 				tag		=> "${vapp_name}",
 			}
 
