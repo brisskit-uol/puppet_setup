@@ -2,8 +2,30 @@ class resolver::global {
 
 	require resolver
 
-	resolv_conf { "global":
-		nameservers	=> ["8.8.8.8", "193.63.76.11"],
+	case $environment {
+
+		"uhl": {
+
+			resolv_conf { "global":
+				nameservers	=> ["10.147.126.165", "10.147.126.166", "10.156.249.165", "10.156.249.166", "10.160.15.165", "10.160.15.166",],
+			}
+
+		}
+
+		"eduserv": {
+
+			resolv_conf { "global":
+				nameservers	=> ["8.8.8.8", "193.63.76.11",],
+			}
+
+		}
+
+		default: {
+
+			resolv_conf { "global": }
+
+		}
+
 	}
 
 }
