@@ -10,6 +10,7 @@ class hosts::vapp_ipaddresses {
 		}
 	}
 
+        vapp_hosts { "bru1": vapp_ipaddress => "192.168.0.104" }
 	vapp_hosts { "bru3": vapp_ipaddress => "192.168.0.105" }
 	vapp_hosts { "demo": vapp_ipaddress => "192.168.0.107" }
 	vapp_hosts { "hack3": vapp_ipaddress => "192.168.0.118" }
