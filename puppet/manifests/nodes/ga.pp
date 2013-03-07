@@ -118,7 +118,8 @@ node 'ga-maven.brisskit.le.ac.uk' {
 node 'ga-maven2.brisskit.le.ac.uk' {
         include base_ga
         realize( Users::Virtual::Ssh_user["jl99"] )
-
+	realize( Users::Virtual::Ssh_user["si84"] )
+	
 	include nexus
 
 	#Backup stuff
