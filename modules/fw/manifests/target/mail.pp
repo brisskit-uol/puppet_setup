@@ -7,7 +7,7 @@ class fw::target::mail {
 		"eduserv": {
 
 			#################################
-			# Allow STMP from INTERNAL-GA	#
+			# Allow SMTP from INTERNAL-GA	#
 			#################################
 
 			firewall { "600 allow SMTP from INTERNAL-GA":
@@ -34,19 +34,28 @@ class fw::target::mail {
 
 		"uhl": {
 
-			# Requires network address information
+			# Requires multiple rules to cater for multiple
+			# CIDR blocks
 
 			#################################
 			# Allow SMTP from INTERNAL	#
 			#################################
 
-			#firewall { "600 allow SMTP from INTERNAL":
+			firewall { "600 allow SMTP from INTERNAL":
 
-				#source	=> "192.168.2.0/24",
-				#port	=> "25",
-				#action	=> "accept",
+				source	=> "10.228.174.176/28",
+				port	=> "25",
+				action	=> "accept",
 
-			#}
+			}
+
+			firewall { "600 allow SMTP from INTERNAL":
+
+				source	=> "10.228.174.192/28",
+				port	=> "25",
+				action	=> "accept",
+
+			}
 
 		}
 

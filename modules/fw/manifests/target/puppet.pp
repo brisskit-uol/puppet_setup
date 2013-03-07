@@ -46,19 +46,28 @@ class fw::target::puppet {
 
 		"uhl": {
 
-			# Requires network address information
+			# Requires multiple rules to cater for multiple
+			# CIDR blocks
 
 			#################################
-			# Allow SMTP from INTERNAL	#
+			# Allow puppet from INTERNAL	#
 			#################################
 
-			#firewall { "600 allow SMTP from INTERNAL":
+			firewall { "200 allow puppet from INTERNAL":
 
-				#source	=> "192.168.2.0/24",
-				#port	=> "25",
-				#action	=> "accept",
+				source	=> "10.228.174.176/28",
+				port	=> "8140",
+				action	=> "accept",
 
-			#}
+			}
+
+			firewall { "200 allow puppet from INTERNAL":
+
+				source	=> "10.228.174.192/28",
+				port	=> "8140",
+				action	=> "accept",
+
+			}
 
 		}
 
