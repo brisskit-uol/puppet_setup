@@ -8,7 +8,7 @@ class fw::target::puppet {
 
 	firewall { "500 allow 8080 from ANY":
 
-		port    => "80",
+		port    => "8080",
 		action  => "accept",
 
 	}
