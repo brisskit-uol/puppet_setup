@@ -3,13 +3,26 @@ class fw::target::onyx {
 	require fw::target::customer
 
 	#################################
-	# Allow www from reverse proxy	#
+	# Export Allow SSH from onyx	#
 	#################################
 
-	firewall { "500 allow www from pound":
+	@@firewall { "110 allow SSH from onyx":
 
-		source	=> "pound",
-		port	=> "80",
+		source	=> "${vapp_name}-onyx",
+		port	=> "22",
+		action	=> "accept",
+		tag	=> "${vapp_name}",
+
+	}
+
+	#################################
+	# Allow 8080 from reverse proxy	#
+	#################################
+
+	firewall { "500 allow 8080 from pound":
+
+		source	=> "${vapp_name}-pound",
+		port	=> "8080",
 		action	=> "accept",
 
 	}
