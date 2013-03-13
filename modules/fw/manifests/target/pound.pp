@@ -11,7 +11,33 @@ class fw::target::pound {
 		source	=> "${vapp_name}-pound",
 		port	=> "22",
 		action	=> "accept",
-		tag	=> "${vapp_name}",
+		tag	=> [ "${vapp_name}", "vappssh", ],
+
+	}
+
+	#################################
+	# Allow 8080 from reverse proxy	#
+	#################################
+
+	@@firewall { "500 allow www from pound":
+
+		source	=> "${vapp_name}-pound",
+		port	=> "80",
+		action	=> "accept",
+		tag	=> [ "${vapp_name}", "camp", "civicrm", "i2b2", ],
+
+	}
+
+	#################################
+	# Allow 8080 from reverse proxy	#
+	#################################
+
+	@@firewall { "500 allow 8080 from pound":
+
+		source	=> "${vapp_name}-pound",
+		port	=> "8080",
+		action	=> "accept",
+		tag	=> [ "${vapp_name}", "catissue", "i2b2", "onyx", ],
 
 	}
 

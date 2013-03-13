@@ -11,19 +11,20 @@ class fw::target::openesb {
 		source	=> "${vapp_name}-openesb",
 		port	=> "22",
 		action	=> "accept",
-		tag	=> "${vapp_name}",
+		tag	=> [ "${vapp_name}", "vappssh", ],
 
 	}
 
 	#################################
-	# Allow 9080 from civicrm	#
+	# Allow 8080 from openesb	#
 	#################################
 
-	firewall { "500 allow 9080 from civicrm":
+	@@firewall { "500 allow 8080 from openesb":
 
-		source	=> "${vapp_name}-civicrm",
-		port	=> "9080",
+		source	=> "${vapp_name}-openesb",
+		port	=> "8080",
 		action	=> "accept",
+		tag	=> [ "${vapp_name}", "catissue", ],
 
 	}
 
