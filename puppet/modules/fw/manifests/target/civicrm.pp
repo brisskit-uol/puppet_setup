@@ -6,9 +6,9 @@ class fw::target::civicrm {
 	# Export Allow SSH from civicrm	#
 	#################################
 
-	@@firewall { "110 allow SSH from civicrm":
+	@@firewall { "110 allow SSH from ${vm_role}":
 
-		source	=> "${vapp_name}-civicrm",
+		source	=> "${hostname}",
 		port	=> "22",
 		action	=> "accept",
 		tag	=> [ "${vapp_name}", "vappssh", ],
@@ -19,9 +19,9 @@ class fw::target::civicrm {
 	# Allow mysql from civicrm	#
 	#################################
 
-	@@firewall { "400 allow mysql from civicrm":
+	@@firewall { "400 allow mysql from ${vm_role}":
 
-		source	=> "${vapp_name}-civicrm",
+		source	=> "${hostname}",
 		port	=> "3306",
 		action	=> "accept",
 		tag	=> [ "${vapp_name}", "mysql", ],
@@ -32,9 +32,9 @@ class fw::target::civicrm {
 	# Allow 9080 from civicrm	#
 	#################################
 
-	@@firewall { "500 allow 9080 from civicrm":
+	@@firewall { "500 allow 9080 from ${vm_role}":
 
-		source	=> "${vapp_name}-civicrm",
+		source	=> "${hostname}",
 		port	=> "9080",
 		action	=> "accept",
 		tag	=> [ "${vapp_name}", "openesb", ],
