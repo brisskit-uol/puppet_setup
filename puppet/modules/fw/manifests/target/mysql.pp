@@ -3,12 +3,25 @@ class fw::target::mysql {
 	require fw::target::customer
 
 	#################################
+	# Export Allow SSH from mysql	#
+	#################################
+
+	@@firewall { "110 allow SSH from mysql":
+
+		source	=> "${vapp_name}-mysql",
+		port	=> "22",
+		action	=> "accept",
+		tag	=> "${vapp_name}",
+
+	}
+
+	#################################
 	# Allow mysql from catissue	#
 	#################################
 
 	firewall { "400 allow mysql from catissue":
 
-		source	=> "catissue",
+		source	=> "${vapp_name}-catissue",
 		port	=> "3306",
 		action	=> "accept",
 
@@ -20,7 +33,7 @@ class fw::target::mysql {
 
 	firewall { "400 allow mysql from civicrm":
 
-		source	=> "civicrm",
+		source	=> "${vapp_name}-civicrm",
 		port	=> "3306",
 		action	=> "accept",
 
@@ -32,7 +45,7 @@ class fw::target::mysql {
 
 	firewall { "400 allow mysql from onyx":
 
-		source	=> "onyx",
+		source	=> "${vapp_name}-onyx",
 		port	=> "3306",
 		action	=> "accept",
 
