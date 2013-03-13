@@ -7,7 +7,7 @@ sleep $sleeptime
 
 host=$(/usr/bin/facter fqdn)
 dirs=$(find "/var/local/brisskit/backup/files/ga" -mindepth 1 -maxdepth 1 -type d | awk 'ORS=" "')
-check=$(/usr/lib/nagios/plugins/check_newest_file_age -d "$dirs")
+check=$(/usr/lib/nagios/plugins/check_newest_file_age -w 30 -c 60 -d "$dirs")
 rc=$?
 service_name="Backup ga"
 token="5n60tyfjj690da00804b6zja0f6gdtkl"
