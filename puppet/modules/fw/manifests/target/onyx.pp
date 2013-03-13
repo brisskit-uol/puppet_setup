@@ -11,19 +11,20 @@ class fw::target::onyx {
 		source	=> "${vapp_name}-onyx",
 		port	=> "22",
 		action	=> "accept",
-		tag	=> "${vapp_name}",
+		tag	=> [ "${vapp_name}", "vappssh", ],
 
 	}
 
-	#################################
-	# Allow 8080 from reverse proxy	#
-	#################################
+	#########################
+	# Allow mysql from onyx	#
+	#########################
 
-	firewall { "500 allow 8080 from pound":
+	@@firewall { "400 allow mysql from onyx":
 
-		source	=> "${vapp_name}-pound",
-		port	=> "8080",
+		source	=> "${vapp_name}-onyx",
+		port	=> "3306",
 		action	=> "accept",
+		tag	=> [ "${vapp_name}", "mysql", ],
 
 	}
 

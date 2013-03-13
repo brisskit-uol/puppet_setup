@@ -11,31 +11,33 @@ class fw::target::civicrm {
 		source	=> "${vapp_name}-civicrm",
 		port	=> "22",
 		action	=> "accept",
-		tag	=> "${vapp_name}",
+		tag	=> [ "${vapp_name}", "vappssh", ],
 
 	}
 
 	#################################
-	# Allow www from reverse proxy	#
+	# Allow mysql from civicrm	#
 	#################################
 
-	firewall { "500 allow www from pound":
+	@@firewall { "400 allow mysql from civicrm":
 
-		source	=> "${vapp_name}-pound",
-		port	=> "80",
+		source	=> "${vapp_name}-civicrm",
+		port	=> "3306",
 		action	=> "accept",
+		tag	=> [ "${vapp_name}", "mysql", ],
 
 	}
 
-	#########################
-	# Allow www from i2b2	#
-	#########################
+	#################################
+	# Allow 9080 from civicrm	#
+	#################################
 
-	firewall { "500 allow www from i2b2":
+	@@firewall { "500 allow 9080 from civicrm":
 
-		source	=> "${vapp_name}-i2b2",
-		port	=> "80",
+		source	=> "${vapp_name}-civicrm",
+		port	=> "9080",
 		action	=> "accept",
+		tag	=> [ "${vapp_name}", "openesb", ],
 
 	}
 

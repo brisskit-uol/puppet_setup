@@ -11,31 +11,20 @@ class fw::target::catissue {
 		source	=> "${vapp_name}-catissue",
 		port	=> "22",
 		action	=> "accept",
-		tag	=> "${vapp_name}",
+		tag	=> [ "${vapp_name}", "vappssh", ],
 
 	}
 
 	#################################
-	# Allow 8080 from reverse proxy	#
+	# Allow mysql from catissue	#
 	#################################
 
-	firewall { "500 allow 8080 from pound":
+	@@firewall { "400 allow mysql from catissue":
 
-		source	=> "${vapp_name}-pound",
-		port	=> "8080",
+		source	=> "${vapp_name}-catissue",
+		port	=> "3306",
 		action	=> "accept",
-
-	}
-
-	#################################
-	# Allow 8080 from openesb	#
-	#################################
-
-	firewall { "500 allow 8080 from openesb":
-
-		source	=> "${vapp_name}-openesb",
-		port	=> "8080",
-		action	=> "accept",
+		tag	=> [ "${vapp_name}", "mysql", ],
 
 	}
 

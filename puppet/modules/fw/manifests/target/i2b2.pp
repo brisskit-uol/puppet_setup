@@ -11,31 +11,20 @@ class fw::target::i2b2 {
 		source	=> "${vapp_name}-i2b2",
 		port	=> "22",
 		action	=> "accept",
-		tag	=> "${vapp_name}",
+		tag	=> [ "${vapp_name}", "vappssh", ],
 
 	}
 
-	#################################
-	# Allow www from reverse proxy	#
-	#################################
+	#########################
+	# Allow www from i2b2	#
+	#########################
 
-	firewall { "500 allow www from pound":
+	@@firewall { "500 allow www from i2b2":
 
-		source	=> "${vapp_name}-pound",
+		source	=> "${vapp_name}-i2b2",
 		port	=> "80",
 		action	=> "accept",
-
-	}
-
-	#################################
-	# Allow 8080 from reverse proxy	#
-	#################################
-
-	firewall { "500 allow 8080 from pound":
-
-		source	=> "${vapp_name}-pound",
-		port	=> "8080",
-		action	=> "accept",
+		tag	=> [ "${vapp_name}", "civicrm", ],
 
 	}
 
