@@ -6,9 +6,9 @@ class fw::target::openesb {
 	# Export Allow SSH from openesb	#
 	#################################
 
-	@@firewall { "110 allow SSH from openesb":
+	@@firewall { "110 allow SSH from ${vm_role}":
 
-		source	=> "${vapp_name}-openesb",
+		source	=> "${hostname}",
 		port	=> "22",
 		action	=> "accept",
 		tag	=> [ "${vapp_name}", "vappssh", ],
@@ -19,9 +19,9 @@ class fw::target::openesb {
 	# Allow 8080 from openesb	#
 	#################################
 
-	@@firewall { "500 allow 8080 from openesb":
+	@@firewall { "500 allow 8080 from ${vm_role}":
 
-		source	=> "${vapp_name}-openesb",
+		source	=> "${hostname}",
 		port	=> "8080",
 		action	=> "accept",
 		tag	=> [ "${vapp_name}", "catissue", ],

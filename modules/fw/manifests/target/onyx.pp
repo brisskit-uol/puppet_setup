@@ -6,9 +6,9 @@ class fw::target::onyx {
 	# Export Allow SSH from onyx	#
 	#################################
 
-	@@firewall { "110 allow SSH from onyx":
+	@@firewall { "110 allow SSH from ${vm_role}":
 
-		source	=> "${vapp_name}-onyx",
+		source	=> "${hostname}",
 		port	=> "22",
 		action	=> "accept",
 		tag	=> [ "${vapp_name}", "vappssh", ],
@@ -19,9 +19,9 @@ class fw::target::onyx {
 	# Allow mysql from onyx	#
 	#########################
 
-	@@firewall { "400 allow mysql from onyx":
+	@@firewall { "400 allow mysql from ${vm_role}":
 
-		source	=> "${vapp_name}-onyx",
+		source	=> "${hostname}",
 		port	=> "3306",
 		action	=> "accept",
 		tag	=> [ "${vapp_name}", "mysql", ],

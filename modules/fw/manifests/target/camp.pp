@@ -12,9 +12,9 @@ class fw::target::camp {
 	# Export Allow SSH from camp	#
 	#################################
 
-	@@firewall { "110 allow SSH from camp":
+	@@firewall { "110 allow SSH from ${vm_role}":
 
-		source  => "${vapp_name}-camp",
+		source  => "${hostname}",
 		port    => "22",
 		action  => "accept",
 		tag	=> [ "${vapp_name}", "vappssh", ],

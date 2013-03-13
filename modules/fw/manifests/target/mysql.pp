@@ -6,9 +6,9 @@ class fw::target::mysql {
 	# Export Allow SSH from mysql	#
 	#################################
 
-	@@firewall { "110 allow SSH from mysql":
+	@@firewall { "110 allow SSH from ${vm_role}":
 
-		source	=> "${vapp_name}-mysql",
+		source	=> "${hostname}",
 		port	=> "22",
 		action	=> "accept",
 		tag	=> [ "${vapp_name}", "vappssh", ],
