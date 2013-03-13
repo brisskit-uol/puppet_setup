@@ -24,6 +24,8 @@ node ga-puppet {
                 hour    => 13,
                 minute  => 25
         }
+
+	include nagios::target::puppet
 }
 
 #mail server
