@@ -16,6 +16,9 @@ node 'hack5-camp.brisskit.le.ac.uk' {
 
 	package {'mysql-client': ensure => present}
 
+	class {fw: stage => second}
+	include fw::target::camp
+
 }
 
 #catissue
@@ -30,6 +33,9 @@ node 'hack5-catissue.brisskit.le.ac.uk' {
 	ssh::auth::client { "integration": }
 	ssh::auth::server { "integration": }
 
+	class {fw: stage => second}
+	include fw::target::catissue
+
 }
 
 #civicrm
@@ -39,6 +45,9 @@ node 'hack5-civicrm.brisskit.le.ac.uk' {
 
 	include users::customer_civicrm
 	include users::hack
+
+	class {fw: stage => second}
+	include fw::target::civicrm
 
 }
 
@@ -56,8 +65,19 @@ node 'hack5-i2b2.brisskit.le.ac.uk' {
 	ssh::auth::client { "integration": }
 	ssh::auth::server { "integration": }
 
+	class {fw: stage => second}
+	include fw::target::i2b2
+
 }
 
+#mysql
+node 'hack5-mysql.brisskit.le.ac.uk' {
+	include base_customer
+	include users::hack
+
+	class {fw: stage => second}
+	include fw::target::mysql
+}
 
 #onyx
 node 'hack5-onyx.brisskit.le.ac.uk' {
@@ -65,6 +85,9 @@ node 'hack5-onyx.brisskit.le.ac.uk' {
 
 	include users::customer_onyx
 	include users::hack
+
+	class {fw: stage => second}
+	include fw::target::onyx
 
 }
 
@@ -85,6 +108,18 @@ node 'hack5-openesbx.brisskit.le.ac.uk' {
  
 #	realize( Users::Virtual::Ssh_user["si84"] )
 #	include users::hack
+
+	class {fw: stage => second}
+	include fw::target::openesb
+}
+
+#pound
+node 'hack5-pound.brisskit.le.ac.uk' {
+	include base_customer
+	include users::hack
+
+	class {fw: stage => second}
+	include fw::target::pound
 }
 
 #any other ones that have been missed out
@@ -93,6 +128,9 @@ node /^hack5-.*$/ {
 	realize( Users::Virtual::Ssh_user["si84"] )
 	realize( Users::Virtual::Ssh_user["jl99"] )
 	include users::hack
+
+	class {fw: stage => second}
+	include fw::target::customer
 
 }
 
