@@ -24,7 +24,7 @@ class fw::target::civicrm {
 		source	=> "${ipaddress}",
 		port	=> "9080",
 		action	=> "accept",
-		tag	=> [ "${vapp_name}", "openesb", ],
+		tag	=> [ "${vapp_name}", "openesb", "openesbx", "pound", ],
 
 	}
 
