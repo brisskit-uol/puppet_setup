@@ -15,4 +15,26 @@ class fw::target::openesb {
 
 	}
 
+	#########################
+	# Allow 9080 from ANY	#
+	#########################
+
+	firewall { "510 allow 9080 from ANY":
+
+		port	=> "9080",
+		action	=> "accept",
+
+	}
+
+	#########################
+	# Allow 4848 from ANY	#
+	#########################
+
+	firewall { "510 allow 4848 fron ANY":
+
+		port	=> "4848",
+		action	=> "accept",
+
+	}
+
 }

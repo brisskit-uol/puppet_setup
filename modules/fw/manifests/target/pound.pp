@@ -28,19 +28,6 @@ class fw::target::pound {
 
 	}
 
-	#################################
-	# Allow 9080 from reverse proxy	#
-	#################################
-
-	@@firewall { "500 allow 9080 from ${vm_role}":
-
-		source	=> "${ipaddress}",
-		port	=> "9080",
-		action	=> "accept",
-		tag	=> [ "${vapp_name}", "openesb", "openesbx", ],
-
-	}
-
 	#########################
 	# Allow www from ANY	#
 	#########################
