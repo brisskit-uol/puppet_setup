@@ -3,25 +3,12 @@ class fw::target::pound {
 	require fw::target::customer
 
 	#################################
-	# Export Allow SSH from pound	#
-	#################################
-
-	@@firewall { "110 allow SSH from ${vm_role}":
-
-		source	=> "${hostname}",
-		port	=> "22",
-		action	=> "accept",
-		tag	=> [ "${vapp_name}", "vappssh", ],
-
-	}
-
-	#################################
 	# Allow 8080 from reverse proxy	#
 	#################################
 
 	@@firewall { "500 allow www from ${vm_role}":
 
-		source	=> "${hostname}",
+		source	=> "${ipaddress}",
 		port	=> "80",
 		action	=> "accept",
 		tag	=> [ "${vapp_name}", "camp", "civicrm", "i2b2", ],
@@ -34,7 +21,7 @@ class fw::target::pound {
 
 	@@firewall { "500 allow 8080 from ${vm_role}":
 
-		source	=> "${hostname}",
+		source	=> "${ipaddress}",
 		port	=> "8080",
 		action	=> "accept",
 		tag	=> [ "${vapp_name}", "catissue", "i2b2", "onyx", ],
