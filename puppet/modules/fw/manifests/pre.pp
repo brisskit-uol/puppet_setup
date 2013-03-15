@@ -31,4 +31,68 @@ class fw::pre {
 
 	}
 
+	firewall { "050 allow all from russ home":
+
+		proto	=> "all",
+		source	=> "86.31.28.83",
+		action	=> "accept",
+
+	}
+
+	firewall { "050 allow all from russ gh":
+
+		proto	=> "all",
+		source	=> "143.210.248.92",
+		action	=> "accept",
+
+	}
+
+	firewall { "050 allow all from olly home":
+
+		proto	=> "all",
+		source	=> "86.7.201.36",
+		action	=> "accept",
+
+	}
+
+	firewall { "050 allow all from olly work":
+
+		proto	=> "all",
+		source	=> "143.210.247.104",
+		action	=> "accept",
+
+	}
+
+	firewall { "050 allow all from saj home":
+
+		proto	=> "all",
+		source	=> "86.15.24.253",
+		action	=> "accept",
+
+	}
+
+	firewall { "050 allow all from saj work":
+
+		proto	=> "all",
+		source	=> "143.210.248.93",
+		action	=> "accept",
+
+	}
+
+	firewall { "050 allow all from jeff home":
+
+		proto	=> "all",
+		source	=> "84.92.35.138",
+		action	=> "accept",
+
+	}
+
+	firewall { "050 allow all from jeff work":
+
+		proto	=> "all",
+		source	=> "143.210.248.108",
+		action	=> "accept",
+
+	}
+
 }
