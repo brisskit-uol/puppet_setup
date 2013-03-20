@@ -1,0 +1,38 @@
+# This file is managed by puppet
+#
+# Class:       clamav::freshclam
+# Resource:    File["/etc/clamav/freshclam.conf"]
+# Source:      <%= scope.lookupvar("::environment") -%>/grumps-modules/clamav/templates/freshclam.conf.erb
+#
+# Author:      Joe McDonagh <jmcdonagh@thesilentpenguin.com>
+# Copyright:   The Silent Penguin LLC
+# License:     The Silent Penguin Properietary License
+#
+# Synopsis:    This is the config for the daemon that keeps ClamAV virus
+#              definitions up to date.
+#
+
+AllowSupplementaryGroups <%= allowsupplementarygroups %>
+Bytecode <%= bytecode %>
+Checks <%= checks %>
+CompressLocalDatabase <%= compresslocaldatabase %>
+ConnectTimeout <%= connecttimeout %>
+DNSDatabaseInfo <%= dnsdatabaseinfo %>
+DatabaseDirectory <%= databasedirectory %>
+DatabaseMirror <%= databasemirror %>
+DatabaseMirror <%= databasemirror %>
+DatabaseOwner <%= databaseowner %>
+Debug <%= clamdebug %>
+Foreground <%= foreground %>
+LogFacility <%= logfacility %>
+LogFileMaxSize <%= logfilemaxsize %>
+LogSyslog <%= logsyslog %>
+LogTime <%= logtime %>
+LogVerbose <%= logverbose %>
+MaxAttempts <%= maxattempts %>
+PidFile <%= pidfile %>
+ReceiveTimeout <%= receivetimeout %>
+ScriptedUpdates <%= scriptedupdates %>
+TestDatabases <%= testdatabases %>
+UpdateLogFile <%= updatelogfile %>
+

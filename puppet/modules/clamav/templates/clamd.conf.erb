@@ -1,0 +1,70 @@
+# This file is managed by puppet
+#
+# Class:       clamav
+# Resource:    File["/etc/clamav/clamd.conf"]
+# Source:      <%= scope.lookupvar("::environment") -%>/grumps-modules/clamav/templates/clamd.conf.erb
+#
+# Author:      Joe McDonagh <jmcdonagh@thesilentpenguin.com>
+# Copyright:   The Silent Penguin LLC
+# License:     The Silent Penguin Properietary License
+#
+# Synopsis:    This is the main ClamAV daemon config
+#
+
+AlgorithmicDetection <%= algorithmicdetection %>
+AllowSupplementaryGroups <%= allowsupplementarygroups %>
+ArchiveBlockEncrypted <%= archiveblockencrypted %>
+Bytecode <%= bytecode %>
+BytecodeSecurity <%= bytecodesecurity %>
+BytecodeTimeout <%= bytecodetimeout %>
+CommandReadTimeout <%= commandreadtimeout %>
+CrossFilesystems <%= crossfilesystems %>
+DatabaseDirectory <%= databasedirectory %>
+Debug <%= clamdebug %>
+DetectBrokenExecutables <%= detectbrokenexecutables %>
+DetectPUA <%= detectpua %>
+ExitOnOOM <%= exitonoom %>
+ExtendedDetectionInfo <%= extendeddetectioninfo %>
+FixStaleSocket <%= fixstalesocket %>
+FollowDirectorySymlinks <%= followdirectorysymlinks %>
+FollowFileSymlinks <%= followfilesymlinks %>
+Foreground <%= foreground %>
+HeuristicScanPrecedence <%= heuristicscanprecedence %>
+IdleTimeout <%= idletimeout %>
+LeaveTemporaryFiles <%= leavetemporaryfiles %>
+LocalSocket <%= localsocket %>
+LocalSocketGroup <%= localsocketgroup %>
+LocalSocketMode <%= localsocketmode %>
+LogClean <%= logclean %>
+LogFacility <%= logfacility %>
+LogFile <%= logfile %>
+LogFileMaxSize <%= logfilemaxsize %>
+LogFileUnlock <%= logfileunlock %>
+LogSyslog <%= logsyslog %>
+LogTime <%= logtime %>
+LogVerbose <%= logverbose %>
+MaxConnectionQueueLength <%= maxconnectionqueuelength %>
+MaxDirectoryRecursion <%= maxdirectoryrecursion %>
+MaxQueue <%= maxqueue %>
+MaxThreads <%= maxthreads %>
+OLE2BlockMacros <%= ole2blockmacros %>
+OfficialDatabaseOnly <%= officialdatabaseonly %>
+PhishingAlwaysBlockCloak <%= phishingalwaysblockcloak %>
+PhishingAlwaysBlockSSLMismatch <%= phishingalwaysblocksslmismatch %>
+PhishingScanURLs <%= phishingscanurls %>
+PhishingSignatures <%= phishingsignatures %>
+PidFile <%= pidfile %>
+ReadTimeout <%= readtimeout %>
+ScanArchive <%= scanarchive %>
+ScanELF <%= scanelf %>
+ScanHTML <%= scanhtml %>
+ScanMail <%= scanmail %>
+ScanOLE2 <%= scanole2 %>
+ScanPE <%= scanpe %>
+ScanPartialMessages <%= scanpartialmessages %>
+SelfCheck <%= selfcheck %>
+SendBufTimeout <%= sendbuftimeout %>
+StreamMaxLength <%= streammaxlength %>
+StructuredDataDetection <%= structureddatadetection %>
+User <%= user %>
+
