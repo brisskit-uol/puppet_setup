@@ -8,6 +8,8 @@ class roles::customer::catissue {
 	ssh::auth::client { "integration": }
 	ssh::auth::server { "integration": }
 
+	package {'mysql-client': ensure => present}
+
 	#################
 	# Backup	#
 	#################

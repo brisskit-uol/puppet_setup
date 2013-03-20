@@ -4,6 +4,8 @@ class roles::customer::onyx {
 
 	include users::customer_onyx
 
+	package {'mysql-client': ensure => present}
+
 	#################
 	# Backup	#
 	#################

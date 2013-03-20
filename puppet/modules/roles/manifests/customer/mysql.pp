@@ -4,6 +4,8 @@ class roles::customer::mysql {
 
 	include users::customer_mysql
 
+	package {'mysql-client': ensure => present}
+
 	#################
 	# Nagios	#
 	#################
