@@ -301,5 +301,44 @@ class nagios::target::base {
 		require => Package["nagios-plugins"],
 	}
 
+	#########################
+	# Check pending updates	#
+	#########################
+
+	require apt::check
+
+	@@nagios_service { "check-updates-${fqdn}":
+		use		=> check-updates,
+		host_name	=> $fqdn,
+		servicegroups	=> "check-updates",
+		target		=> "/etc/nagios3/conf.d/service_${fqdn}.cfg",
+		require		=> Cron["check_updates"],
+	}
+
+	cron { "check_updates":
+		command	=> "/var/local/brisskit/nagios-client/check_updates.sh > /dev/null 2>&1",
+		user	=> "root",
+		minute	=> "*/5",
+		require	=> File["/var/local/brisskit/nagios-client/check_updates.sh"],
+	}
+
+	file { "/var/local/brisskit/nagios-client/check_updates.sh":
+		ensure	=> present,
+		owner	=> "root",
+		group	=> "root",
+		mode	=> 0500,
+		source	=> "puppet:///modules/nagios/check_updates.sh",
+		require	=> [ File["/var/local/brisskit/nagios-client"], File["/usr/lib/nagios/plugins/check_updates"] ],
+	}
+
+	file { "/usr/lib/nagios/plugins/check_updates":
+		ensure	=> present,
+		owner	=> "root",
+		group	=> "root",
+		mode	=> 0755,
+		source	=> "puppet:///modules/nagios/check_updates",
+		require	=> Package["nagios-plugins"],
+	}
+
 }
 
