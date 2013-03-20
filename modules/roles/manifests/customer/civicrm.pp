@@ -5,6 +5,8 @@ class roles::customer::civicrm {
 	include postfix
 	include users::customer_civicrm
 
+	package {'mysql-client': ensure => present}
+
 	#################
 	# Backup	#
 	#################
