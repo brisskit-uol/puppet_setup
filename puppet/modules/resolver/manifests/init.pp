@@ -25,6 +25,8 @@ class resolver {
 	# noop
 }
 
+# Create resolv.conf file. Uses Google DNS servers if none are supplied
+
 define resolv_conf($domainname = undef, $searchpath = "${domain}", $nameservers = ['8.8.4.4', '8.8.8.8']) {
 	file { "/etc/resolv.conf":
 		owner   => root,
