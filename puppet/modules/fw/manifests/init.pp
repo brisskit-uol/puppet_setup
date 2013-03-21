@@ -20,6 +20,8 @@ class fw {
 		require => Class['fw::pre'],
 	}
 
+	# Includes puppet-firewall module class
+
 	class { firewall: }
 
 }

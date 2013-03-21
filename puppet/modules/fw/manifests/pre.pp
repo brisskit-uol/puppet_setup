@@ -1,5 +1,7 @@
 class fw::pre {
 
+	# Set default require to undefined to prevent dependency cycle
+
 	Firewall {
 
 		require => undef,
@@ -7,6 +9,7 @@ class fw::pre {
 	}
 
 	# Default firewall rules
+	# These will be applied *first* and to all nodes
 
 	firewall { '000 accept all icmp':
 
@@ -30,6 +33,10 @@ class fw::pre {
 		action  => 'accept',
 
 	}
+
+	#################################
+	# BRISSKit PCs Allow ANY	#
+	#################################
 
 	firewall { "050 allow all from russ home":
 
