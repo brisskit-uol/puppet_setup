@@ -1,5 +1,7 @@
 class nagios {
 
+	# Configure and maintains a Nagios server instance
+
 	include nagios::commands
 
 	package { "nagios3":
@@ -20,10 +22,14 @@ class nagios {
 		require		=> Package[nagios3],
 	}
 
+	# When called this verifies and reloads all configuration files
+
 	exec { "nagios-config-check":
 		command		=> "/usr/sbin/nagios3 -v /etc/nagios3/nagios.cfg && /usr/sbin/service nagios3 reload",
 		refreshonly	=> true,
 	}
+
+	# This file contains user details to access Nagios dashboard
 
 	file { "/etc/nagios3/htpasswd.users":
 		notify	=> Service["apache2"],
@@ -103,6 +109,10 @@ class nagios {
 		notify  => Exec["nagios-config-check"],
 	}
 
+	#################
+	# NRDP config	#
+	#################
+
 	file { "/var/local/brisskit/nrdp":
 		ensure	=> directory,
 		owner	=> 'root',
@@ -141,6 +151,8 @@ class nagios {
 		groups	=> "nagios",
 		notify	=> Service["apache2"],
 	}
+
+	# These two collectors pull host and service cfg files from PuppetDB
 
 	Nagios_host <<||>> {
 
