@@ -1,5 +1,8 @@
 class nagios::target {
 
+	# Makes nodes into a Nagios monitored target
+	# Includes host check
+
 	package { "nagios-plugins":
 		ensure	=> installed,
 	}
@@ -29,18 +32,15 @@ class nagios::target {
 		require => Package["nagios-plugins"],
 	}
 
-	#Lets figure out the vApp name
-	
-	$parts = split("${fqdn}", '[-.]')
-	$vapp_name = $parts[0]
-	$vm_role = $parts[1]
+	# Put vApp name and VM role into a variable to work around 
+	# Puppet nagios_host type limitation
+
 	$nagios_hostgroups = "${vapp_name}, ${vm_role}"
 
 	@@nagios_host { $fqdn:
 		ensure  		=> present,
 		alias   		=> $hostname,
 		address 		=> $ipaddress,
-		#hostgroups		=> $vapp_name,
 		hostgroups		=> $nagios_hostgroups,
 		use     		=> "generic-host",
 		active_checks_enabled	=> 0,
