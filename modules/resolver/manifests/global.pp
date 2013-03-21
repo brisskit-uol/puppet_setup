@@ -4,6 +4,8 @@ class resolver::global {
 
 	case $environment {
 
+		# Use UHL DNS servers as supplied by BRICCS
+
 		"uhl": {
 
 			resolv_conf { "global":
@@ -12,6 +14,8 @@ class resolver::global {
 
 		}
 
+		# Use Google and Eduserv DNS servers
+
 		"eduserv": {
 
 			resolv_conf { "global":
@@ -19,6 +23,8 @@ class resolver::global {
 			}
 
 		}
+
+		# Use pre-defined DNS servers
 
 		default: {
 
