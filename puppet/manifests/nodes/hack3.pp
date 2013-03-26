@@ -11,7 +11,6 @@ node 'hack3-camp.brisskit.le.ac.uk' {
 	include users::hack
 	package {'mysql-client': ensure => present}
 
-	class {fw: stage => second}
 	include fw::target::camp
 }
 
@@ -27,7 +26,6 @@ node 'hack3-catissue.brisskit.le.ac.uk' {
 	ssh::auth::client { "integration": }
 	ssh::auth::server { "integration": }
 
-	class {fw: stage => second}
 	include fw::target::catissue
 }
 
@@ -39,7 +37,6 @@ node 'hack3-civicrm.brisskit.le.ac.uk' {
 	include users::customer_civicrm
 	include users::hack
 
-	class {fw: stage => second}
 	include fw::target::civicrm
 }
 
@@ -54,7 +51,6 @@ node 'hack3-i2b2.brisskit.le.ac.uk' {
 	ssh::auth::client { "integration": }
 	ssh::auth::server { "integration": }
 
-	class {fw: stage => second}
 	include fw::target::i2b2
 }
 
@@ -66,7 +62,6 @@ node 'hack3-onyx.brisskit.le.ac.uk' {
 	include users::customer_onyx
 	include users::hack
 
-	class {fw: stage => second}
 	include fw::target::onyx
 }
 
@@ -77,7 +72,6 @@ node 'hack3-openesb.brisskit.le.ac.uk' {
 	realize( Users::Virtual::Ssh_user["si84"] )
 	include users::hack
 
-	class {fw: stage => second}
 	include fw::target::openesb
 }
 
@@ -87,7 +81,6 @@ node 'hack3-pound.brisskit.le.ac.uk' {
 
 	include users::hack
 
-	class {fw: stage => second}
 	include fw::target::pound
 }
 
@@ -96,7 +89,6 @@ node /^hack3-.*$/ {
 	include base_customer
 	include users::hack
 
-	class {fw: stage => second}
 	include fw::target::customer
 }
 

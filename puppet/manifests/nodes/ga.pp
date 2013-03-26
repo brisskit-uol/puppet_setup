@@ -136,5 +136,7 @@ node 'ga-maven2.brisskit.le.ac.uk' {
 node 'ga-nagios.brisskit.le.ac.uk' {
         include base_ga
 	include nagios
+
+	include fw::target::nagios
 }
 
