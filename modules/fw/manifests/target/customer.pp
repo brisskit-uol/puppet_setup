@@ -1,5 +1,7 @@
 class fw::target::customer {
 
+	require fw::target::base
+
 	#########################################
 	# Collect firewall rules from PuppetDB	#
 	#########################################
