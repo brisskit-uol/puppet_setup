@@ -7,24 +7,12 @@ class fw::target::mail {
 		"eduserv": {
 
 			#################################
-			# Allow SMTP from INTERNAL-GA	#
+			# Allow SMTP from INTERNAL	#
 			#################################
 
-			firewall { "605 allow SMTP from INTERNAL-GA":
+			firewall { "605 allow SMTP from INTERNAL":
 
 				source	=> "192.168.0.0/24",
-				port	=> "25",
-				action	=> "accept",
-
-			}
-
-			#########################################
-			# Allow SMTP from INTERNAL-CUSTOMER	#
-			#########################################
-
-			firewall { "605 allow SMTP from INTERNAL-CUSTOMER":
-
-				source	=> "192.168.2.0/24",
 				port	=> "25",
 				action	=> "accept",
 

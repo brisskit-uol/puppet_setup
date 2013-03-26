@@ -19,24 +19,12 @@ class fw::target::puppet {
 		"eduserv": {
 
 			#################################
-			# Allow puppet from INTERNAL-GA	#
+			# Allow puppet from INTERNAL	#
 			#################################
 
-			firewall { "205 allow puppet from INTERNAL-GA":
+			firewall { "205 allow puppet from INTERNAL":
 
 				source	=> "192.168.0.0/24",
-				port	=> "8140",
-				action	=> "accept",
-
-			}
-
-			#########################################
-			# Allow puppet from INTERNAL-CUSTOMER	#
-			#########################################
-
-			firewall { "205 allow puppet from INTERNAL-CUSTOMER":
-
-				source	=> "192.168.2.0/24",
 				port	=> "8140",
 				action	=> "accept",
 
