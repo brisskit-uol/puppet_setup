@@ -10,7 +10,7 @@ class fw::target::backup {
 			# Allow SSH from customer vApps	#
 			#################################
 
-			firewall { "110 allow SSH from INTERNAL":
+			firewall { "115 allow SSH from INTERNAL":
 
 				source	=> "192.168.2.0/24",
 				port	=> "22",
@@ -29,7 +29,7 @@ class fw::target::backup {
 			# Allow SSH from customer vApps	#
 			#################################
 
-			firewall { "110 allow SSH from INTERNAL":
+			firewall { "115 allow SSH from INTERNAL":
 
 				source	=> "10.228.174.176/28",
 				port	=> "22",
@@ -37,7 +37,7 @@ class fw::target::backup {
 
 			}
 
-			firewall { "110 allow SSH from INTERNAL":
+			firewall { "115 allow SSH from INTERNAL":
 
 				source	=> "10.228.174.192/28",
 				port	=> "22",

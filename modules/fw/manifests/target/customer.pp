@@ -12,7 +12,7 @@ class fw::target::customer {
 	# Export Allow SSH    #
 	#######################
 
-	@@firewall { "110 allow SSH from ${vm_role}":
+	@@firewall { "115 allow SSH from ${vm_role}":
 
 		source  => "${ipaddress}",
 		port    => "22",
