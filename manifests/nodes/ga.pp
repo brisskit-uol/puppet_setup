@@ -31,6 +31,8 @@ node ga-puppet {
 #mail server
 node 'ga-mail.brisskit.le.ac.uk' {
 	include base_ga
+
+	include fw::target::mail
 }
 
 #backup vm
@@ -41,6 +43,8 @@ node ga-backup {
 	ssh::auth::client { "master_backup": }
 
 	include nagios::target::backup
+
+	include fw::target::backup
 
 	##############BACKUP SCHEDULES##################
         #Drupal master
@@ -97,6 +101,8 @@ node ga-pound {
 node 'ga-gimp.brisskit.le.ac.uk' {
 	include base_ga
 	include motd
+
+	include fw::target::gimp
 }
 
 #private web server
