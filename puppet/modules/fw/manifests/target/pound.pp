@@ -6,7 +6,7 @@ class fw::target::pound {
 	# Allow 8080 from reverse proxy	#
 	#################################
 
-	@@firewall { "500 allow www from ${vm_role}":
+	@@firewall { "505 allow www from ${vm_role}":
 
 		source	=> "${ipaddress}",
 		port	=> "80",
@@ -19,7 +19,7 @@ class fw::target::pound {
 	# Allow 8080 from reverse proxy	#
 	#################################
 
-	@@firewall { "500 allow 8080 from ${vm_role}":
+	@@firewall { "505 allow 8080 from ${vm_role}":
 
 		source	=> "${ipaddress}",
 		port	=> "8080",
@@ -32,7 +32,7 @@ class fw::target::pound {
 	# Allow www from ANY	#
 	#########################
 
-	firewall { "510 allow www from ANY":
+	firewall { "515 allow www from ANY":
 
 		port	=> "80",
 		action	=> "accept",
@@ -43,7 +43,7 @@ class fw::target::pound {
 	# Allow 8080 from ANY	#
 	#########################
 
-	firewall { "510 allow 8080 from ANY":
+	firewall { "515 allow 8080 from ANY":
 
 		port	=> "8080",
 		action	=> "accept",
@@ -54,7 +54,7 @@ class fw::target::pound {
 	# Allow https from ANY	#
 	#########################
 
-	firewall { "510 allow https from ANY":
+	firewall { "515 allow https from ANY":
 
 		port	=> "443",
 		action	=> "accept",

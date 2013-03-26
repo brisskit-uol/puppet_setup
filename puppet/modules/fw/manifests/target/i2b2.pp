@@ -6,7 +6,7 @@ class fw::target::i2b2 {
 	# Allow www from i2b2	#
 	#########################
 
-	@@firewall { "500 allow www from ${vm_role}":
+	@@firewall { "505 allow www from ${vm_role}":
 
 		source	=> "${ipaddress}",
 		port	=> "80",

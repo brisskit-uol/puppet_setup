@@ -6,7 +6,7 @@ class fw::target::puppet {
 	# Allow 8080 from ANY   #       
 	#########################
 
-	firewall { "500 allow 8080 from ANY":
+	firewall { "505 allow 8080 from ANY":
 
 		port    => "8080",
 		action  => "accept",
@@ -22,7 +22,7 @@ class fw::target::puppet {
 			# Allow puppet from INTERNAL-GA	#
 			#################################
 
-			firewall { "200 allow puppet from INTERNAL-GA":
+			firewall { "205 allow puppet from INTERNAL-GA":
 
 				source	=> "192.168.0.0/24",
 				port	=> "8140",
@@ -34,7 +34,7 @@ class fw::target::puppet {
 			# Allow puppet from INTERNAL-CUSTOMER	#
 			#########################################
 
-			firewall { "200 allow puppet from INTERNAL-CUSTOMER":
+			firewall { "205 allow puppet from INTERNAL-CUSTOMER":
 
 				source	=> "192.168.2.0/24",
 				port	=> "8140",
@@ -53,7 +53,7 @@ class fw::target::puppet {
 			# Allow puppet from INTERNAL	#
 			#################################
 
-			firewall { "200 allow puppet from INTERNAL":
+			firewall { "205 allow puppet from INTERNAL":
 
 				source	=> "10.228.174.176/28",
 				port	=> "8140",
@@ -61,7 +61,7 @@ class fw::target::puppet {
 
 			}
 
-			firewall { "200 allow puppet from INTERNAL":
+			firewall { "205 allow puppet from INTERNAL":
 
 				source	=> "10.228.174.192/28",
 				port	=> "8140",

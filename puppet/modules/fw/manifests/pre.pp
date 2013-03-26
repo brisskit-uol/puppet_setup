@@ -38,7 +38,7 @@ class fw::pre {
 	# BRISSKit PCs Allow ANY	#
 	#################################
 
-	firewall { "050 allow all from russ home":
+	firewall { "055 allow all from russ home":
 
 		proto	=> "all",
 		source	=> "86.31.28.83",
@@ -46,7 +46,7 @@ class fw::pre {
 
 	}
 
-	firewall { "050 allow all from russ gh":
+	firewall { "055 allow all from russ gh":
 
 		proto	=> "all",
 		source	=> "143.210.248.92",
@@ -54,7 +54,7 @@ class fw::pre {
 
 	}
 
-	firewall { "050 allow all from olly home":
+	firewall { "055 allow all from olly home":
 
 		proto	=> "all",
 		source	=> "86.7.201.36",
@@ -62,7 +62,7 @@ class fw::pre {
 
 	}
 
-	firewall { "050 allow all from olly work":
+	firewall { "055 allow all from olly work":
 
 		proto	=> "all",
 		source	=> "143.210.247.104",
@@ -70,7 +70,7 @@ class fw::pre {
 
 	}
 
-	firewall { "050 allow all from saj home":
+	firewall { "055 allow all from saj home":
 
 		proto	=> "all",
 		source	=> "86.15.24.253",
@@ -78,7 +78,7 @@ class fw::pre {
 
 	}
 
-	firewall { "050 allow all from saj work":
+	firewall { "055 allow all from saj work":
 
 		proto	=> "all",
 		source	=> "143.210.248.93",
@@ -86,7 +86,7 @@ class fw::pre {
 
 	}
 
-	firewall { "050 allow all from jeff home":
+	firewall { "055 allow all from jeff home":
 
 		proto	=> "all",
 		source	=> "84.92.35.138",
@@ -94,7 +94,7 @@ class fw::pre {
 
 	}
 
-	firewall { "050 allow all from jeff work":
+	firewall { "055 allow all from jeff work":
 
 		proto	=> "all",
 		source	=> "143.210.248.108",

@@ -6,7 +6,7 @@ class fw::target::civicrm {
 	# Allow mysql from civicrm	#
 	#################################
 
-	@@firewall { "400 allow mysql from ${vm_role}":
+	@@firewall { "405 allow mysql from ${vm_role}":
 
 		source	=> "${ipaddress}",
 		port	=> "3306",
@@ -19,7 +19,7 @@ class fw::target::civicrm {
 	# Allow 9080 from civicrm	#
 	#################################
 
-	@@firewall { "500 allow 9080 from ${vm_role}":
+	@@firewall { "505 allow 9080 from ${vm_role}":
 
 		source	=> "${ipaddress}",
 		port	=> "9080",
