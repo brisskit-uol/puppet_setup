@@ -7,12 +7,12 @@ class fw::target::backup {
 		"eduserv": {
 
 			#################################
-			# Allow SSH from customer vApps	#
+			# Allow SSH from INTERNAL	#
 			#################################
 
 			firewall { "115 allow SSH from INTERNAL":
 
-				source	=> "192.168.2.0/24",
+				source	=> "192.168.0.0/24",
 				port	=> "22",
 				action	=> "accept",
 
