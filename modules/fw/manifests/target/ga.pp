@@ -10,4 +10,12 @@ class fw::target::ga {
 
 	}
 
+	firewall { "115 allow SSH from backup":
+
+		source	=> "ga-backup",
+		port	=> "22",
+		action	=> "accept",
+
+	}
+
 }
