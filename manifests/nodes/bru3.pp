@@ -20,7 +20,6 @@ node 'bru3-camp.brisskit.le.ac.uk' {
 	#Lets make this the pound server too.
 	include pound
 
-	class {fw: stage => second}
 	include fw::target::camp
 	include fw::target::pound
 
@@ -42,7 +41,6 @@ node 'bru3-catissue.brisskit.le.ac.uk' {
 
 	include nagios::target::catissue
 
-	class {fw: stage => second}
 	include fw::target::catissue
 }
 
@@ -61,7 +59,6 @@ node 'bru3-catissue3.brisskit.le.ac.uk' {
         include backup::users::vm_backup                         #Set up users
         ssh::auth::server { "vapp_backup": user => "vm_backup" } #Copy vapp_backup pub key to vm_backup authorized_keys
 
-	class {fw: stage => second}
 	include fw::target::catissue
 }
 
@@ -79,7 +76,6 @@ node 'bru3-civicrm.brisskit.le.ac.uk' {
         include backup::users::vm_backup                         #Set up users
         ssh::auth::server { "vapp_backup": user => "vm_backup" } #Copy vapp_backup pub key to vm_backup authorized_keys
 
-	class {fw: stage => second}
 	include fw::target::civicrm
 }
 
@@ -93,7 +89,6 @@ node 'bru3-i2b2.brisskit.le.ac.uk' {
 
 	include nagios::target::i2b2
 
-	class {fw: stage => second}
 	include fw::target::i2b2
 }
 
@@ -110,7 +105,6 @@ node 'bru3-onyx.brisskit.le.ac.uk' {
 
 	include nagios::target::onyx
 
-	class {fw: stage => second}
 	include fw::target::onyx
 }
 
@@ -119,7 +113,6 @@ node 'bru3-openesb.brisskit.le.ac.uk' {
         include base_customer
 	include users::customer_openesb
 
-	class {fw: stage => second}
 	include fw::target::openesb
 }
 
@@ -129,7 +122,6 @@ node 'bru3-openesbx.brisskit.le.ac.uk' {
         include base_customer
 	include users::customer_openesb
 
-	stage {fw: stage => second}
 	include fw::target::openesb
 }
 
@@ -140,7 +132,6 @@ node 'bru3-pound.brisskit.le.ac.uk' {
         include base_customer
         include pound
 
-	stage {fw: stage => second}
 	include fw::target::pound
 }
 
@@ -150,7 +141,6 @@ node 'bru3-mysql.brisskit.le.ac.uk' {
         include users::customer_mysql
 	#include nagios::target::mysql
 
-	class {fw: stage => second}
 	include fw::target::mysql
 }
 
@@ -158,7 +148,6 @@ node 'bru3-mysql.brisskit.le.ac.uk' {
 node /^bru3-.*$/ {
 	include base_customer
 
-	class {fw: stage => second}
 	include fw::target::customer
 }
 
