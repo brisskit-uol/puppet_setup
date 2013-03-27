@@ -58,4 +58,16 @@ class roles::ga::backup {
 		minute  => 0
 	}
 
+	#################
+	# Nagios	#
+	#################
+
+	include nagios::target::backup
+
+	#################
+	# Firewall	#
+	#################
+
+	include fw::target::backup
+
 }

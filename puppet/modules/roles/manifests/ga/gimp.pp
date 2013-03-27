@@ -4,4 +4,10 @@ class roles::ga::gimp {
 
 	include motd
 
+	#################
+	# Firewall	#
+	#################
+
+	include fw::target::gimp
+
 }

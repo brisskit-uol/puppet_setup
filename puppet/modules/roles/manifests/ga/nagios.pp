@@ -6,7 +6,13 @@ class roles::ga::nagios {
 	# Nagios server	#
 	#################
 
-	# Set up Nagios server
-	include nagios
+	# Set up Nagios server - requires use of absolute namespace!
+	include ::nagios
+
+	#################
+	# Firewall	#
+	#################
+
+	include fw::target::nagios
 
 }

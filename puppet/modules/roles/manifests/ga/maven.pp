@@ -20,4 +20,10 @@ class roles::ga::maven {
 	# Copy master_backup pub key to ga_backup authorized keys
 	ssh::auth::server { "master_backup": user => "ga_backup" }
 
+	#################
+	# Firewall	#
+	#################
+
+	include fw::target::maven
+
 }
