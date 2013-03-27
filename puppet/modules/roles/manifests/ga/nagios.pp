@@ -1,6 +1,6 @@
 class roles::ga::nagios {
 
-	require roles::ga
+	require ::roles::ga
 
 	#################
 	# Nagios server	#
@@ -13,6 +13,6 @@ class roles::ga::nagios {
 	# Firewall	#
 	#################
 
-	include fw::target::nagios
+	include ::fw::target::nagios
 
 }

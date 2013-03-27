@@ -1,11 +1,11 @@
 class roles::ga::mail {
 
-	require roles::ga
+	require ::roles::ga
 
 	#################
 	# Firewall	#
 	#################
 
-	include fw::target::mail
+	include ::fw::target::mail
 
 }

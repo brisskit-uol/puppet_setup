@@ -1,16 +1,16 @@
 class roles::ga::backup {
 
-	require roles::ga
+	require ::roles::ga
 
 	#################
 	# Backup	#
 	#################
 
 	# Set up file tree
-	include backup::base
+	include ::backup::base
 
 	# Set up users
-	include backup::users::master_backup
+	include ::backup::users::master_backup
 
 	ssh::auth::client { "master_backup": }
 
@@ -62,12 +62,12 @@ class roles::ga::backup {
 	# Nagios	#
 	#################
 
-	include nagios::target::backup
+	include ::nagios::target::backup
 
 	#################
 	# Firewall	#
 	#################
 
-	include fw::target::backup
+	include ::fw::target::backup
 
 }

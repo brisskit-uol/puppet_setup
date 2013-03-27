@@ -1,13 +1,13 @@
 class roles::ga::gimp {
 
-	require roles::ga
+	require ::roles::ga
 
-	include motd
+	include ::motd
 
 	#################
 	# Firewall	#
 	#################
 
-	include fw::target::gimp
+	include ::fw::target::gimp
 
 }

@@ -1,7 +1,7 @@
 class roles::ga::pound {
 
-	require roles::ga
+	require ::roles::ga
 
-	include postfix
+	include ::postfix
 
 }
