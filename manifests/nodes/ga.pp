@@ -26,6 +26,8 @@ node ga-puppet {
         }
 
 	include nagios::target::puppet
+
+	include fw::target::puppet
 }
 
 #mail server
@@ -135,6 +137,7 @@ node 'ga-maven2.brisskit.le.ac.uk' {
 	include backup::users::ga_backup                           #Set up users
         ssh::auth::server { "master_backup": user => "ga_backup" } #Copy master_backup pub key to pubweb_backup authorized_keys
 
+	include fw::target::maven
 }
 
 
