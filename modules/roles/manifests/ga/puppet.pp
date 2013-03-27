@@ -1,18 +1,18 @@
 class roles::ga::puppet {
 
-	require roles::ga
+	require ::roles::ga
 
-	include ssh::auth::keymaster
+	include ::ssh::auth::keymaster
 
 	#################
 	# Backup	#
 	#################
 
 	# Set up file tree
-	include backup::base
+	include ::backup::base
 
 	# Set up users
-	include backup::users::ga_puppet_backup
+	include ::backup::users::ga_puppet_backup
 
 	# Copy master_backup pub key to ga_backup_backup authorized_keys
 	ssh::auth::server { "master_backup": user => "ga_puppet_backup" }
@@ -33,12 +33,12 @@ class roles::ga::puppet {
 	# Nagios	#
 	#################
 
-	include nagios::target::puppet
+	include ::nagios::target::puppet
 
 	#################
 	# Firewall	#
 	#################
 
-	include fw::target::puppet
+	include ::fw::target::puppet
 
 }
