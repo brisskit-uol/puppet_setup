@@ -3,7 +3,7 @@ class clamav::weeklyscan {
 	require clamav
 	require clamav::freshclam
 
-	cron { "clamav-dailyscan":
+	cron { "clamav-weeklyscan":
 		ensure	=> present,
 		command	=> "clamscan -ri --exclude-dir=^/sys\|^/proc\|^/dev / > dev/null 2>&1",
 		user	=> "root",
