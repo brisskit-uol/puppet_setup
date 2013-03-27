@@ -29,4 +29,16 @@ class roles::ga::puppet {
 		minute  => 25
 	}
 
+	#################
+	# Nagios	#
+	#################
+
+	include nagios::target::puppet
+
+	#################
+	# Firewall	#
+	#################
+
+	include fw::target::puppet
+
 }
