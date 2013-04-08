@@ -49,7 +49,7 @@ class fw::target::puppet {
 
 			}
 
-			firewall { "205 allow puppet from INTERNAL":
+			firewall { "207 allow puppet from INTERNAL":
 
 				source	=> "10.228.174.192/28",
 				port	=> "8140",

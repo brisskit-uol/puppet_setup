@@ -7,7 +7,9 @@ class base_ga {
 	include users::virtual
 
 	# Manage hosts file
-	include hosts::ga
+	#include hosts::ga
+
+	class {hosts::ga: stage => second}
 
 	#hosts file
 	#file { "/etc/hosts":
