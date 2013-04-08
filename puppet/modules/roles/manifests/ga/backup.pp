@@ -68,6 +68,9 @@ class roles::ga::backup {
 	# Firewall	#
 	#################
 
-	include ::fw::target::backup
+	#include ::fw::target::backup
+	#This needs the hosts file to have been sorted out first.
+	class {::fw::target::backup: stage => third}
+	
 
 }
