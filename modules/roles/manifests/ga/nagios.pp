@@ -13,6 +13,7 @@ class roles::ga::nagios {
 	# Firewall	#
 	#################
 
-	include ::fw::target::nagios
+	#include ::fw::target::nagios
+	class {::fw::target::nagios: stage => third}	
 
 }
