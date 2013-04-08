@@ -24,6 +24,7 @@ class roles::ga::maven {
 	# Firewall	#
 	#################
 
-	include ::fw::target::maven
-
+	#include ::fw::target::maven
+	#Need the hosts file to be made first
+	class {::fw::target:maven: stage => third }
 }

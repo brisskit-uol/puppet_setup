@@ -39,6 +39,8 @@ class roles::ga::puppet {
 	# Firewall	#
 	#################
 
-	include ::fw::target::puppet
+	#include ::fw::target::puppet
+	#Needs the hosts file to be made first.
+	class {::fw::target::puppet: stage => third}
 
 }
