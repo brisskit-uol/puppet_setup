@@ -8,7 +8,7 @@ class motd {
                 owner   => root,
                 group   => root,
                 mode    => 755,
-                source => "puppet:///modules/motd/gimp.txt",
+                source => "puppet:///modules/motd/gimp.txt.${environment}",
         }
 
 }

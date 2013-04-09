@@ -1,0 +1,30 @@
+#!/bin/sh
+
+#This file is maintained by puppet, do not edit it
+#as changes will be lost.
+
+#Give a bit of useful info when sshing in. Sits in
+#/etc/update-motd.d/
+#Needs to be maintained by hand currently, but will
+#probably script in the future
+
+#Olly Butters
+#9/4/13
+
+echo ""
+echo "\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/"
+echo "BRISSKit SSH gateway"
+echo "===vApps available:==="
+echo "Name      Users                              URL"
+echo "demo      (jl99/ob30/rcf8/si84)              demo.brisskit.le.ac.uk"
+echo "\"ssh demo\" will take you to the demo vApp admin VM"
+echo "from there you can ssh to the other VMs in the vApp."
+echo "--------------------------------------"
+echo "===Stand alone VMs available:==="
+echo "ga-backup    (ob30)"
+echo "ga-mail      (ob30)"
+echo "ga-nagios    (ob30)"
+echo "ga-puppet    (ob30)"
+echo "\"ssh ga-puppet\" will take you to the stand alone puppet VM." 
+echo "\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/"
+echo ""
