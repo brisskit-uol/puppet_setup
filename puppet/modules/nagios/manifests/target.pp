@@ -35,7 +35,8 @@ class nagios::target {
 	# Put vApp name and VM role into a variable to work around 
 	# Puppet nagios_host type limitation
 
-	$nagios_hostgroups = "${vapp_name}, ${vm_role}"
+	#$nagios_hostgroups = "${vapp_name}, ${vm_role}"
+	$nagios_hostgroups = "${vapp_name}"
 
 	@@nagios_host { $fqdn:
 		ensure  		=> present,
