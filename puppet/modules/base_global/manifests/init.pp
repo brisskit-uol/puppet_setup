@@ -15,6 +15,9 @@ class base_global {
 	include resolver::global
 	include motd
 
+	#very experimental first attempt at this!
+	include clamav::dailyscan
+
 	#########################################################################
 	#Directories and files
 	#########################################################################

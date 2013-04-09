@@ -1,0 +1,32 @@
+#!/bin/bash
+
+#Nagios plugin to check the output of clamscan
+
+#Grab the library.
+. /usr/lib/nagios/plugins/utils.sh
+
+
+logfile="/var/log/clamav/scan.log"
+
+#Check log file exists
+if [ ! -f "$logfile" ]
+then
+	echo "Log file not present"
+	exit $STATE_UNKNOWN
+fi
+
+#Check age of log file
+if test `find "$logfile" -mtime +8`
+then
+	echo "Log file is out of date!"
+	exit $STATE_WARNING
+fi
+
+#Search for the number of infected files
+if test `grep --count "Infected files: 0" $logfile` != 1
+then
+	echo "Virus found!"
+	exit $STATE_CRITICAL
+fi
+
+
