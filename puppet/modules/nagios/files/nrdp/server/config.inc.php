@@ -29,6 +29,7 @@ $cfg['authorized_tokens'] = array(
 	"h48sj9g8754iunfhye6ttmh975vej86g",
 	"mcn4y86v1bqvhup47w2r4c5d7hqx7ycx",
 	"jaslkfjlksdjflksdajflkj84kjd8asd",
+	"823uyrhfksahfjlahsf84ahjkasfd82k",
 	);
 	
 // do we require that HTTPS be used to access NRDP?
