@@ -2,6 +2,7 @@
 #ie customer VMs, GA VMs and pubweb VMs
 class base_global {
 
+	#Make sure this runs first
 	class {puppet: stage => first}
 
 	#Other modules first
@@ -12,7 +13,7 @@ class base_global {
 	include nagios::target::base
 	include apt::get::update
 	include resolver::global
-
+	include motd
 
 	#########################################################################
 	#Directories and files
