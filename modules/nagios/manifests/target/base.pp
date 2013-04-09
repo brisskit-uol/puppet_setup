@@ -377,5 +377,43 @@ class nagios::target::base {
                 require => Package["nagios-plugins"],
 	}
 
+
+        #########################
+        # Check clamav scan log #
+        #########################
+
+        @@nagios_service { "check-clamscan-log-${fqdn}":
+                use             => check-clamscan-log,
+                host_name       => $fqdn,
+                servicegroups   => "check-clamscan-log",
+                target          => "/etc/nagios3/conf.d/service_${fqdn}.cfg",
+                require         => Cron["check_clamscan_log"],
+        }
+
+        cron { "check_clamscan_log":
+                command => "/var/local/brisskit/nagios-client/check_clamscan_log.sh > /dev/null 2>&1",
+                user    => "root",
+                minute  => "*/5",
+                require => File["/var/local/brisskit/nagios-client/check_clamscan_log.sh"],
+        }
+
+        file { "/var/local/brisskit/nagios-client/check_clamscan_log.sh":
+                ensure  => present,
+                owner   => "root",
+                group   => "root",
+                mode    => 0500,
+                source  => "puppet:///modules/nagios/check_clamscan_log.sh",
+                require => [ File["/var/local/brisskit/nagios-client"], File["/usr/lib/nagios/plugins/check_clamscan_log"] ],
+        }
+
+        file { "/usr/lib/nagios/plugins/check_clamscan_log":
+                ensure  => present,
+                owner   => "root",
+                group   => "root",
+                mode    => 0755,
+                source  => "puppet:///modules/nagios/check_clamscan_log",
+                require => Package["nagios-plugins"],
+        }
+
 }
 
