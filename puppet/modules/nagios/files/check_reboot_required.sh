@@ -10,7 +10,7 @@ check=$(/usr/lib/nagios/plugins/check_reboot_required)
 
 rc=$?
 service_name="Reboot required"
-token="mcn4y86v1bqvhup47w2r4c5d7hqx7ycx"
+token="jaslkfjlksdjflksdajflkj84kjd8asd"
 url=http://ga-nagios/nrdp/
 
 
