@@ -5,7 +5,7 @@ class clamav::weeklyscan {
 
 	cron { "clamav-weeklyscan":
 		ensure	=> present,
-		command	=> "clamscan -ri --exclude-dir=^/sys\|^/proc\|^/dev / > dev/null 2>&1",
+		command	=> "clamscan -ri --exclude-dir=^/sys\\|^/proc\\|^/dev / > /var/log/clamav/scan.log",
 		user	=> "root",
 		minute	=> fqdn_rand(60),
 		hour	=> fqdn_rand(24),
