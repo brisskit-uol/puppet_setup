@@ -15,6 +15,15 @@ then
 	exit $STATE_UNKNOWN
 fi
 
+#Check if log file is zero size (when a scan starts I think it makes it,
+#so nagios starts to think there is a virus
+if [ ! -s "$logfile" ]
+then
+	echo "Log file is empty - scan in progress?"
+	exit $STATE_UNKNOWN
+fi
+
+
 #Check age of log file
 if test `find "$logfile" -mtime +8`
 then
@@ -28,5 +37,9 @@ then
 	echo "Virus found!"
 	exit $STATE_CRITICAL
 fi
+
+#If we get to here then everything must be ok :)
+echo "OK - no viruses found. Scanned on `date -r $logfile`"
+exit $STATE_OK
 
 

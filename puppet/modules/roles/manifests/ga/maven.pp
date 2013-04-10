@@ -26,5 +26,5 @@ class roles::ga::maven {
 
 	#include ::fw::target::maven
 	#Need the hosts file to be made first
-	class {::fw::target:maven: stage => third }
+	class {::fw::target::maven: stage => third }
 }

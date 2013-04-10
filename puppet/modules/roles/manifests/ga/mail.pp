@@ -8,5 +8,5 @@ class roles::ga::mail {
 
 	#include ::fw::target::mail
 	#Needs the hosts file to be made first
-	class {::fw::target:mail: stage => third }
+	class {::fw::target::mail: stage => third }
 }

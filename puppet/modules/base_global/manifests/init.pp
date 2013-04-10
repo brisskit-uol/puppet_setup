@@ -5,18 +5,15 @@ class base_global {
 	#Make sure this runs first
 	class {puppet: stage => first}
 
-	#Other modules first
+	#Other modules in main
 	include sshd
 	include ntp
-#	include puppet
 	include users::global
 	include nagios::target::base
 	include apt::get::update
 	include resolver::global
 	include motd
-
-	#very experimental first attempt at this!
-	include clamav::dailyscan
+	include clamav::weeklyscan
 
 	#########################################################################
 	#Directories and files
