@@ -1,5 +1,5 @@
 class fw::target::base {
 
-	class {fw: stage => second}
+	class {fw: stage => third}
 
 }
