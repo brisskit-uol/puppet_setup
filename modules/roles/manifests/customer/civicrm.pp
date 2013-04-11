@@ -1,6 +1,6 @@
 class roles::customer::civicrm {
 
-	require roles::customer
+	require roles::customer::common
 
 	include postfix
 	include users::customer_civicrm

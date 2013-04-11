@@ -1,6 +1,6 @@
 class roles::customer::i2b2 {
 
-	require roles::customer
+	require roles::customer::common
 
 	include users::customer_i2b2
 	include users::integration
