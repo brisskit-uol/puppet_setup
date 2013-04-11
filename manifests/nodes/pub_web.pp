@@ -4,7 +4,7 @@
 
 #Drupal7 and civicrm VM
 node 'pub-drupal-2.brisskit.le.ac.uk' {
-        include base_pub
+        include roles::pubweb::pubweb 
 
 	#Backup stuff
         include backup::base                                           #Set up file tree
@@ -16,7 +16,7 @@ node 'pub-drupal-2.brisskit.le.ac.uk' {
 
 #mediawiki 
 node 'pub-wiki-2.brisskit.le.ac.uk' {
-        include base_pub
+        include roles::pubweb::pubweb
 
         #Backup stuff
         include backup::base                                           #Set up file tree
