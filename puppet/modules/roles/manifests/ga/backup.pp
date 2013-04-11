@@ -1,6 +1,6 @@
 class roles::ga::backup {
 
-	require ::roles::ga
+	require ::roles::ga::common
 
 	#################
 	# Backup	#

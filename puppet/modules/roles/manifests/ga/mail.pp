@@ -1,6 +1,6 @@
 class roles::ga::mail {
 
-	require ::roles::ga
+	require ::roles::ga::common
 
 	#################
 	# Firewall	#

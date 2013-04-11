@@ -1,6 +1,6 @@
 class roles::ga::maven {
 
-	require ::roles::ga
+	require ::roles::ga::common
 
 	realize( Users::Virtual::Ssh_user["jl99"] )
 	realize( Users::Virtual::Ssh_user["si84"] )
