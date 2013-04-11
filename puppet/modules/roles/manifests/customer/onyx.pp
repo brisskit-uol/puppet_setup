@@ -1,6 +1,6 @@
 class roles::customer::onyx {
 
-	require roles::customer
+	require roles::customer::common
 
 	include users::customer_onyx
 

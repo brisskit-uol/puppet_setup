@@ -1,0 +1,19 @@
+#!/bin/bash
+
+#Automagically log into the DB
+#>brisskit_db_login redcap
+
+#12/4/12
+
+database=$1
+databasehost="$(brisskit_db_param ${database} host)"
+databasename="$(brisskit_db_param ${database} name)"
+databaseuser="$(brisskit_db_param ${database} user)"
+databasepass="$(brisskit_db_param ${database} pass)"
+
+if [ -z "${databasehost}" ]
+then
+    databasehost=mysql
+fi
+        
+mysql --host="${databasehost}" --user="${databaseuser}" --password="${databasepass}" "${databasename}"

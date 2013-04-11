@@ -1,6 +1,6 @@
 class roles::customer::pound {
 
-	require roles::customer
+	require roles::customer::common
 
 	include pound
 

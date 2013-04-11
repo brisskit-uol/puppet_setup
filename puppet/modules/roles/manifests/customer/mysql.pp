@@ -1,6 +1,6 @@
 class roles::customer::mysql {
 
-	require roles::customer
+	require roles::customer::common
 
 	include users::customer_mysql
 
