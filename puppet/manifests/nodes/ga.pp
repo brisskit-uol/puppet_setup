@@ -16,11 +16,8 @@ node 'ga-mail.brisskit.le.ac.uk' {
 #backup vm
 node ga-backup {
 	include roles::ga::backup
-}
 
-#load balancer
-node ga-pound {
-	include roles::ga::pound
+	include clamav::dailyscan
 }
 
 #global ssh gateway
