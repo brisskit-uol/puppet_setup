@@ -1,6 +1,6 @@
 class roles::ga::puppet {
 
-	require ::roles::ga
+	require ::roles::ga::common
 
 	include ::ssh::auth::keymaster
 

@@ -1,6 +1,6 @@
 class roles::ga::nagios {
 
-	require ::roles::ga
+	require ::roles::ga::common
 
 	#################
 	# Nagios server	#
