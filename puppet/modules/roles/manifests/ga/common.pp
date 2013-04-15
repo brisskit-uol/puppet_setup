@@ -9,8 +9,8 @@ class roles::ga::common {
 	# Manage hosts file
 	#include hosts::ga
 
-	#class {hosts::ga: stage => second}
-	require ::hosts::ga
+	class {::hosts::ga: stage => second}
+#	require ::hosts::ga
 
 
 }

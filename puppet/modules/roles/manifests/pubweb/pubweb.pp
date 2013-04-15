@@ -1,5 +1,5 @@
 #Looks after the wiki and drupal public pages
-class base_pub {
+class roles::pubweb::pubweb {
 
 	require roles::global::common
 

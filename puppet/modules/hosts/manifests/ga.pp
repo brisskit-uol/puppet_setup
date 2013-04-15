@@ -2,6 +2,8 @@
 
 class hosts::ga {
 
+	notify{"doing hosts":}
+
 	require hosts
 
 	# Collect all entries from PuppetDB that are in the same vApp

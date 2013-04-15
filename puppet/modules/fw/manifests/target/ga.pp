@@ -1,5 +1,9 @@
 class fw::target::ga {
 
+#	require ::hosts::ga
+
+notify{"doing fw":}
+
 	require fw::target::base
 
 	firewall { "105 allow SSH from gimp":

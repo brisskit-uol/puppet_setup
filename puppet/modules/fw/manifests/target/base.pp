@@ -1,5 +1,5 @@
 class fw::target::base {
 
-	#class {fw: stage => third}
-	include ::fw
+	class {fw: stage => third}
+	#include ::fw
 }

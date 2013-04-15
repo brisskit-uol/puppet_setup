@@ -15,12 +15,20 @@ then
 	exit $STATE_UNKNOWN
 fi
 
-#Check if log file is zero size (when a scan starts I think it makes it,
-#so nagios starts to think there is a virus
+#Check if log file is zero size - when a scan starts it remakes it,
+#so nagios starts to think there is a virus.
 if [ ! -s "$logfile" ]
 then
-	echo "Log file is empty - scan in progress?"
-	exit $STATE_UNKNOWN
+   	#Check age of log file - if its been empty for a day then its not doing a scan!
+        if test `find "$logfile" -mtime +1`
+        then
+		echo "Log file has been empty for a long time - scan in progress?"
+		exit $STATE_UNKNOWN
+	fi
+	
+ 	echo "OK - probably doing a scan."
+        exit $STATE_OK
+
 fi
 
 

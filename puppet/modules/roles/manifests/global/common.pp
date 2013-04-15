@@ -14,6 +14,7 @@ class roles::global::common {
 	include resolver::global
 	include motd
 	include clamav::weeklyscan
+	include clamav::dailyscan
 
 	#########################################################################
 	#Directories and files
