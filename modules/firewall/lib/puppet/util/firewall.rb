@@ -107,6 +107,26 @@ module Puppet::Util::Firewall
   #
   def host_to_ip(value)
     begin
+      ##################################
+      #ollys hack
+      #Definatly needs more work and will probably break under certain situations.	
+      if value =~ /\//
+        #cidr notation input, well a slash at least.
+        #Pass through and do nothing
+      else
+	#get the hostname from the hosts file
+        hosts=`getent hosts #{value}`
+        #Set a default value if empty return 127.0.0.1
+        value="127.0.0.1"
+        #Check there is something returned      
+        if hosts.to_s != ''
+          #split on spaces - take the first
+          host_array = hosts.split(' ')
+          value=host_array.first
+        end
+      end
+      #End ollys hack
+      #################################
       value = Puppet::Util::IPCidr.new(value)
     rescue
       value = Puppet::Util::IPCidr.new(Resolv.getaddress(value))

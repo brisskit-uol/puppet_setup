@@ -4,7 +4,7 @@ class roles::customer::catissue {
 
 	include postfix
 	include users::customer_catissue
-	include users::intergration
+	include users::integration
 	ssh::auth::client { "integration": }
 	ssh::auth::server { "integration": }
 
@@ -21,7 +21,7 @@ class roles::customer::catissue {
 	include backup::users::vm_backup
 
 	# Copy vapp_backup pub key to vm_backup authorized_keys
-	ssh::auth::server { "vapp_backup: user => "vm_backup" }
+	ssh::auth::server { "vapp_backup": user => "vm_backup" }
 
 	#################
 	# Nagios	#
