@@ -25,7 +25,7 @@ node 'demo-i2b2.brisskit.le.ac.uk' {
 
 #onyx
 node 'demo-onyx.brisskit.le.ac.uk' {
-        include roles::customers::onyx
+        include roles::customer::onyx
 }
 
 #any other ones that have been missed out
