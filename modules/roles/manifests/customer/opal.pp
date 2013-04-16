@@ -9,6 +9,6 @@ class roles::customer::opal {
 	#################
 
 	# Create nagios cfg file for camp role
-	#include nagios::target::camp
+	include nagios::target::camp
 
 }
