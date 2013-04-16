@@ -16,8 +16,6 @@ node 'ga-mail.brisskit.le.ac.uk' {
 #backup vm
 node ga-backup {
 	include roles::ga::backup
-
-	include clamav::dailyscan
 }
 
 #global ssh gateway

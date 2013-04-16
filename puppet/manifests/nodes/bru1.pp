@@ -38,6 +38,11 @@ node 'bru1-onyx.brisskit.le.ac.uk' {
 	include roles::customer::onyx
 }
 
+#opal
+node 'bru1-opal.brisskit.le.ac.uk' {
+	include roles::customer::opal
+}
+
 #openesb
 node 'bru1-openesb.brisskit.le.ac.uk' {
         include roles::customer::openesb
