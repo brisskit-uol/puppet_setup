@@ -10,6 +10,8 @@ rundir=/var/run/puppet
 factpath=$vardir/lib/facter
 templatedir=$confdir/templates
 pluginsync=true
+modulepath=/etc/puppet/forge:/etc/puppet/modules
+
 
 [agent]
 environment=uhl
