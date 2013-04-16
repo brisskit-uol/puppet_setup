@@ -10,11 +10,23 @@ class roles::global::common {
 	include ntp
 	include users::global
 	include nagios::target::base
-	include apt::get::update
+#	include apt::get::update
 	include resolver::global
 	include motd
 	include clamav::weeklyscan
 	include clamav::dailyscan
+
+
+	#Once a week do an apt-get update update 
+	cron { "apt-get-update":
+		ensure	=> present,
+		command	=> "/usr/bin/apt-get update > /dev/null 2>&1",
+		user	=> "root",
+		minute	=> fqdn_rand(60),
+		hour	=> fqdn_rand(4),
+		weekday	=> fqdn_rand(7),
+	}
+
 
 	#########################################################################
 	#Directories and files

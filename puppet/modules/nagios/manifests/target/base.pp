@@ -305,7 +305,8 @@ class nagios::target::base {
 	# Check pending updates	#
 	#########################
 
-	require apt::check
+	#olly 16/4/13 - dropped this - do i really need it? in old for now.
+	#	require apt::check
 
 	@@nagios_service { "check-updates-${fqdn}":
 		use		=> check-updates,
