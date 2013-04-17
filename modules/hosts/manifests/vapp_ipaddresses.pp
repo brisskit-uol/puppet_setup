@@ -17,4 +17,5 @@ class hosts::vapp_ipaddresses {
 	vapp_hosts { "hack4": vapp_ipaddress => "192.168.0.119" }
 	vapp_hosts { "hack5": vapp_ipaddress => "192.168.0.120" }
 
+	vapp_hosts {"uhl": vapp_ipaddress => "10.228.174.190"}
 }
