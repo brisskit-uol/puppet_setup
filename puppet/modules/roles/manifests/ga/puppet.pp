@@ -25,7 +25,7 @@ class roles::ga::puppet {
 	cron { run_puppet_backup:
 		command => "/var/local/brisskit/backup/source/puppet.sh",
 		user    => root,
-		hour    => 13,
+		hour    => 19,
 		minute  => 25
 	}
 
