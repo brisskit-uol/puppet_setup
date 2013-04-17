@@ -1,8 +1,12 @@
-#Customer vApps
+#Eduserv customer vApps
 import "nodes/bru1"
 import "nodes/bru3"
 import "nodes/demo"
 
+#UHL customer vApps
+import "nodes/uhl"
+
+#Website stuff
 import "nodes/pub_web"
 
 #hack event vApps
