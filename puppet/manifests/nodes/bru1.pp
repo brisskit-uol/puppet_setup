@@ -41,6 +41,8 @@ node 'bru1-onyx.brisskit.le.ac.uk' {
 #opal
 node 'bru1-opal.brisskit.le.ac.uk' {
 	include roles::customer::opal
+
+	include mysql
 }
 
 #openesb
