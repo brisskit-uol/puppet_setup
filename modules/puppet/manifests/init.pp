@@ -22,6 +22,19 @@ class puppet {
 		mode   => 0644,
 		source => "puppet:///modules/puppet/puppet.conf.${environment}",
 	}
+
+
+	#Configure puppetdb and its underlying database
+	#class { 'puppetdb': 
+	#	database       => 'embedded',
+	#	listen_address => '0.0.0.0',	
+	#}
+
+	# Configure the puppet master to use puppetdb
+#	class { 'puppetdb::master::config': 
+#		puppetdb_server => 'ga-puppet.brisskit.le.ac.uk',
+#		puppetdb_port   => 8081,
+#	}
 }
 
 
