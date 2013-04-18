@@ -43,4 +43,23 @@ class roles::ga::puppet {
 	#Needs the hosts file to be made first.
 	class {::fw::target::puppet: stage => third}
 
+
+
+	#################
+	# PuppetDB      #
+	#################
+
+	#Configure puppetdb and its underlying database
+	class { 'puppetdb': 
+		database       => 'embedded',
+		listen_address => '0.0.0.0',	
+	}
+
+	#Configure the puppet master to use puppetdb
+	class { 'puppetdb::master::config': 
+		puppetdb_server => 'ga-puppet.brisskit.le.ac.uk',
+		puppetdb_port   => 8081,
+	}
+
+
 }
