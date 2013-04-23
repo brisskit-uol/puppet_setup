@@ -1,6 +1,6 @@
 class roles::customer::openesb {
 
-	require roles::customer
+	require roles::customer::common
 
 	include users::customer_openesb
 
