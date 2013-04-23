@@ -29,7 +29,7 @@ node 'bru1-civicrm.brisskit.le.ac.uk' {
 
 #i2b2
 node 'bru1-i2b2.brisskit.le.ac.uk' {
-        include roles::customer
+        include roles::customer::i2b2
 }
 
 
@@ -42,7 +42,7 @@ node 'bru1-onyx.brisskit.le.ac.uk' {
 node 'bru1-opal.brisskit.le.ac.uk' {
 	include roles::customer::opal
 
-	include mysql
+#	include mysql
 }
 
 #openesb
@@ -57,7 +57,10 @@ node 'bru1-openesbx.brisskit.le.ac.uk' {
 
 #pound
 node 'bru1-pound.brisskit.le.ac.uk' {
-        include roles::customer::pound
+#        include roles::customer::pound
+
+include pound::hostnames
+
 }
 
 #mysql
