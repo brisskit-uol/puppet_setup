@@ -17,12 +17,13 @@ class hosts::customer::get_data {
 
 	#Note the method used here, I couldnt use fqdn=$something as it doesnt seem to escape '-'
 	#The pdbfactquery is also deprecated so I wanted to steer clear of that.
-	#This query will return the IP address or an empty string if it is not found
+	#This query will return the IP address or an empty string if it is not found.
+	#Also note the special cases (mysql and openesb) where Ive had to OR it as they have different names in places
 	$camp_ip     = query_nodes("vm_role=camp and vapp_name=${vapp_name}",'ipaddress')
 	$catissue_ip = query_nodes("vm_role=catissue and vapp_name=${vapp_name}",'ipaddress')
 	$civicrm_ip  = query_nodes("vm_role=civicrm and vapp_name=${vapp_name}",'ipaddress')
 	$i2b2_ip     = query_nodes("vm_role=i2b2 and vapp_name=${vapp_name}",'ipaddress')
-	$mysql_ip    = query_nodes("vm_role=mysql and vapp_name=${vapp_name}",'ipaddress')
+	$mysql_ip    = query_nodes("(vm_role=mysql or vm_role=mysql2)and vapp_name=${vapp_name}",'ipaddress')
 	$onyx_ip     = query_nodes("vm_role=onyx and vapp_name=${vapp_name}",'ipaddress')
 	$opal_ip     = query_nodes("vm_role=opal and vapp_name=${vapp_name}",'ipaddress')
 	$openesb_ip  = query_nodes("(vm_role=openesb or vm_role=openesbx) and vapp_name=${vapp_name}",'ipaddress')
@@ -54,7 +55,7 @@ class hosts::customer::mangle_data {
         if empty($hosts::customer::get_data::catissue_ip) { $catissue = "${default_ipaddress}" } else { $catissue = $hosts::customer::get_data::catissue_ip }
         if empty($hosts::customer::get_data::civicrm_ip)  { $civicrm  = "${default_ipaddress}" } else { $civicrm  = $hosts::customer::get_data::civicrm_ip }
         if empty($hosts::customer::get_data::i2b2_ip)     { $i2b2     = "${default_ipaddress}" } else { $i2b2     = $hosts::customer::get_data::i2b2_ip }
-        if empty($hosts::customer::get_data::mysql_ip)    { $mysl     = "${default_ipaddress}" } else { $mysql    = $hosts::customer::get_data::mysql_ip }
+        if empty($hosts::customer::get_data::mysql_ip)    { $mysql    = "${default_ipaddress}" } else { $mysql    = $hosts::customer::get_data::mysql_ip }
         if empty($hosts::customer::get_data::onyx_ip)     { $onyx     = "${default_ipaddress}" } else { $onyx     = $hosts::customer::get_data::onyx_ip }
         if empty($hosts::customer::get_data::opal_ip)     { $opal     = "${default_ipaddress}" } else { $opal     = $hosts::customer::get_data::opal_ip }
         if empty($hosts::customer::get_data::openesb_ip)  { $openesb  = "${default_ipaddress}" } else { $openesb  = $hosts::customer::get_data::openesb_ip }
@@ -69,7 +70,15 @@ class hosts::customer::make_hosts {
 
 	require hosts::customer::mangle_data
 
-	#notify{"Final= ${mysql::mangle_data::fake}":}
+	#notify{"camp = ${hosts::customer::mangle_data::camp}":}
+       	#notify{"catissue= ${hosts::customer::mangle_data::catissue}":}
+       	#notify{"civicrm= ${hosts::customer::mangle_data::civicrm}":}
+       	#notify{"i2b2= ${hosts::customer::mangle_data::i2b2}":}
+       	#notify{"mysql= ${hosts::customer::mangle_data::mysql}":}
+       	#notify{"onyx= ${hosts::customer::mangle_data::onyx}":}
+       	#notify{"opal= ${hosts::customer::mangle_data::opal}":}
+       	#notify{"openesb= ${hosts::customer::mangle_data::openesb}":}
+	#notify{"pound= ${hosts::customer::mangle_data::pound}":}
 
 	############################
 	#The general ones. Each will be eg
