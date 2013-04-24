@@ -28,6 +28,14 @@ class roles::global::common {
 	}
 
 
+	#Run an apt-get upgrade. This will run every time puppet runs on a client, 
+	#so just uncomment this when necessary, i.e. dont leave this on all the time!
+	#exec {"apt-get-upgrade":
+	#	command => "apt-get -y upgrade",
+	#	path    => ["/bin", "/sbin", "/usr/bin", "/usr/sbin"],
+	#}
+
+
 	#########################################################################
 	#Directories and files
 	#########################################################################
