@@ -2,9 +2,6 @@ class roles::customer::common {
 
 	require roles::global::common
 
-	#Long list of potential users. These need to be realised elsewhere.
-	include users::virtual	
-
 	# Manage hosts file
 	include hosts::customer
 
