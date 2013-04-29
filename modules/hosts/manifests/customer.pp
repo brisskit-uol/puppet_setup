@@ -19,6 +19,7 @@ class hosts::customer::get_data {
 	#The pdbfactquery is also deprecated so I wanted to steer clear of that.
 	#This query will return the IP address or an empty string if it is not found.
 	#Also note the special cases (mysql and openesb) where Ive had to OR it as they have different names in places
+	#I guess the smart thing to do is to add a regex for these, so they pick up e.g. role-# etc.
 	$camp_ip     = query_nodes("vm_role=camp and vapp_name=${vapp_name}",'ipaddress')
 	$catissue_ip = query_nodes("vm_role=catissue and vapp_name=${vapp_name}",'ipaddress')
 	$civicrm_ip  = query_nodes("vm_role=civicrm and vapp_name=${vapp_name}",'ipaddress')

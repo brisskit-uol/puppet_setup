@@ -128,6 +128,19 @@ ListenHTTP
         ######################################
 
         ######################################
+        #opal. 
+        Service
+                URL "^/opal$|^/opal/+.*|^/ws.*"
+                BackEnd
+                        Address opal
+                        Port 8080
+                End
+        End
+        ######################################
+
+
+
+        ######################################
         #Default to camp if nothing else found
         Service
                 URL "^/.*"
