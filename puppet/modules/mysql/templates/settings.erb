@@ -4,14 +4,17 @@ fqdn=<%= @fqdn %>
 
 
 ipddreses
-<% if $pound_ipaddress %>
-pound=<%= $pound_ipaddress %>
+<% if @pound_ipaddress %>
+poundif=<%= @pound_ipaddress %>
 <% end %>
 
-camp=<%= @camp_ipaddress %>
 
-<% if $fake_ipaddress %>
-fake=<%= $fake_ipaddress %>
+poundnotif=<%= @pound_ipaddress %>
+
+campnotif=<%= @camp_ipaddress %>
+
+<% if @fake_ipaddress %>
+fakeif=<%= @fake_ipaddress %>
 <% end %>
 
 
