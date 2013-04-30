@@ -51,7 +51,10 @@ TimeOut 300
 
 ListenHTTP
         Address pound
-	Port 80       
+	Port 80
+	
+	#This adds extra HTTP webDAV verbs. This is needed for opal which uses the OPTIONS one.        
+	xHTTP 2
  
 	######################################
         #Pages that dont have a favicon generate errors in the log files
@@ -130,7 +133,7 @@ ListenHTTP
         ######################################
         #opal. 
         Service
-                URL "^/opal$|^/opal/+.*|^/ws.*"
+                URL "^/opal$|^/opal/+.*|^/ws$|^/ws/+.*"
                 BackEnd
                         Address opal
                         Port 8080
