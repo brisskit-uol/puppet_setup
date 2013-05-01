@@ -25,4 +25,12 @@ class roles::customer::opal {
 		include_src => false,
 	}
 
+
+	#Install the opal package
+	
+
+
+	#Apply the datashiled module
+	include datashield
+
 }
