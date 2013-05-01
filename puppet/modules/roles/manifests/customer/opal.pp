@@ -21,16 +21,18 @@ class roles::customer::opal {
 		location   => 'http://pkg.obiba.org',
 		release    => 'stable/',
 		repos      => '',
+		key        => '7A49E499',
 		key_source => 'http://pkg.obiba.org/obiba.org.key',
 		include_src => false,
 	}
 
+	#Install the package
+	package { 'opal':
+		ensure => installed,
+		require => Class['apt::source[obiba]'],
+	}
 
-	#Install the opal package
-	
 
-
-	#Apply the datashiled module
 	include datashield
 
 }
