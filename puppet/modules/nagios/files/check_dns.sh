@@ -6,7 +6,7 @@ let sleeptime%=$sleepseconds
 sleep $sleeptime
 
 host=$(/usr/bin/facter fqdn)
-check=$(/usr/lib/nagios/plugins/check_dns -H www.brisskit.org -a 193.63.182.225)
+check=$(/usr/lib/nagios/plugins/check_dns -H www.brisskit.org -a 193.63.76.249)
 rc=$?
 service_name="DNS"
 token="gpikt91gm08swuf7e4m8ospuqnfma4iq"
