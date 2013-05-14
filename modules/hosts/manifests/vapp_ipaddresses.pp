@@ -10,12 +10,9 @@ class hosts::vapp_ipaddresses {
 		}
 	}
 
-        vapp_hosts { "bru1": vapp_ipaddress => "192.168.0.104" }
-	vapp_hosts { "bru3": vapp_ipaddress => "192.168.0.105" }
-	vapp_hosts { "demo": vapp_ipaddress => "192.168.0.107" }
+        vapp_hosts { "bru1":  vapp_ipaddress => "192.168.0.101" }
+	vapp_hosts { "demo":  vapp_ipaddress => "192.168.0.100" }
 	vapp_hosts { "hack3": vapp_ipaddress => "192.168.0.118" }
-	vapp_hosts { "hack4": vapp_ipaddress => "192.168.0.119" }
-	vapp_hosts { "hack5": vapp_ipaddress => "192.168.0.120" }
-
-	vapp_hosts {"uhl": vapp_ipaddress => "10.228.174.190"}
+	
+	vapp_hosts {"uhl":    vapp_ipaddress => "10.228.174.190"}
 }
