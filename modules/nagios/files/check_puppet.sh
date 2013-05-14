@@ -6,7 +6,7 @@ let sleeptime%=$sleepseconds
 sleep $sleeptime
 
 host=$(/usr/bin/facter fqdn)
-check=$(/usr/lib/nagios/plugins/check_puppet -w 630 -c 1260)
+check=$(/usr/lib/nagios/plugins/check_puppet -w 700 -c 1300)
 rc=$?
 service_name="Puppet"
 token="1jn7nhfwdsmgyx5iljqr7bccue3q6nen"
