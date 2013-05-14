@@ -9,6 +9,8 @@ class roles::customer::openesb {
 	#################
 
 	# Create nagios cfg file for openesb role
-	include nagios::target::openesb
+	
+	#this doesnt actually exist, the base nagios stuff is in the base roles class anywany
+	#include nagios::target::openesb
 
 }
