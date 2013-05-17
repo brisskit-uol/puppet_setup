@@ -75,6 +75,15 @@ class roles::global::common {
 		mode   => 0644,
 	} 
 
+	#brisskit api directory
+        file { "/var/local/brisskit/api":
+                ensure => directory,
+                owner  => 'root',
+                group  => 'root',
+                mode   => 0644,
+		require => File["/var/local/brisskit"],
+        }
+
 	#mysql helper functions
 	file { "/usr/local/bin/brisskit_db_param":
 		ensure => present,
