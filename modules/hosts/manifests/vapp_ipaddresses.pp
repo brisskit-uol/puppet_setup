@@ -11,6 +11,7 @@ class hosts::vapp_ipaddresses {
 	}
 
         vapp_hosts { "bru1":  vapp_ipaddress => "192.168.0.101" }
+        vapp_hosts { "bru2":  vapp_ipaddress => "192.168.0.106" }
 	vapp_hosts { "demo":  vapp_ipaddress => "192.168.0.100" }
 	vapp_hosts { "hack3": vapp_ipaddress => "192.168.0.118" }
 	
