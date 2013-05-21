@@ -19,7 +19,7 @@
 #This version is trying to use hostnames instead of IP addresses
 
 #Olly Butters
-#22/4/13
+#15/5/13
 
 ######################################################################
 ## global options:
@@ -142,6 +142,21 @@ ListenHTTP
         ######################################
 
 
+	######################################
+	#API
+	##opal
+	Service
+		URL "^/api/v0/opal/+.*"
+		BackEnd
+			Address opal
+			Port 10000
+		End
+	End
+
+
+	######################################
+
+
 
         ######################################
         #Default to camp if nothing else found
@@ -259,9 +274,9 @@ End
 #####################################################################
 #Listen to port 8080 traffic
 #####################################################################
-#ListenHTTP
-#	Address 192.168.2.101
-#	Port	8080
+ListenHTTP
+	Address pound
+	Port	8080
 
 	######################################
 	#catissuecore
@@ -284,13 +299,14 @@ End
 
 	######################################
 	#i2b2
-#	Service
-#		URL "^/i2b2$|^/i2b2/+.*"
-#		BackEnd
-#			Address	192.168.2.104
-#			Port	8080
-#		End
-#	End
+	#The web client insists on doing port 8080 calls.
+	Service
+		URL "^/i2b2$|^/i2b2/+.*"
+		BackEnd
+			Address	i2b2
+			Port	8080
+		End
+	End
 
  #       Service
   #              URL "^/i2b2WS/+.*"
@@ -322,4 +338,4 @@ End
 #		End
 #	End
 	######################################
-#End
+End
