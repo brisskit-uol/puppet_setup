@@ -20,18 +20,24 @@ class hosts::customer::get_data {
 	#This query will return the IP address or an empty string if it is not found.
 	#Also note the special cases (mysql and openesb) where Ive had to OR it as they have different names in places
 	#I guess the smart thing to do is to add a regex for these, so they pick up e.g. role-# etc.
-	$camp_ip     = query_nodes("vm_role=camp and vapp_name=${vapp_name}",'ipaddress')
-	$catissue_ip = query_nodes("vm_role=catissue and vapp_name=${vapp_name}",'ipaddress')
-	$civicrm_ip  = query_nodes("vm_role=civicrm and vapp_name=${vapp_name}",'ipaddress')
-	$i2b2_ip     = query_nodes("vm_role=i2b2 and vapp_name=${vapp_name}",'ipaddress')
-	$mysql_ip    = query_nodes("(vm_role=mysql or vm_role=mysql2)and vapp_name=${vapp_name}",'ipaddress')
-	$onyx_ip     = query_nodes("vm_role=onyx and vapp_name=${vapp_name}",'ipaddress')
-	$opal_ip     = query_nodes("vm_role=opal and vapp_name=${vapp_name}",'ipaddress')
-	$openesb_ip  = query_nodes("(vm_role=openesb or vm_role=openesbx) and vapp_name=${vapp_name}",'ipaddress')
-	$pound_ip    = query_nodes("vm_role=pound and vapp_name=${vapp_name}",'ipaddress')
+	
+	#Had massive issues with the vapp_name not existing and knocking this over on the first run.
+	if(!empty($vapp_name))
+	{
+		$camp_ip     = query_nodes("vm_role=camp and vapp_name=${vapp_name}",'ipaddress')
+		$catissue_ip = query_nodes("vm_role=catissue and vapp_name=${vapp_name}",'ipaddress')
+		$civicrm_ip  = query_nodes("vm_role=civicrm and vapp_name=${vapp_name}",'ipaddress')
+		$i2b2_ip     = query_nodes("vm_role=i2b2 and vapp_name=${vapp_name}",'ipaddress')
+		$mysql_ip    = query_nodes("(vm_role=mysql or vm_role=mysql2)and vapp_name=${vapp_name}",'ipaddress')
+		$onyx_ip     = query_nodes("vm_role=onyx and vapp_name=${vapp_name}",'ipaddress')
+		$opal_ip     = query_nodes("vm_role=opal and vapp_name=${vapp_name}",'ipaddress')
+		$openesb_ip  = query_nodes("(vm_role=openesb or vm_role=openesbx) and vapp_name=${vapp_name}",'ipaddress')
+		$pound_ip    = query_nodes("vm_role=pound and vapp_name=${vapp_name}",'ipaddress')
 
-	#$fake_ip     = query_nodes("vm_role=pound and vapp_name=${vapp_name}",'ipaddress')
+		#$fake_ip     = query_nodes("vm_role=pound and vapp_name=${vapp_name}",'ipaddress')
+	}	
 }
+
 
 
 #Play with the data
@@ -85,98 +91,101 @@ class hosts::customer::make_hosts {
 	#The general ones. Each will be eg
 	#1.2.3.4 brux-camp.brisskit.le.ac.uk brux-camp camp
 
-	#Camp
-        host { "${vapp_name}-camp.brisskit.le.ac.uk":
-                ensure       => present,
-                ip           => "${hosts::customer::mangle_data::camp}",
-                host_aliases => ["${vapp_name}-camp","camp","junk"],
-        }
-
-	#catissue
-        host { "${vapp_name}-catissue.brisskit.le.ac.uk":
-                ensure       => present,
-                ip           => "${hosts::customer::mangle_data::catissue}",
-                host_aliases => ["${vapp_name}-catissue","catissue","junk"],
-        }
-
-        #civicrm
-        host { "${vapp_name}-civicrm.brisskit.le.ac.uk":
-                ensure       => present,
-                ip           => "${hosts::customer::mangle_data::civicrm}",
-                host_aliases => ["${vapp_name}-civicrm","civicrm","junk"],
-        }
-
-	#mysql
-        host { "${vapp_name}-mysql.brisskit.le.ac.uk":
-                ensure       => present,
-                ip           => "${hosts::customer::mangle_data::mysql}",
-                host_aliases => ["${vapp_name}-mysql","mysql","junk"],
-        }
-
-	#onyx
-        host { "${vapp_name}-onyx.brisskit.le.ac.uk":
-                ensure       => present,
-                ip           => "${hosts::customer::mangle_data::onyx}",
-                host_aliases => ["${vapp_name}-onyx","onyx","junk"],
-        }
-
-	#opal
-        host { "${vapp_name}-opal.brisskit.le.ac.uk":
-                ensure       => present,
-                ip           => "${hosts::customer::mangle_data::opal}",
-                host_aliases => ["${vapp_name}-opal","opal","junk"],
-        }
-
-        #pound
-        host { "${vapp_name}-pound.brisskit.le.ac.uk":
-                ensure       => present,
-                ip           => "${hosts::customer::mangle_data::pound}",
-                host_aliases => ["${vapp_name}-pound","pound","junk"],
-        }
-
-
-
-	############################
-	#The special cases
-
-	#i2b2
-	#This needs to resolve vapp_name.brisskit.le.ac.uk back to POUND when on i2b2 VM
-	#otherwise it complains about authentication.
-	if $vm_role == 'i2b2'
+	#Need to check vapp_name is set otherwise this fails.
+	if(!empty($vapp_name))
 	{
-		#Is this supposed to be as well as or instead of?
-        	host { "${vapp_name}.brisskit.le.ac.uk":
-                	ensure  => present,
-	                ip      => "${hosts::customer::mangle_data::pound}",
-			comment => "For i2b2 self lookups.",
+		#Camp
+        	host { "${vapp_name}-camp.brisskit.le.ac.uk":
+                	ensure       => present,
+                	ip           => "${hosts::customer::mangle_data::camp}",
+                	host_aliases => ["${vapp_name}-camp","camp","junk"],
+        	}
+
+		#catissue
+        	host { "${vapp_name}-catissue.brisskit.le.ac.uk":
+                	ensure       => present,
+                	ip           => "${hosts::customer::mangle_data::catissue}",
+                	host_aliases => ["${vapp_name}-catissue","catissue","junk"],
+        	}
+
+        	#civicrm
+        	host { "${vapp_name}-civicrm.brisskit.le.ac.uk":
+                	ensure       => present,
+                	ip           => "${hosts::customer::mangle_data::civicrm}",
+                	host_aliases => ["${vapp_name}-civicrm","civicrm","junk"],
+        	}
+
+		#mysql
+        	host { "${vapp_name}-mysql.brisskit.le.ac.uk":
+                	ensure       => present,
+                	ip           => "${hosts::customer::mangle_data::mysql}",
+                	host_aliases => ["${vapp_name}-mysql","mysql","junk"],
+        	}
+
+		#onyx
+        	host { "${vapp_name}-onyx.brisskit.le.ac.uk":
+                	ensure       => present,
+                	ip           => "${hosts::customer::mangle_data::onyx}",
+                	host_aliases => ["${vapp_name}-onyx","onyx","junk"],
+        	}
+
+		#opal
+        	host { "${vapp_name}-opal.brisskit.le.ac.uk":
+                	ensure       => present,
+                	ip           => "${hosts::customer::mangle_data::opal}",
+                	host_aliases => ["${vapp_name}-opal","opal","junk"],
+        	}
+
+        	#pound
+        	host { "${vapp_name}-pound.brisskit.le.ac.uk":
+                	ensure       => present,
+                	ip           => "${hosts::customer::mangle_data::pound}",
+                	host_aliases => ["${vapp_name}-pound","pound","junk"],
+        	}
+
+
+
+		############################
+		#The special cases
+
+		#i2b2
+		#This needs to resolve vapp_name.brisskit.le.ac.uk back to POUND when on i2b2 VM
+		#otherwise it complains about authentication.
+		if $vm_role == 'i2b2'
+		{
+			#Is this supposed to be as well as or instead of?
+        		host { "${vapp_name}.brisskit.le.ac.uk":
+        	        	ensure  => present,
+		                ip      => "${hosts::customer::mangle_data::pound}",
+				comment => "For i2b2 self lookups.",
+			}
+
 		}
+		#Still need the normal host entry.        
+		host { "${vapp_name}-i2b2.brisskit.le.ac.uk":
+        	       	ensure       => present,
+        	       	ip           => "${hosts::customer::mangle_data::i2b2}",
+        	       	host_aliases => ["${vapp_name}-i2b2","i2b2","junk"],
+        	}
 
+
+		#Openesb
+	        #This needs to resolve vapp_name.brisskit.le.ac.uk back to openesb when on openesb VM
+	        #otherwise it complains about authentication.
+        	if ($vm_role == 'openesb') or ($vm_role == 'openesbx')
+        	{
+        	        host { "${vapp_name}.brisskit.le.ac.uk":
+        	                ensure  => present,
+        	                ip      => "${hosts::customer::mangle_data::openesb}",
+				comment => "For openesb self lookups",
+        	        }
+
+        	}
+       		#Still need the normal host entry.        
+	        host { "${vapp_name}-openesbx.brisskit.le.ac.uk":
+        	        ensure       => present,
+                	ip           => "${hosts::customer::mangle_data::openesb}",
+                	host_aliases => ["${vapp_name}-openesb.brisskit.le.ac.uk","${vapp_name}-openesbx","${vapp_name}-openesb","openesbx","openesb","junk"],
+        	}       
 	}
-	#Still need the normal host entry.        
-	host { "${vapp_name}-i2b2.brisskit.le.ac.uk":
-               	ensure       => present,
-               	ip           => "${hosts::customer::mangle_data::i2b2}",
-               	host_aliases => ["${vapp_name}-i2b2","i2b2","junk"],
-        }
-
-
-
-	#Openesb
-        #This needs to resolve vapp_name.brisskit.le.ac.uk back to openesb when on openesb VM
-        #otherwise it complains about authentication.
-        if ($vm_role == 'openesb') or ($vm_role == 'openesbx')
-        {
-                host { "${vapp_name}.brisskit.le.ac.uk":
-                        ensure  => present,
-                        ip      => "${hosts::customer::mangle_data::openesb}",
-			comment => "For openesb self lookups",
-                }
-
-        }
-        #Still need the normal host entry.        
-        host { "${vapp_name}-openesbx.brisskit.le.ac.uk":
-                ensure       => present,
-                ip           => "${hosts::customer::mangle_data::openesb}",
-                host_aliases => ["${vapp_name}-openesb.brisskit.le.ac.uk","${vapp_name}-openesbx","${vapp_name}-openesb","openesbx","openesb","junk"],
-        }       
 }
