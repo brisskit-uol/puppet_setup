@@ -1,4 +1,4 @@
-class nagios::target::onyx {
+class nagios::target::opal {
 
 	require nagios::target
 
