@@ -8,8 +8,8 @@ class roles::customer::opal {
 	# Nagios	#
 	#################
 
-	# Create nagios cfg file for camp role
-	include nagios::target::camp
+	# Create nagios cfg file for opal role
+	include nagios::target::opal
 
 	
 	#################
