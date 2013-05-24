@@ -9,13 +9,7 @@ class mysql_setup {
 	}
 
 
-	mysql_setup::add_user {'jim': 
-		database => 'test2',
-		user => 'jim',
-		host => 'somehost',
-		ensure => 'absent',
-	}
-
+#Actually you could argue that these settings should come from the yaml file....
 
         #catisue
         mysql_setup::add_user {'catissue':
@@ -67,28 +61,43 @@ define mysql_setup::add_user ($database, $user, $host, $grant = 'all', $ensure =
                 ensure => "$ensure",
         }
 
+	#Get the DB config and format it before putting a copy on the mysql VM
 
-	#$temp=loadyaml("/etc/brisskit/mysql/$user.cfg")
+	#Remeber that this lives on the puppet master
+	$config=loadyaml("/etc/puppet/config/bru1/mysql/opal.yaml")
+
+	$config_array=[
+	"#Database config params set by puppet",
+	"host=${config[db_hostname]}",
+	"type=${config[db_type]}",
+	"name=${config[db_name]}",
+	"user=${config[db_username]}",
+	"password=${config[db_password]}\n",
+	]
+
+	$config_string=join($config_array, "\n")
 
 	file { "/etc/brisskit/mysql/$user.yaml":
 		ensure => 'present',
-	#	source => "puppet:///modules/mysql/$user.yaml",
+		content => "$config_string",
 	}
 
 
 	#Figure out password
         #I could set this here, or I could read it in from somewhere
-        $password="huh"
+	#$password="huh"
 
         #Print password to file
-        $pw_string =    "#Database config params set by puppet\nhost=mysql\ntype=mysql\ndatabase=$database\nuser=$user\npassword=$password"
-        file { "/etc/brisskit/mysql/$user.cfg":
-                content => "$pw_string",
-        }
+        #$pw_string =    "#Database config params set by puppet\nhost=mysql\ntype=mysql\ndatabase=$database\nuser=$user\npassword=$password"
+        #file { "/etc/brisskit/mysql/$user.cfg":
+        #        content => "$pw_string",
+        #}
 
 
 	#Set up the user. Note how this uses three different hostnames, this is because
 	#the various apps connect under different hostnames.
+
+	$password="${config[db_password]}"
 	
 	#user@shortname
 	database_user {"${user}@${host}":
