@@ -1,5 +1,6 @@
 #Eduserv customer vApps
 import "nodes/bru1"
+import "nodes/bru2"
 import "nodes/bru3"
 import "nodes/demo"
 
