@@ -34,6 +34,8 @@ class hosts::customer::get_data {
 		$openesb_ip  = query_nodes("(vm_role=openesb or vm_role=openesbx) and vapp_name=${vapp_name}",'ipaddress')
 		$pound_ip    = query_nodes("vm_role=pound and vapp_name=${vapp_name}",'ipaddress')
 
+
+		#$fake = query_nodes("fqdn=some-host",'ipaddress')
 		#$fake_ip     = query_nodes("vm_role=pound and vapp_name=${vapp_name}",'ipaddress')
 	}	
 }
