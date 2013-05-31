@@ -7,7 +7,7 @@ class nagios::target::opal {
 		host_name		=> $fqdn,
 		servicegroups		=> "check-http-opal",
 		target			=> "/etc/nagios3/conf.d/service_${fqdn}.cfg",
-		check_command		=> "check-http-pound!${vapp_name}!/opal",
+		check_command		=> "check-http-pound!${vapp_name}!/opal/",
 		service_description	=> "HTTP Opal",
 	}
 }
