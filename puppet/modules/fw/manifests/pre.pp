@@ -73,7 +73,7 @@ class fw::pre {
 	firewall { "055 allow all from saj home":
 
 		proto	=> "all",
-		source	=> "86.15.24.253",
+		source	=> "86.17.189.116",
 		action	=> "accept",
 
 	}
