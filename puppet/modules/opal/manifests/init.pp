@@ -17,8 +17,20 @@ class opal {
 		require => Class['apt::source[obiba]'],
 	}
 
-	#Need to check opal is installed and running
+	#Main config file
+	file { "opal-config.properties":
+    		path    => "/etc/opal/conf/opal-config.properties.puppet",
+    		owner   => root,
+    		group   => root,
+    		mode    => 644,
+    		content => template("opal/opal-config.properties.erb"),
+		notify  => Service["opal"],
+  	}
 
+	#Make sure opal is running
+	service { "opal":
+        	ensure => running,
+    	}
 
 	#Install R components
 	package { 'r-base':
