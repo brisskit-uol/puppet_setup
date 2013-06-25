@@ -99,7 +99,7 @@ echo "Starting bru1 at: "`date` >> ${LOCAL_LOG_FILE}
 VAPP_BACKUP_SOURCE=${REMOTE_SOURCE_DIR}vapp_master.sh
 
 #Run the backup script
-ssh vapp_backup@bru1 ${VAPP_BACKUP_SOURCE} >> ${LOCAL_LOG_FILE}
+#ssh vapp_backup@bru1 ${VAPP_BACKUP_SOURCE} >> ${LOCAL_LOG_FILE}
 
 #Check return value
 
@@ -112,7 +112,7 @@ then
 fi
 
 #Copy the files across
-rsync -a --omit-dir-times vapp_backup@bru1:${REMOTE_FILE_DIR}* ${LOCAL_FILE_DIR}bru1/ >> ${LOCAL_LOG_FILE}
+#rsync -a --omit-dir-times vapp_backup@bru1:${REMOTE_FILE_DIR}* ${LOCAL_FILE_DIR}bru1/ >> ${LOCAL_LOG_FILE}
 
 
 echo "Finished bru1 at: "`date` >> ${LOCAL_LOG_FILE}
@@ -135,7 +135,7 @@ echo "Starting bru3 at: "`date` >> ${LOCAL_LOG_FILE}
 VAPP_BACKUP_SOURCE=${REMOTE_SOURCE_DIR}vapp_master.sh
 
 #Run the backup script
-ssh vapp_backup@bru3 ${VAPP_BACKUP_SOURCE} >> ${LOCAL_LOG_FILE}
+#ssh vapp_backup@bru3 ${VAPP_BACKUP_SOURCE} >> ${LOCAL_LOG_FILE}
 
 #Check return value
 
@@ -148,7 +148,7 @@ then
 fi
 
 #Copy the files across
-rsync -a --omit-dir-times vapp_backup@bru3:${REMOTE_FILE_DIR}* ${LOCAL_FILE_DIR}bru3/ >> ${LOCAL_LOG_FILE}
+#rsync -a --omit-dir-times vapp_backup@bru3:${REMOTE_FILE_DIR}* ${LOCAL_FILE_DIR}bru3/ >> ${LOCAL_LOG_FILE}
 
 
 echo "Finished bru3 at: "`date` >> ${LOCAL_LOG_FILE}

@@ -1,6 +1,8 @@
 #Add datashield to the opal install
 class opal {
 
+notify{"in opal":}
+
 	#Add obiba key and url to sources list
 	apt::source { 'obiba':
 		location   => 'http://pkg.obiba.org',
@@ -18,8 +20,8 @@ class opal {
 	}
 
 	#Main config file
-	file { "opal-config.properties":
-    		path    => "/etc/opal/conf/opal-config.properties.puppet",
+	file { "opal-config.properties.puppet":
+    		path    => "/etc/opal/opal-config.properties.puppet",
     		owner   => root,
     		group   => root,
     		mode    => 644,
