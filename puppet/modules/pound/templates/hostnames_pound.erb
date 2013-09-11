@@ -88,6 +88,14 @@ ListenHTTP
                 End
         End
 
+	Service
+		URL "^/catissueplusWS/+.*"
+		BackEnd
+			Address catissue
+			Port 8080
+		End
+	End
+
         Service
                 URL "^/civi.catissue.ws*"
                 BackEnd
@@ -308,13 +316,23 @@ ListenHTTP
 		End
 	End
 
- #       Service
-  #              URL "^/i2b2WS/+.*"
-   #             BackEnd
-    #                    Address 192.168.2.104
-     #                   Port    8080
-      #          End
-       # End
+        Service
+                URL "^/i2b2WS/+.*"
+                BackEnd
+                        Address i2b2 
+                        Port    8080
+                End
+        End
+
+
+        Service
+                URL "^/OntologyBuilder/+.*"
+                BackEnd
+                        Address i2b2
+                        Port    8080
+                End
+        End
+
 	######################################
 
 	######################################

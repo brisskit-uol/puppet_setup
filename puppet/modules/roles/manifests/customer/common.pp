@@ -5,6 +5,9 @@ class roles::customer::common {
 	# Manage hosts file
 	include hosts::customer
 
+	#Manage the sshd_config file
+#	include sshd::config::password
+
 	#Make sure unzip is installed - maven distributes as .zip
 	package { "unzip":
 		ensure => installed

@@ -22,9 +22,9 @@ notify{"in opal":}
 	#Main config file
 	file { "opal-config.properties.puppet":
     		path    => "/etc/opal/opal-config.properties.puppet",
-    		owner   => root,
-    		group   => root,
-    		mode    => 644,
+    		owner   => 'opal',
+    		group   => 'adm',
+    		mode    => 750,
     		content => template("opal/opal-config.properties.erb"),
 		notify  => Service["opal"],
   	}

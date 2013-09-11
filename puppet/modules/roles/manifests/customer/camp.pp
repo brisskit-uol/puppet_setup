@@ -29,4 +29,10 @@ class roles::customer::camp {
 	# Create nagios cfg file for camp role
 	include nagios::target::camp
 
+
+	#################
+	# Web stuff     #
+	#################
+	include camp_web
+
 }
