@@ -1,5 +1,9 @@
 class nagios {
 
+#olly
+#playing around with monitoring external hosts.
+include nagios::external_hosts
+
 	# Configure and maintains a Nagios server instance
 
 	include nagios::commands
