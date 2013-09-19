@@ -41,4 +41,15 @@ class nagios::external_hosts {
         }
 
 
+        #opal.rcs.le.ac.uk
+        file { "/etc/nagios3/conf.d/host_uol-opal.rcs.le.ac.uk.cfg":
+                source  => "puppet:///modules/nagios/external_hosts/uol/conf/host_uol-opal.rcs.le.ac.uk.cfg",
+        }
+
+        file { "/etc/nagios3/conf.d/service_uol-opal.rcs.le.ac.uk.cfg":
+                source  => "puppet:///modules/nagios/external_hosts/uol/conf/service_uol-opal.rcs.le.ac.uk.cfg",
+        }
+
+
+
 }
