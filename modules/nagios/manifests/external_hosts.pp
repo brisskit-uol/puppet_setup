@@ -12,6 +12,16 @@ class nagios::external_hosts {
 	}
 
 
+        #uol-drupal.brisskit.le.ac.uk - Our drupal pageson the UoL LAMP stack
+        file { "/etc/nagios3/conf.d/host_uol-drupal.brisskit.le.ac.uk.cfg":
+                source  => "puppet:///modules/nagios/external_hosts/uol/conf/host_uol-drupal.brisskit.le.ac.uk.cfg",
+        }
+
+        file { "/etc/nagios3/conf.d/service_uol-drupal.brisskit.le.ac.uk.cfg":
+                source  => "puppet:///modules/nagios/external_hosts/uol/conf/service_uol-drupal.brisskit.le.ac.uk.cfg",
+        }
+
+
 	#opalserver1.datashield.org
 	file { "/etc/nagios3/conf.d/host_uol-opalserver1.datashield.org.cfg":
 		source	=> "puppet:///modules/nagios/external_hosts/uol/conf/host_uol-opalserver1.datashield.org.cfg",
